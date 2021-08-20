@@ -2,7 +2,7 @@ import { BASE_REFRESH_REPEAT, CODE_REFRESH, LOAD_USER, REFRESH_REPEAT } from '..
 import { USER } from '../../data'
 import {firebase} from '../../firebase/config'
 
-
+// тут описываються функции которые мы используем в приложении , они обновляют данные в бд и передают в reduce, для изменения локального стэйта
 export const loadUser = () => {
 
   return async dispatch => {
@@ -28,7 +28,6 @@ export const refreshRepeat = (
     let userUid = await firebase.auth().currentUser.uid
 
 
-    // const usersRefPoint = firebase.database().ref('users')
     const usersRefData = firebase.database().ref('usersData')
     const eventref = usersRefData.child(userUid).child('repeat').child(index).child(types).child(title).child('repeat')
     const eventref2 = usersRefData.child(userUid).child('repeat').child(index).child(types).child(title).child('time')

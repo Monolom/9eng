@@ -1,17 +1,28 @@
+//React,reactNative 
 import React, {useState,useRef,useEffect} from 'react'
-import {ImageBackground,View,StyleSheet,TouchableOpacity,Button,Modal,Text,Image,Dimensions,Animated,Platform} from 'react-native'
-import {Ionicons,FontAwesome5} from '@expo/vector-icons'
+import {ImageBackground,View,StyleSheet,TouchableOpacity,Text,Image,Dimensions,Animated,Platform} from 'react-native'
+// Пакет иконок
+import {Ionicons} from '@expo/vector-icons'
+// Контэйнер для скролла
 import { ScrollView } from 'react-native-gesture-handler'
+// Модуль звука и текста
 import { WordSound } from './WordSound'
+// Функция обновления данных
 import {refreshRepeat} from '../../store/actions/user'
+// redux
 import { useDispatch, useSelector } from 'react-redux'
 import {loadTicher} from '../../store/actions/ticher'
-import  {FlingGestureHandler,PanGestureHandler,GestureHandlerRootView,Directions , State} from 'react-native-gesture-handler'
+// Модули для скрола
+import  {FlingGestureHandler ,Directions, State} from 'react-native-gesture-handler'
+
+// Реакт-навигация-модал "Слова"
 export const WordModal = ({navigation}) => {
 
-    // const data = JSON.stringify(navigation.getParam('data', undefined))
-    const curent = navigation.getParam('curent', undefined)
-    const base = navigation.getParam('base', undefined)
+
+// получаем  данные с reactNavigation
+const curent = navigation.getParam('curent', undefined)
+
+const base = navigation.getParam('base', undefined)
 
 const dispatch = useDispatch()
 
@@ -21,69 +32,60 @@ useEffect(() => {
   
 }, [dispatch])
 
-  const data = useSelector(state => state.ticher.allTicher)
+// Получаем данные 
+const data = useSelector(state => state.ticher.allTicher)
+//состояния скрола которы отображаеться при больщом тексте в словосочетаниях
 const [contentSize, setContentSize] = useState(1);
 
 const [visibleScrollContainer, setVisibleScrollContainer] = useState(windowWidth);
 
 const scrollIndicator = useRef(new Animated.Value(0)).current;
-
-const [visibleScrollBarCore,setVisibleScrollBarCore] = useState(true)
-
+//состояния показа скроллбара
 const [visibleScrollBar, setVisibleScrollBar] = useState(true);  
-
+// состояние длыны текущего массива со словами
 const [arrLength,setArrLength ] = useState(false)
-
+// состояние блоокировки кнопок
 const [activeButonNext,setActiveButtonNext] = useState(false)
-
+// состояние запуска звука
 const [ playStatus,setPlayStatus] = useState(false)
 
-// console.log('modalData', data)
-// console.log('modalCurent', curent)
-// const [wordArr, setWordArr] = useState(false)
-
-// if(curent){
-
-//     setArrLength({curent: 0, length: JSON.parse(JSON.stringify(  data[String(curent.index - 1)]['data']['word'][curent.theme].length))})
-
-//     setWordArr(JSON.parse(JSON.stringify( data[String(curent.index - 1)]['data']['word'][curent.theme])))   
-  
-// }
 
 let wordArr
-
+// при новом запуске записываем длину массива слов
 useEffect(() => {
     
        if(curent){
-        // console.log('indexCurent', curent.index)
-        // console.log('modalCurent', data[0]['data']['word']["Аэропорт"])
-        
-    
 
+     
              setArrLength({first: 0,second:0, length: data[curent.index]['data']['word'][curent.theme].length})
 
        }
 
   }, [curent])
 
-
+// записываем размеры текущего экрана
 const windowWidth = Dimensions.get('window').width;
-
 const windowHeight = Dimensions.get('window').height;
 
+// ссылка на значение для анимации смены карточек (left)
 const fistDisplayRight = useRef(new Animated.Value(0)).current;
 
 const secondDisplayRight = useRef(new Animated.Value(-windowWidth)).current;
 
 const finalDisplayRight = useRef(new Animated.Value(-windowWidth)).current;
 
-const flexScrolBar = useRef(new Animated.Value(0)).current;
-
+// (z-index)
 const AnimatedFirstOpasity = useRef(new Animated.Value(0)).current;
 
 const AnimatedSecondOpasity = useRef(new Animated.Value(1)).current;
 
 const AnimatedFinalOpasity = 10
+
+// Ссылка на значение прогрессбара для анимации
+
+const flexScrolBar = useRef(new Animated.Value(0)).current;
+
+// при новых данных возвращаем все состояния в исходное значения
 
 useEffect(() => {
     
@@ -114,14 +116,6 @@ useEffect(() => {
         useNativeDriver: false
       }).start()  
 
-    //   setDisplayOpasity({
-
-    //     first: 0,
-    //     second: 1,
-    //     final: 10
-
-    // })
-
     setActiveButtonNext(false)
 
     Animated.timing(flexScrolBar, {
@@ -129,16 +123,12 @@ useEffect(() => {
         duration: 0,
         useNativeDriver: false
       }).start()  
+
 }, [curent])
 
-const [ displayOpasity, setDisplayOpasity] = useState({
-
-    first: 0,
-    second: 1,
-    final: 10
 
 
-})
+
 
 const scrollIndicatorSize = contentSize > visibleScrollContainer ? (visibleScrollContainer * visibleScrollContainer) / contentSize : visibleScrollContainer
 
@@ -153,19 +143,10 @@ const scrollIndicatorPosition = Animated.multiply(
   extrapolate: 'clamp'
 });
 
-const closeModal = () => {
-    
-    navigation.goBack()
-    Animated.timing(finalDisplayRight, {
-        toValue: -windowWidth,
-        duration: 300,
-        useNativeDriver: false
-      }).start()
-      
-}
 
 
 
+// показать следующий первый экран
 const goFirstDisplay = () => {
 
    //Запуск звука
@@ -177,9 +158,11 @@ const goFirstDisplay = () => {
         
 
 
-        let checkDate = new Date()
-        let curentDate = checkDate.getTime()
+    let checkDate = new Date()
+    let curentDate = checkDate.getTime()
+
     //Если запуск был с раздела повторений то засчитываем повторение в первый раз  
+
     if(base){
       if(curent.repeat === 0){
          
@@ -255,7 +238,7 @@ const goFirstDisplay = () => {
     }
     
 }
-
+// показать предидующий второй экран
 const goBackSecondDisplay = () => {
     if(arrLength.first == 0){
         console.log('это конец')
@@ -303,7 +286,7 @@ const goBackSecondDisplay = () => {
 
  
      }
-
+// показать предидующий первый экран
 const goBackFirstDisplay = () => {
   setPlayStatus(false)
     Animated.timing(AnimatedFirstOpasity, {
@@ -326,98 +309,10 @@ const goBackFirstDisplay = () => {
           
       })  
     
- 
-    //Запуск звука
-    //  setPlayStatus(false)
-     // отключаем кнопки
-    //  setActiveButtonNext(true)
-    // //проверям если слово последние то 
-    //  if(arrLength.length - 1 === arrLength.second){
-         
- 
- 
-    //      let checkDate = new Date()
-        
-    //      let curentDate = checkDate.getTime()
-
-    //  //Если запуск был с раздела повторений то засчитываем повторение в первый раз  
-    //  if(base){
-    //    if(curent.repeat === 0){
-          
-    //      dispatch(refreshRepeat(String(curent.index+1),curent.type,curent.theme,curentDate))
-    //    }
-    //  }else{
-    //    dispatch(refreshRepeat(String(curent.index+1),curent.type,curent.theme,curent.time))
-    //  }
-    //      //Показываем финальный экран
-    //      Animated.timing(finalDisplayRight, {
-    //          toValue: 0,
-    //          duration: 300,
-    //          useNativeDriver: false
-    //        }).start()
-    //  }else{
-    //      //меняем боковой отступ первого экрана (показываем)
-    //      Animated.timing(fistDisplayRight, {
-    //          toValue: 0,
-    //          duration: 300,
-    //          useNativeDriver: false
-    //        }).start(()=>{
-    //            //разблокируем кнопку дальше
- 
-    //          setActiveButtonNext(false)
-    //          // меняем боковой отступ второго экрана(убираем)
-    //          Animated.timing(secondDisplayRight, {
- 
-    //              toValue: -windowWidth,
-    //              duration: 1,
-    //              useNativeDriver: false
-            
-    //            }
- 
-             
-             
-     
-    //          ).start(()=>{
-    //              //Меняем наложение слоёв чтобы в следующий раз не менять
-    //              // setDisplayOpasity({...displayOpasity,second: 1, first: 0})
- 
-    //              Animated.timing(AnimatedFirstOpasity, {
-    //                  toValue: 0,
-    //                  duration: 0,
-    //                  useNativeDriver: false
-    //                }).start()  
- 
-    //                Animated.timing(AnimatedSecondOpasity, {
-    //                  toValue: 1,
-    //                  duration: 0,
-    //                  useNativeDriver: false
-    //                }).start()  
- 
-    //              if(arrLength.length - 1 === arrLength.second){
-     
-    //              }else{
-    //              // Аниммируем скрол
-    //                  Animated.timing(flexScrolBar, {
-    //                      toValue:  ((arrLength.second + 1) * 1/(arrLength.length/100) )/100 ,
-    //                      duration: 200,
-    //                      useNativeDriver: false
-                    
-    //                    }
-                      
-             
-    //                  ).start()
-    //                  setArrLength({...arrLength,second: arrLength.second + 1})
-    //              }
-            
-    //          });
-     
-           
-    //        });
-    //  }
      
  }
 
-
+// показать следующий второй экран
 const goSecondDisplay = () => {
     setPlayStatus(true)
     setActiveButtonNext(true)
@@ -455,33 +350,12 @@ const goSecondDisplay = () => {
       });
 
 
-    // setDisplayStyle({
-    //     first: {
-    //         right: -windowWidth,
-    //         zIndex: 1
-           
-    //     },
-    //     second: {
-    //         right: 0,
-    //         zIndex: 2
-    //     }
-    // })
+
 
 }
-
+//получаем размер шрифта
 const giveFontSize = (string,type) => {
-  // const status = false
-  
-  // let maxWidthWord = 0
-  // if(type === 'en'){
-  //   maxWidthWord = 17
-  // }else{
-  //   maxWidthWord = 25 
-  // }
-  // const toBig = (string) => {
-  //   return string.length > maxWidthWord
-  // }
-  // const arr = string.split(' ')
+
   if(type === 'en'){
     return string.length > 20
   }else{
@@ -491,40 +365,9 @@ const giveFontSize = (string,type) => {
 
 }
 
-const handleGesture = (evt) =>{
-    let{nativeEvent} = evt
-       
-    console.log(nativeEvent)
-        
-        if(nativeEvent.translationX < -120){
 
-            goSecondDisplay()
 
-        }
-        // if(nativeEvent.translationX > 100){
 
-        //     goFirstDisplay()
-
-        // }
-    }
-
-    const handleGesture2 = (evt) =>{
-        let{nativeEvent} = evt
-         
-    
-            
-            if(nativeEvent.translationX < -120){
-    
-                goFirstDisplay()
-    
-            }
-            // if(nativeEvent.translationX > 100){
-    
-            //     goFirstDisplay()
-    
-            // }
-        }
-// console.log('wwww', Number(curent.index - 1))
    
 
 
@@ -532,13 +375,7 @@ const handleGesture = (evt) =>{
 
      const   wordArr = data[curent.index]['data']['word'][curent.theme]
 
-    // console.log('BaseCurent', typeof base)
 
-
-    //     console.log('modalCurent', data[0]['data']['word']["Аэропорт"])
-     
-  
-    //  setArrLength({curent: 0, length:  data[curent.index]['data']['word'][curent.theme].length})
 
         if(arrLength){
    
@@ -561,9 +398,9 @@ const handleGesture = (evt) =>{
 
                onHandlerStateChange={({ nativeEvent }) => {
 
-                    console.log('state', nativeEvent)
+                    
                 if (nativeEvent.state === State.ACTIVE ) {
-                    console.log("I'm flinged!");
+              
                     goSecondDisplay()
                 }
               }}>
@@ -650,9 +487,9 @@ onHandlerStateChange={({ nativeEvent }) => {
    onHandlerStateChange={({ nativeEvent }) => {
 
      
-    //     console.log('state', State.ACTIVE)
+
     if (nativeEvent.state === State.ACTIVE ) {
-        console.log("I'm flinged!");
+
        goFirstDisplay()
     }
   }}
@@ -665,9 +502,8 @@ onHandlerStateChange={({ nativeEvent }) => {
    onHandlerStateChange={({ nativeEvent }) => {
 
 
-    //     console.log('state', State.ACTIVE)
     if (nativeEvent.state === State.ACTIVE ) {
-        // console.log("Влево!");
+
         goBackFirstDisplay()
     }
   }}
@@ -685,24 +521,7 @@ onHandlerStateChange={({ nativeEvent }) => {
 <WordSound soundPlay={playStatus} sound={wordArr[arrLength.second]['sound']} en={wordArr[arrLength.second]['en']} tr={wordArr[arrLength.second]['tr']} giveFontSize={giveFontSize} />
 
 
-{/* <TouchableOpacity onPress={()=> {
-console.log('звук')
-}}>
 
-
-<Text style={styles.preSpan}>нажмите чтобы прослушать ещё раз</Text>
-<View style={styles.midleButton}>
-
-<View  style={{width: '100%'}} >
-<Text style={{...styles.bigWord,paddingVertical: 0,}}>{wordArr[arrLength.second]['en']}</Text>
-<Text style={styles.bigWordLight}>{"("+wordArr[arrLength.second]['tr']+ ")"}</Text>
-</View>
-<View style={{position: 'absolute', right: 20,top: 20}} >
-<Ionicons  size={40} color="#fff" name="md-volume-high" />  
-</View>
-
-</View>
-</TouchableOpacity> */}
 
 </View>
 
@@ -874,7 +693,7 @@ navigation.goBack()
     <View style={styles.textWrpaer}>
        
 <TouchableOpacity onPress={()=> {
-    console.log('звук')
+
 }}>
 
 
@@ -934,9 +753,7 @@ navigation.goBack()
             <View style={styles.textWraperBottom}>
     
                 
-            {/* <Text style={{...styles.preSpan,textAlign: 'center'}}>
-                нажмите чтобы открыть перевод
-            </Text> */}
+      
 
          
          
@@ -965,7 +782,7 @@ navigation.goBack()
                         </View>
                         <TouchableOpacity style={{   position: 'absolute',
            right: -56,
-           top: 11}} onPress={()=>{console.log('хуй')}}>
+           top: 11}} onPress={()=>{console.log('null')}}>
                         <Image style={styles.closeButton} source={  require('../../../assets/img/close.png')}></Image>  
                         </TouchableOpacity>
                  

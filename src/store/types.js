@@ -1,3 +1,4 @@
+// ТИПЫ связывающие Redux и Action
 export const LOAD_USER = 'LOAD_USER'
 export const LOAD_TICHER = 'LOAD_TICHER'
 export const REFRESH_REPEAT = 'REFRESH_REPEAT'

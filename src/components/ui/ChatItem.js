@@ -1,16 +1,20 @@
 import React, {useState,useRef,useEffect} from 'react'
-import {ImageBackground,View,StyleSheet,TouchableOpacity,Button,Modal,Text,Image,Dimensions,Animated,Platform} from 'react-native'
-
+import {View,StyleSheet,TouchableOpacity,Text,Image,Dimensions,Animated} from 'react-native'
 import {Audio} from 'expo-av'
 import * as FileSystem from 'expo-file-system'
 
 
 
 export const ChatItem  = ({sound,en,ru,first,index,firstSound,soundPlay,state,dButton,buttonState,closeSound}) => {
+    // состояние прозрачности сообщения
     const opasityItemChat = useRef(new Animated.Value(0)).current;
+    // состояние отступа сообщения
     const topItemChat = useRef(new Animated.Value(10)).current;
+    //состояние звука приложения
     const [playStatus,setPlayStatus] = useState({playingStatus: "nosound",url: "222222"})
+
     let soundBox = ''
+  // при закрытии модального окна, выгружаем аудио
     useEffect(  () => {
       
       
@@ -24,6 +28,7 @@ export const ChatItem  = ({sound,en,ru,first,index,firstSound,soundPlay,state,dB
 
    }, [closeSound])
     
+// если первый то запускаем,если нет то выгружаем
 
     useEffect(  () => {
       
@@ -43,8 +48,13 @@ export const ChatItem  = ({sound,en,ru,first,index,firstSound,soundPlay,state,dB
 
    }, [sound])
 
+
+
+
    const SaveSound = sound
  
+
+   // запуск сообщение при первом сообщении
    useEffect(  () => {
    
   
@@ -66,36 +76,35 @@ export const ChatItem  = ({sound,en,ru,first,index,firstSound,soundPlay,state,dB
 
    }, [playStatus])
 
-   async function replaceSound(){
 
-   }
 
-   
+
+
+   // записываем разрешение экрана текущего устройства
    const windowWidth = Dimensions.get('window').width;
    const windowHeight = Dimensions.get('window').height;
 
-   const sDisp = () => {
-     if(windowHeight < 620){
-       return true
-     }else{
-       return false
-     }
-     
-   }
-   useEffect(() => {
+
+
+// Анимация сообщения
+useEffect(() => {
+
     Animated.timing(opasityItemChat, {
         toValue: 0,
         duration: 0,
         useNativeDriver: false
       }).start()
+
       Animated.timing(topItemChat, {
         toValue: 10,
         duration: 0,
         useNativeDriver: false
       }).start()
+
 }, [index])
 
-   useEffect(() => {
+useEffect(() => {
+
     Animated.timing(opasityItemChat, {
         toValue: 1,
         duration: 700,
@@ -107,9 +116,12 @@ export const ChatItem  = ({sound,en,ru,first,index,firstSound,soundPlay,state,dB
         duration: 500,
         useNativeDriver: false
       }).start()
+
 }, [])
 
 
+
+// Получение нидекса сообщения для 3 сложности
 const getNumberPhrase = (index) => {
   if(index >= 9){
     return index
@@ -119,60 +131,58 @@ const getNumberPhrase = (index) => {
   }
 }
 
-//    promisedSetState = (newState) => {
-//     return new Promise((resolve) => {
-//         setPlayStatus(newState, () => {
-//             resolve()
-//         });
-//     });
-// }
+
+//слушаем звучание
 
    _updateScreenForSoundStatus = (status) => {
         
     if  (status.isPlaying && playStatus.playingStatus !== "playing") {
+
       setPlayStatus({ playingStatus: "playing" });
+
     } else if (!status.isPlaying && playStatus.playingStatus === "playing") {
+
       setPlayStatus({ playingStatus: "donepause" });
+
     }
     else if (status.didJustFinish === true) {
+
+        // при завершении звучания разблокируем кнопки
         soundbox.unloadAsync()
         dButton(false)
         setPlayStatus({ playingStatus: "stop" });
-        // if(typeof soundbox !== 'undefined'){
-        //   console.log("ебобобо",)
-        // }else{
-        //   console.log("не ебобобо",)
-        // }
+
       }
   };
 
     async function _playRecording(url) {
-        // console.log('gtht',url)
+  
         var arr = url.toString().split("/")     
-        // console.log(`uri for sound: ${url}`)    
+   
         var filename = arr[arr.length-1]
   
-
+// проверяем если звук есть в системе то запускаем если нет то загружаем
     await  FileSystem.getInfoAsync(FileSystem.documentDirectory+filename)
   .then(success =>{
     if(success.exists){
-      // console.log('фаил есть',success.exists)
+  
       playTrack()
     
   }else{
-      // console.log('фаил нет',success.exists)
+
       goDounload()
   }
   })
   .catch(error =>{console.error(error);})
 
 
-
+ 
+      //функция загрузка звука
       async function goDounload(){
 
         await FileSystem.downloadAsync(url, FileSystem.documentDirectory+ filename)
                   .then(({uri})=>{
-                    // console.log("finished downloading to", uri)
+    
                     playTrack()
                   })
                   .catch(error=>{
@@ -181,16 +191,9 @@ const getNumberPhrase = (index) => {
       }
 
 
-
+      //функция запуска звука
       async function playTrack () {
-      //   const { sound } = await  Audio.Sound.createAsync(
-      //     require('../../sound/1.mp3'),
-      //   {
-      //     shouldPlay: true,
-      //     isLooping: false,
-      //   },
-      //   onPlaybackStatusUpdate =_updateScreenForSoundStatus,
-      // );
+
 
                   const { sound } = await  Audio.Sound.createAsync(
                     {uri:FileSystem.documentDirectory+filename},
@@ -213,64 +216,37 @@ const getNumberPhrase = (index) => {
 
      
 
-      async function _pauseAndPlayRecording() {
-        if (soundbox != null) {
-          
-            if (playStatus.playingStatus == "stop") {
-                // console.log('playing...');
-                await soundbox.replayAsync();
-                // console.log('playing!');
-                setPlayStatus({
-                  playingStatus: 'playing',
-                });
-            }
-          else if (playStatus.playingStatus == 'playing') {
-            // console.log('pausing...');
-            await soundbox.pauseAsync();
-            // console.log('paused!');
-            setPlayStatus({
-              playingStatus: 'donepause',
-            });
-          } else {
-            // console.log('playing...');
-            await soundbox.playAsync();
-            // console.log('playing!');
-            setPlayStatus({
-              playingStatus: 'playing',
-            });
-          }
-        }else if(soundbox == null){
-            // console.log('saund null')
-        }
-      }
 
-   const  _syncPauseAndPlayRecording =   () => {
 
-        if (soundbox != null) {
-          if (playStatus.playingStatus == 'playing') {
-            soundbox.pauseAsync();
-          } else {
-            soundbox.playAsync();
-          }
-        }
-      }
 
       _playAndPause = (url) => {
       
-    // console.log(url)
+
 
         switch (playStatus.playingStatus) {
+
           case 'nosound':
+
           case 'start':
+
             _playRecording(url);
+
             break;
+
             case 'stop':
+
               _playRecording(url);
+
           case 'donepause':
+
           case 'playing':
+
             _playRecording(url);
+
             break;
+
         }
+
 
       }
 
@@ -370,13 +346,6 @@ else if (state===3){
 
 
 
-{/* <View >
-<TouchableOpacity   onPress={() => {_playAndPause(sound)}} style={{width: sDisp() ? 35:45,height: sDisp() ? 35: 45}} >
-  <View style={{...styles.icon,width: sDisp() ? 35:45,height: sDisp() ? 35: 45}}>
-<Ionicons name={"md-volume-high"} size={sDisp() ? 25:35} color="#fff" />
-</View>
-  </TouchableOpacity>
-</View> */}
 
 
 
@@ -387,7 +356,6 @@ const styles = StyleSheet.create({
 
     chatWraper: {
         flex: 1,
-        // backgroundColor: '#f53',
         paddingTop: 30
       },
       chatWraperItem: {
@@ -449,7 +417,6 @@ const styles = StyleSheet.create({
       },
       chatSoundBlok: {
         width: '25%',
-        // backgroundColor: '#3ff',
         justifyContent: 'center',
         alignItems: 'center'
       

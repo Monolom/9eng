@@ -1,35 +1,21 @@
+// React, react-navigation
 import React, {useState , useEffect, useRef} from 'react'
-import {HeaderButtons, Item} from 'react-navigation-header-buttons'
-import {View,Text,StyleSheet, TouchableOpacity, FlatList,Animated,Dimensions,ActivityIndicator,Image,ScrollView,ImageBackground} from 'react-native'
+import {View,Text,StyleSheet, TouchableOpacity, FlatList,Animated,Dimensions,ActivityIndicator,Image,ScrollView} from 'react-native'
+// Redux
 import { useDispatch, useSelector } from 'react-redux'
-import { AppHeaderIcon } from '../components/AppHeaderIcon'
-import {THEME}  from '../theme'
 import {loadTicher} from '../store/actions/ticher'
-import {loadUser,baseRefreshRepeat} from '../store/actions/user'
-import ImageModal from 'react-native-image-modal'
-import { AppSound } from '../components/ui/AppSound'
-import { ModalFinal } from '../components/ui/ModalFinal'
-import { BaseModalNext } from '../components/ui/BaseModalNext'
-import { ModalFinalPhrase } from '../components/ui/ModalFinalPhrase'
-import {MyImage} from '../components/ui/MyImage'
-import {MyImageNew} from '../components/ui/myImageNew'
-import {Ionicons} from '@expo/vector-icons'
-import { AppSoundPhrase } from '../components/ui/AppSoundPhrase'
-import {MyModalImage} from '../components/ui/MyModalImage'
-import { Asset } from 'expo-asset';
-import { BlurView } from 'expo-blur';
-import { WordModal } from '../components/ui/WordModal'
-import { DialogModal } from '../components/ui/DialogModal'
+import {loadUser} from '../store/actions/user'
+// Модальное окно с объяснениями
 import {StarModal} from '../components/ui/StarModal'
  
-
+// экран "повторения"
 export const RepeatScreen = ({navigation}) => {
 
 
 
 // core load data 
 const dispatch = useDispatch()
-    
+   // при изменении загружаем новые данные 
 useEffect(() => {
     dispatch(loadUser())
   }, [dispatch])
@@ -41,10 +27,15 @@ useEffect(() => {
 const pressDispatch = () => {
   dispatch(loadUser())
 }
+
+
+  // получаем данные
   const allUser = useSelector(state => state.user.allUser)
 
   const allTicher = useSelector(state => state.ticher.allTicher)
 
+
+//Функция проверки на объект
 const isEmpityObj = (obj) => {
   for (let key in obj) {
     // если тело цикла начнет выполняться - значит в объекте есть свойства
@@ -52,10 +43,11 @@ const isEmpityObj = (obj) => {
   }
   return true;
 }
-
+// получаем размеры экрана устройства
 const windowWidth = Dimensions.get('window').width;
-
 const windowHeight = Dimensions.get('window').height;
+
+// Настройки скроллбара для слов(верхний)
 const [contentSize, setContentSize] = useState(1);
 
 const [visibleScrollContainer, setVisibleScrollContainer] = useState(windowWidth);
@@ -63,45 +55,6 @@ const [visibleScrollContainer, setVisibleScrollContainer] = useState(windowWidth
 const scrollIndicator = useRef(new Animated.Value(0)).current;
 
 const [visibleScrollBar, setVisibleScrollBar] = useState(true);  
-
-const [contentSize2, setContentSize2] = useState(1);
-
-const [visibleScrollContainer2, setVisibleScrollContainer2] = useState(windowWidth);
-
-const scrollIndicator2 = useRef(new Animated.Value(0)).current;
-
-const [visibleScrollBar2, setVisibleScrollBar2] = useState(true);  
-
-const [wordModal,setWordModal] = useState(false)
-
-const [dialogModal, setDialogModal] = useState(false)
-
-const [starModal,setStarModal] = useState(false)
-
-
-const [ curentWord, setCurentWord ] = useState(false)
-
-const [ curentDialog, setCurentDialog ] = useState(false)
-
-
-
-
-  if( !isEmpityObj(allUser)) {
-
-   
-// logik app const 
-// после какого повторения открываеться слудующий урок
-const repeatIterationOpen = 2
-
-
-const [buttonHistory,setButtonHistory] = useState({
-  autoplay: false,
-  level: 1
-})
-
-const changeButtonHistory = (flag) => {
-  setButtonHistory(flag)
-}
 // scrol bar state / const 1//
 
 const scrollIndicatorSize = contentSize > visibleScrollContainer ? (visibleScrollContainer * visibleScrollContainer) / contentSize : visibleScrollContainer
@@ -118,10 +71,20 @@ const scrollIndicatorPosition = Animated.multiply(
 });
 // scrol bar state 1//
 
+
+// Настройки скроллбара для фраз(нижний)
+const [contentSize2, setContentSize2] = useState(1);
+
+const [visibleScrollContainer2, setVisibleScrollContainer2] = useState(windowWidth);
+
+const scrollIndicator2 = useRef(new Animated.Value(0)).current;
+
+const [visibleScrollBar2, setVisibleScrollBar2] = useState(true);  
+
+
+const [starModal,setStarModal] = useState(false)
+
 // scrol bar state 2//
-
-
-
 
 const scrollIndicatorSize2 = contentSize2 > visibleScrollContainer2 ? (visibleScrollContainer2 * visibleScrollContainer2) / contentSize2 : visibleScrollContainer2
 
@@ -139,11 +102,32 @@ const scrollIndicatorPosition2 = Animated.multiply(
 
 // scrol bar state 2//
 
+
+
+
+  if( !isEmpityObj(allUser)) {
+
+   
+// состояние настроек повторения диалогов
+const [buttonHistory,setButtonHistory] = useState({
+  autoplay: false,
+  level: 1
+})
+//функция смены сосотояни настроек диалогов
+const changeButtonHistory = (flag) => {
+
+  setButtonHistory(flag)
+
+}
+
+
+
 //Style const //
 
 
 
 
+//вычесляем переменные для вёрстки
 const deviceHeightConst =  windowHeight - (windowWidth/100*30) - (windowWidth/100*30/100*70) - 280
 
 const deviceHeightBottomImg = windowWidth/100*30/100*70
@@ -153,43 +137,19 @@ const deviceHeightBottomImgHeart = windowWidth/100*30/100*85
 //Modal State //
 
 
-const goWordModal = (boolean) => {
 
-  setWordModal(boolean)
-
-}
-
-const goDialogModal = (boolean) => {
-
-  setDialogModal(boolean)
-
-}
-
+//Функция изменения состояния модального окна
 const goStarModal = (boolean) => {
 
   setStarModal(boolean)
 }
 
 
-// const wordArr = []
 
 
-//     for(let key in allTicher){
-//       const idTich  = allTicher[key]['id']
-//       // console.log('название урока', allTicher[key]["data"]['word'])
-//      for(let go in allTicher[key]["data"]['word']) {
-     
-//         wordArr.push({
-//           id: idTich,
-//           title: go,
-//           idFlat: `${idTich}_${go}`,
-//         })
-//      }
-  
-//     }
-
-
+//формируем массив для списко слов/диалогов
     const  filterData = (data, type) => {
+            //получаем количество повторения прошлого урока
       const getRepeatStatus = (obj) => {
 
         const myObj = obj
@@ -210,7 +170,7 @@ const goStarModal = (boolean) => {
         return result
 
       }
-
+      //получаем картинку в зависимости от количества повторений
       const getStarImg = (idTich,type,title) => {
       
       
@@ -232,31 +192,12 @@ const goStarModal = (boolean) => {
           return require('../../assets/img/star_5.png')
         }
       }
-
+      // получаем время последнего повторения
        const getTimeItem = (id,type,title) =>{
     
           return allUser.repeat[id][type][title]['time']
        }
-
-      const getFinalState = (id,type) => {
-          
-          let valueArr = []
-          let maxValue = 0
-          const checkDataRef = allUser.repeat[id][type]
-          for(key in checkDataRef){
-            for(var key2 in checkDataRef[key]){
-              valueArr.push(checkDataRef[key]['time'])
-            }
-          }
-          const filterValueArr =  valueArr.filter(value => value > maxValue)
-          
-          if (valueArr.length - filterValueArr.length === 1 ){
-            return true
-          }else{
-            return false
-          }
-      }
-      
+      // определяем заблокирован урок или нет
       const blockData = (id) => {
        
             const checkDataRef = allUser.repeat[id-1]
@@ -276,220 +217,23 @@ const goStarModal = (boolean) => {
         }
         return true
       } 
-      const getCardImgObj = {
-        'Аэропорт': require('../../assets/cardimg/01c.jpg'),
-        'Стойка регистрации': require('../../assets/cardimg/02c.jpg'),
-        'Таможня': require('../../assets/cardimg/03c.jpg'),
-        'Таможенный контроль': require('../../assets/cardimg/04c.jpg'),
-        'Объявления в Аэропорту': require('../../assets/cardimg/05c.jpg'),
-        'Рейс задерживается': require('../../assets/cardimg/06c.jpg'),
-        'В самолёте': require('../../assets/cardimg/07c.jpg'),
-        'Потеря багажа': require('../../assets/cardimg/08c.jpg'),
-        'Ситуации в аэропорту': require('../../assets/cardimg/09c.jpg'),
-        'Покупка билета в аэропорту': require('../../assets/cardimg/10c.jpg'),
-        'Где транспорт?': require('../../assets/cardimg/11c.jpg'),
-        'Как добраться до ЖД станции?': require('../../assets/cardimg/12c.jpg'),
-        'Вызов такси': require('../../assets/cardimg/13c.jpg'),
-        'Транспорт': require('../../assets/cardimg/14c.jpg'),
-        'Бронирование отеля': require('../../assets/cardimg/15c.jpg'),
-        'Регистрация в отеле': require('../../assets/cardimg/16c.jpg'),
-        'Что есть в отеле': require('../../assets/cardimg/17c.jpg'),
-        'Звонок на ресепшен': require('../../assets/cardimg/18c.jpg'),
-        'Выселение': require('../../assets/cardimg/19c.jpg'),
-        'Улица': require('../../assets/cardimg/20c.jpg'),
-        'Знакомства': require('../../assets/cardimg/21c.jpg'),
-        'Шоппинг': require('../../assets/cardimg/22c.jpg'),
-        'Магазин': require('../../assets/cardimg/23c.jpg'),
-        'Достопримечательности': require('../../assets/cardimg/24c.jpg'),
-        'Бронирование столика': require('../../assets/cardimg/25c.jpg'),
-        'Порекомендуйте ресторан': require('../../assets/cardimg/26c.jpg'),
-        'На входе в ресторан': require('../../assets/cardimg/27c.jpg'),
-        'Заказ официанту': require('../../assets/cardimg/28c.jpg'),
-        'В Банке': require('../../assets/cardimg/29c.jpg'),
-        'Запись к Дантисту': require('../../assets/cardimg/30c.jpg'),
-        'Регистратура': require('../../assets/cardimg/31c.jpg'),
-        'У Врача': require('../../assets/cardimg/32c.jpg'),
-        'Команды Врача': require('../../assets/cardimg/33c.jpg'),
-        'Жалобы': require('../../assets/cardimg/34c.jpg'),
-        'В аптеке': require('../../assets/cardimg/35c.jpg'),
-      }
 
-
-      const getIconObj = {
-
-        'Аэропорт': require('../../assets/icon/01a.png'),
-        'Стойка регистрации': require('../../assets/icon/02a.png'),
-        // 'Таможня': require('../../assets/icon/03a.png'),
-        'Таможенный контроль': require('../../assets/icon/04a.png'),
-        'Объявления в Аэропорту': require('../../assets/icon/05a.png'),
-        // 'Рейс задерживается': require('../../assets/icon/06a.png'),
-        'В самолёте': require('../../assets/icon/07a.png'),
-        // 'Потеря багажа': require('../../assets/icon/08a.png'),
-        'Ситуации в аэропорту': require('../../assets/icon/09a.png'),
-        // 'Покупка билета в аэропорту': require('../../assets/icon/10a.png'),
-        // 'Где транспорт?': require('../../assets/icon/11a.png'),
-        // 'Как добраться до ЖД станции?': require('../../assets/icon/12a.png'),
-        // 'Вызов такси': require('../../assets/icon/13a.png'),
-        // 'Транспорт': require('../../assets/icon/14a.png'),
-        // 'Бронирование отеля': require('../../assets/icon/15a.png'),
-        'Регистрация в отеле': require('../../assets/icon/16a.png'),
-        // 'Что есть в отеле': require('../../assets/icon/17a.png'),
-        // 'Звонок на ресепшен': require('../../assets/icon/18a.png'),
-        // 'Выселение': require('../../assets/icon/19a.png'),
-        'Улица': require('../../assets/icon/20a.png'),
-        'Знакомства': require('../../assets/icon/21a.png'),
-        // 'Шоппинг': require('../../assets/icon/22a.png'),
-        'Магазин': require('../../assets/icon/23a.png'),
-        // 'Достопримечательности': require('../../assets/icon/24a.png'),
-        // 'Бронирование столика': require('../../assets/icon/25a.png'),
-        // 'Порекомендуйте ресторан': require('../../assets/icon/26a.png'),
-        // 'На входе в ресторан': require('../../assets/icon/27a.png'),
-        // 'Заказ официанту': require('../../assets/icon/28a.png'),
-        // 'В Банке': require('../../assets/icon/29a.png'),
-        // 'Запись к Дантисту': require('../../assets/icon/30a.png'),
-        // 'Регистратура': require('../../assets/icon/31a.png'),
-        // 'У Врача': require('../../assets/icon/32a.png'),
-        // 'Команды Врача': require('../../assets/icon/33a.png'),
-        // 'Жалобы': require('../../assets/icon/34a.png'),
-        // 'В аптеке': require('../../assets/icon/35a.png'),
-        'Местоимения': require('../../assets/icon/01n.png'),
-        'Аэропорт выражения': require('../../assets/icon/02n.png'),
-        'Вопросы': require('../../assets/icon/03n.png'),
-        'Регистрация выражения': require('../../assets/icon/04n.png'),
-        'Числительные': require('../../assets/icon/05n.png'),
-        'Таможня выражения': require('../../assets/icon/06n.png'),
-        'Объявления в Аэропорту фразы': require('../../assets/icon/07n.png'),
-        'В самолёте выражения': require('../../assets/icon/08n.png'),
-        'Ситуации в аэропорту выражения': require('../../assets/icon/10n.png'),
-        'Транспорт часть 1': require('../../assets/icon/11n.png'),
-        'Транспорт часть 1 выражения': require('../../assets/icon/12n.png'),
-        'Транспорт часть 2': require('../../assets/icon/13n.png'),
-        'Транспорт часть 2 выражения': require('../../assets/icon/14n.png'),
-        'Отель': require('../../assets/icon/15n.png'),
-        'Дни Недели': require('../../assets/icon/16n.png'),
-        'Отель выражения': require('../../assets/icon/17n.png'),
-        'Ресепшн': require('../../assets/icon/18n.png'),
-        'Ресепшн выражения': require('../../assets/icon/19n.png'),
       
-        'Улица выражения': require('../../assets/icon/21n.png'),
-        'Знакомства выражения': require('../../assets/icon/22n.png'),
-        'Магазин выражения': require('../../assets/icon/23n.png'),
-        'Ресторан': require('../../assets/icon/24n.png'),
-        'Ресторан выражения': require('../../assets/icon/25n.png'),
-        'У врача часть 1': require('../../assets/icon/26n.png'),
-        'У врача часть 1 выражения': require('../../assets/icon/27n.png'),
-        'У врача часть 2': require('../../assets/icon/28n.png'),
-        'У врача часть 2 выражения': require('../../assets/icon/28n.png'),
-      }
-      const styleData = (id) => {
-        
-        if(id === '1'){
-          return {
-            color: '#392854',
-            img: type === 'word' ? 
-            require('../../assets/img/word_img_1.png') :
-            require('../../assets/img/phrase_img_1.jpg'),
-            bg: require('../../assets/img/test_dialog_bg_img.png')
-          }
-        }
-         else if (id === '2'){
-
-          return {
-            color: '#133954',
-            img: type === 'word' ? 
-            require('../../assets/img/word_img_2.png') :
-            require('../../assets/img/phrase_img_2.jpg'),
-            bg: require('../../assets/img/test_dialog_bg_img.png')
-          }
-        }
-        else if (id === '3'){
-          return {
-            color: '#0a6619',
-            img: type === 'word' ? 
-            require('../../assets/img/word_img_3.png') :
-            
-            require('../../assets/img/phrase_img_3.jpg'),
-            bg: require('../../assets/img/test_dialog_bg_img.png')
-          }
-        }
-        else if (id === '4'){
-          return {
-            color: '#fff',
-            img: type === 'word' ?    
-            require('../../assets/img/word_img_1.png') :
-            
-            require('../../assets/img/word_img_1.png'),
-            bg: require('../../assets/img/test_dialog_bg_img.png')
-          }
-        }
-        else if (id === '5'){
-          return {
-            color: '#fff',
-            img: type === 'word' ? 
-            require('../../assets/img/word_img_1.png') :
-            require('../../assets/img/word_img_1.png'),
-            bg: require('../../assets/img/test_dialog_bg_img.png')
-          }
-        }
-        else if (id === '6'){
-          return {
-            color: '#fff',
-            img: type === 'word' ? 
-            require('../../assets/img/word_img_1.png') :
-            
-            require('../../assets/img/word_img_1.png'),
-            bg: require('../../assets/img/test_dialog_bg_img.png')
-          }
-        }
-        else if (id === '7'){
-          return {
-            color: '#fff',
-            img: type === 'word' ? 
-            require('../../assets/img/word_img_1.png') :
-            
-            require('../../assets/img/word_img_1.png'),
-            bg: require('../../assets/img/test_dialog_bg_img.png')
-          }
-        }
-        else if (id === "8"){
-          return {
-            color: '#fff',
-            img: type === 'word' ? 
-            require('../../assets/img/word_img_1.png') :
-            
-            require('../../assets/img/word_img_1.png'),
-            bg: require('../../assets/img/test_dialog_bg_img.png')
-          }
-        }
-        else if (id === '9'){
-          return {
-            color: '#fff',
-            img: type === 'word' ? 
-            require('../../assets/img/word_img_1.png') :
-            
-            require('../../assets/img/word_img_1.png'),
-            bg: require('../../assets/img/test_dialog_bg_img.png')
-          }
-        }
-
-      }
+    
 
       const Arr = []
-
+      //формируем массив
       for(let key in data){
         const idTich  = data[key]['id']
-        // console.log('название урока', allTicher[key]["data"]['word'])
+  
        for(let go in data[key]["data"][type === 'word'? 'word': "phrase"]) {
        
           Arr.push({  
+
             id: idTich,
             title: go,
             idFlat: `${idTich}_${go}`,
-            color: styleData(idTich).color,
-            icon: getIconObj[go] ? getIconObj[go] : require('../../assets/icon/01a.png'),
-            img : getCardImgObj[go],
             block: blockData(idTich),
-            final: getFinalState(idTich,type),
             time: getTimeItem(idTich,type,go),
             type: type,
             repeat: allUser.repeat[idTich][type][go]['repeat'],
@@ -500,31 +244,13 @@ const goStarModal = (boolean) => {
     
       }
 
-      const filterTichProgress = (id,type,repeat) => {
-        let result = false
-      
-       const obj = allUser.repeat[id][type]
-       const obj2 = allUser.repeat[id][type==='word'? 'phrase': 'word']
-        for(key in obj){
-          if(obj[key]['repeat'] < repeat){
-            result = true
-          }
-        }
-        for(key in obj2){
-          if(obj2[key]['repeat'] < repeat){
-            result = true
-          }
-        }
-
-        if(repeat === 1){
-          result = false
-        }
-        return result
-      }
-
+  
+      // проверка на то прошлоли достаточно времени
       const filterTimeProgress = (repeat,time) => {
+
         let checkDate = new Date()
         let curentDate = checkDate.getTime()
+        
         if(repeat === 1){
           return false
         }else if(repeat === 2){
@@ -589,6 +315,7 @@ const goStarModal = (boolean) => {
           }
         }
       }
+      //фильтруем что показывать что нет
       const filterFunction=(value)=>{
         if(value.block === true){
           return false
@@ -597,22 +324,19 @@ const goStarModal = (boolean) => {
         }else if (value.repeat > 8){
           return false
         }
-        // else if (filterTichProgress(value.id,value.type,value.repeat)){
-        //   return false
-        // }
+     
         else if (filterTimeProgress(value.repeat,value.time)){
           return false
         }
-        // else  if(filterTimeProgress)
+
         else{  return true}
       }
       const baseArr = Arr.filter(filterFunction)
-      // console.log('чё за массив',baseArr)
       return baseArr    
    }
 
 
-
+//получаем размер шрифта
    const giveFontSize = (string) => {
  
     const maxWidthWord = 8
@@ -624,47 +348,14 @@ const goStarModal = (boolean) => {
     return arr.some(toBig)
   
   }
-// const  filterData = async (data) => {
 
-//    let promise = new Promise((resolve, reject) => {
-//     const wordArr = []
-//     for(let key in data){
-//       const idTich  = data[key]['id']
-  
-//      for(let go in data[key]['word']) {
-//         wordArr.push({
-//           id: idTich,
-//           title: go,
-//           idFlat: `${idTich}_${go}`,
-//         })
-//      }
-  
-//     }
-//     resolve(wordArr)
-
-//   })
-
-// const result = await promise
-// return result.then((e)=>( e)).cath()
-
-// }
-
-
-
-
-// testFlat
 
 
 return (
 
  <ScrollView showsVerticalScrollIndicator={false} style={styles.directWraper}>
-   {/* <WordModal visible={wordModal}  animationType="none" close={goWordModal} data={allTicher} curent={curentWord}>
-  
-  </WordModal> */}
 
-  {/* <DialogModal data={allTicher} visible={dialogModal} close={goDialogModal} curent={curentDialog}>
-    
-  </DialogModal> */}
+
 
   <StarModal visible={starModal} close={goStarModal}>
 
@@ -860,20 +551,13 @@ renderItem={({item,index})=>{
       flag: buttonHistory
     }
     )
-    // setDialogModal(true)
-    // setCurentDialog({
-    //   index: Number(item.id - 1),
-    //   theme: item.title,
-    //   time: item.time,
-    //   type: item.type,
-    //   repeat: item.repeat
-    // })
+
     
     }}>
     
   <View style={{...styles.wordButtonWraper,  width: windowWidth/100*30,  marginRight: windowWidth/100*5 , marginLeft: index == 0 ? windowWidth/100*10 : 0 , height: '100%', }}>
 
-      {/* <Text style={{...styles.wordButtonTitle,opacity:  item.block ? 0.5:1}}>Аэропорт</Text> */}
+
 
 
       <View  style={{width: deviceHeightBottomImg ,height: deviceHeightBottomImg,position: 'relative',backgroundColor: '#fff',borderRadius: deviceHeightBottomImg /2,justifyContent: 'center',alignItems: 'center' }}  >
@@ -979,16 +663,6 @@ pressDispatch()
 
 }  
 
-RepeatScreen.navigationOptions = ( {navigation}) => ({
-    headerTitle:  'База знаний' ,   
-
-     headerRight: () => ( <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-
-     <Item title="Toggle Drawer" iconName='ios-menu' onPress={() => navigation.toggleDrawer()}/>
-    
-    </HeaderButtons>)
-
-})
 
 
 const styles = StyleSheet.create({
@@ -1145,7 +819,4 @@ heartImgTop: {
   width: '30%',
   height: '30%'
 }
-
-
-
 })

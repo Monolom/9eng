@@ -1,7 +1,7 @@
 import React from 'react'
-import { View,Text} from 'react-native'
-import {LinearGradient} from 'expo-linear-gradient'
+import { View} from 'react-native'
 import {BottomTabBar } from 'react-navigation-tabs'
+
 
 export const GradientBottom = props => (
 

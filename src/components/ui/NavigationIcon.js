@@ -1,22 +1,34 @@
+// react,react-native
 import React,{useEffect} from 'react'
 import {View,Text,Image} from 'react-native'
+// redux
 import {loadUser} from '../../store/actions/user'
 import { useDispatch, useSelector } from 'react-redux'
 import {loadTicher} from '../../store/actions/ticher'
 
 export const NavigtionIcon = ({info})=>{
+
     const dispatch = useDispatch()
 
     useEffect(() => {
+
       dispatch(loadUser())
+
     }, [dispatch])
     
     useEffect(() => {
+
         dispatch(loadTicher())
+
     }, [dispatch])
-    
+
+
+
+// получаем данные с redux    
+
 const allUser = useSelector(state => state.user.allUser)
 const allTicher = useSelector(state => state.ticher.allTicher)
+
 const isEmpityObj = (obj) => {
     for (let key in obj) {
       // если тело цикла начнет выполняться - значит в объекте есть свойства
@@ -24,6 +36,10 @@ const isEmpityObj = (obj) => {
     }
     return true;
   }
+
+
+
+//функция получения доступных повторений
 const  filterData = (data, type) => {
     const getRepeatStatus = (obj) => {
 
@@ -213,30 +229,28 @@ const  filterData = (data, type) => {
       }else if (value.repeat > 8){
         return false
       }
-      // else if (filterTichProgress(value.id,value.type,value.repeat)){
-      //   return false
-      // }
+
       else if (filterTimeProgress(value.repeat,value.time)){
         return false
       }
-      // else  if(filterTimeProgress)
+
       else{  return true}
     }
     const baseArr = Arr.filter(filterFunction)
-    // console.log('чё за массив',baseArr)
+
     return baseArr    
  }
 
  if( !isEmpityObj(allUser)){
-    console.log('тест', filterData(allTicher,'phrase'))
+
+  // получаем все доступные повторения двух видов
+
     const notficationNumber = filterData(allTicher,'phrase').length + filterData(allTicher,'word').length
 
         return   <View style={
             {  position: 'relative',width: 40,height: 40,justifyContent: 'center',alignContent: 'center',alignItems: 'center', backgroundColor: '#fff',}
             }>
-              {/* <View style={{position: 'absolute',width: '50%',height: '100%',left: 0,backgroundColor: '#f3f'}}>
-    
-              </View> */}
+        
                <Image  style={{width:'90%',height: '90%'}}
               source={info.focused ? require('../../../assets/img/activeMenu.png') : require('../../../assets/img/deactiveMenu.png') }>
               </Image>
@@ -263,9 +277,7 @@ const  filterData = (data, type) => {
     return   <View style={
         {  position: 'relative',width: 40,height: 40,justifyContent: 'center',alignContent: 'center',alignItems: 'center', backgroundColor: '#fff',}
         }>
-          {/* <View style={{position: 'absolute',width: '50%',height: '100%',left: 0,backgroundColor: '#f3f'}}>
-
-          </View> */}
+       
            <Image  style={{width:'90%',height: '90%'}}
           source={info.focused ? require('../../../assets/img/activeMenu.png') : require('../../../assets/img/deactiveMenu.png') }>
           </Image>

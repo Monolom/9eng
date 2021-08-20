@@ -3,7 +3,7 @@ import { BASE_REFRESH_REPEAT, CODE_REFRESH, LOAD_USER, REFRESH_REPEAT } from '..
 const initialState = {
   allUser: {}
 }
-
+// Тут формируем состояние и изменяем его с помощью функций(action), которые передают сюда тип и объект с новыми данными. 
 export const loadUser = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_USER:
@@ -14,18 +14,7 @@ export const loadUser = (state = initialState, action) => {
 
     case REFRESH_REPEAT:
 
-      // const repetRefresh = state.allUser.repeat[action.index].map( (repeats,index)=> {
-      //   if(index == action.index){
-      //     repeats[action.repeat][action.types] = true
-      //     repeats.time = action.time
-      //   }
-      //   return repeats
-      // }
-      // )
-      
-      // const codeCheak = action.code !== 0 ? action.code : state.allUser.access[action.title]
-
-      // const newPoint = state.allUser.point + action.point
+ 
       
     
       

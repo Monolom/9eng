@@ -1,7 +1,6 @@
 import React from 'react'
-import {StyleSheet, View,Image} from 'react-native'
-import {LinearGradient} from 'expo-linear-gradient'
-import { Header} from 'react-navigation-stack'
+import {View,Image} from 'react-native'
+
 
 
 export const GradientHeader = props => (

@@ -1,32 +1,30 @@
+//Импорт React
 import React from 'react'
-import {View,StyleSheet,Header,Text,Image} from 'react-native'
-import { createAppContainer, ThemeColors } from 'react-navigation'
+//Импорт модуля React Native
+import {View} from 'react-native'
+// Импорт react-navigation
+import { createAppContainer} from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
-import { createBottomTabNavigator , BottomTabBar } from 'react-navigation-tabs'
-import {createDrawerNavigator} from 'react-navigation-drawer'
-import { Platform } from 'react-native'
-import { Ionicons,FontAwesome5 , MaterialCommunityIcons} from '@expo/vector-icons'
-import { MainScreen } from '../screens/MainScreen'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
+// импорт иконок
+import {FontAwesome5} from '@expo/vector-icons'
+//импорт экранов
 import { RepeatScreen } from '../screens/RepeatScreen'
 import { BaseScreen } from '../screens/BaseScreen'
-import { RatingScreen } from '../screens/RatingScreen'
 import { ProfileScreen } from '../screens/ProfileScreen'
-import { THEME } from '../theme'
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
-import { WordRepeatScreen } from '../screens/WordRepeatScreen'
-import {LinearGradient} from 'expo-linear-gradient'
+//импорт модальных окон
+import {DialogModal} from '../components/ui/DialogModal'
+import {WordModal} from '../components/ui/WordModal'
+//импорт кастомных решений меню
 import {GradientHeader} from '../components/ui/GradientHeader'
-import * as Font from 'expo-font'
 import {GradientBottom} from '../components/ui/GradientBottom'
 import {NavigtionIcon} from '../components/ui/NavigationIcon'
-import {NewModalTest} from '../components/ui/NavModalTest'
-import {WordModal} from '../components/ui/WordModal'
-import {DialogModal} from '../components/ui/DialogModal'
 
 
 
 
 
+// общие настройки
 const navigatorOptions = {
   
   defaultNavigationOptions: {
@@ -50,13 +48,12 @@ const navigatorOptions = {
       leterSpasing: 22,
       fontSize: 20
     }
-    // headerBackground: 'transparent'
-    // headerTransparent: true
+
   }
 }
 
 
-
+// оборачивае экраны
 const RepeatNavigator = createStackNavigator(
   {
     Repeat: RepeatScreen
@@ -71,12 +68,8 @@ const BaseNavigator = createStackNavigator(
   },
   navigatorOptions
 )
-const RatingNavigator = createStackNavigator(
-  {
-    Rating: RatingScreen
-  },
-  navigatorOptions
-)
+
+
 const ProfileNavigator = createStackNavigator(
   {
     Profile: ProfileScreen
@@ -86,7 +79,7 @@ const ProfileNavigator = createStackNavigator(
 
 
 
-
+// Создаём конфиг для нижнего меню
 const bottomTabsConfig = {
   Base: {
     screen: BaseNavigator,
@@ -130,6 +123,8 @@ const bottomTabsConfig = {
 
 
 }
+
+// создаём нижнее меню
 const BottomNavigator = createBottomTabNavigator (bottomTabsConfig,{
 
   tabBarComponent: props => <GradientBottom {...props} />
@@ -153,71 +148,8 @@ const BottomNavigator = createBottomTabNavigator (bottomTabsConfig,{
   
 })
 
-// createMaterialBottomTabNavigator(bottomTabsConfig, {
-//   initialRouteName: 'Main',
-//   shifting: true,
-//   labeled: false,
-// activeTintColor: '#fff',
-// barStyle: {
-//   backgroundColor : THEME.MAIN_COLOR,
-//   paddingBottom: 10,
-//   paddingTop: 10
-// }
-// })  
 
-// createBottomTabNavigator (bottomTabsConfig,{
-//   initialRouteName: 'Main',
-//   tabBarOptions: {
-//     activeTintColor: THEME.MAIN_COLOR
-//   }
-// })
-
-
-// const MainNavigators = createDrawerNavigator ({
-//   Main: {
-//     screen: BottomNavigator,
-//     navigationOptions: {
-//       drawerLabel: 'Главная'
-//     }
-//   },
-//   Repeat:{
-//     screen: RepeatNavigator,
-//     navigationOptions: {
-//       drawerLabel: 'Повторения'
-//     }
-//   } ,
-//   Base: {
-//     screen: BaseNavigator,
-//     navigationOptions: {
-//       drawerLabel: 'База знаний'
-//     }
-//   } ,
-//   Rating: {
-//     screen: RatingNavigator,
-//     navigationOptions: {
-//       drawerLabel: 'Рэйтинг'
-//     }
-//   } ,
-//   Profile: {
-//     screen: ProfileNavigator,
-//     navigationOptions: {
-//       drawerLabel: 'Мой профиль'
-//     }
-//   } 
-// },
-
-
-// {
-//   contentOptions: {
-//     activeTintColor: THEME.MAIN_COLOR,
-//     labelStyle: {
-//       fontFamily: 'open-bold'
-//     }
-//   },
-//   drawerPosition: "right"
-// }
-// )
-  
+// создаём общие пространство в которое входит основной экран (с нижнем меню) и два модальных окна  
 const RootNavigator = createStackNavigator({
   Main: {
     screen: BottomNavigator

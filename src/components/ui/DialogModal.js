@@ -1,163 +1,31 @@
+//React,reactNative
 import React, {useState,useRef,useEffect} from 'react'
 import {ImageBackground,View,StyleSheet,TouchableOpacity,Button,Modal,Text,Image,Dimensions,Animated,Platform} from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import {Ionicons,FontAwesome5} from '@expo/vector-icons'
-import { Checkbox } from 'react-native-paper'
-import { FlatList } from 'react-native-gesture-handler'
-import {ChatItem} from '../../components/ui/ChatItem'
-import { registerCustomIconType } from 'react-native-elements'
+// Redux
+import { useDispatch } from 'react-redux'
+// фугкция обновления данных (прогресс повторения)
 import {refreshRepeat} from '../../store/actions/user'
-import  {FlingGestureHandler,PanGestureHandler,GestureHandlerRootView,Directions , State} from 'react-native-gesture-handler'
-export const DialogModal = ({navigation}) => {
+// контейнер-список для скрола
+import { FlatList } from 'react-native-gesture-handler'
+// модуль сообщения в диалоге
+import {ChatItem} from '../../components/ui/ChatItem'
+// модули для свайпа
+import  {FlingGestureHandler,Directions ,State} from 'react-native-gesture-handler'
 
+// Реакт-навигация-модал "Диалоги"
+export const DialogModal = ({navigation}) => {
+// получаем  данные с reactNavigation
   const data = navigation.getParam('data', undefined)
   const curent = navigation.getParam('curent', undefined)
   const base = navigation.getParam('base', undefined)
-   const but = navigation.getParam('flag',  1)
+  const but = navigation.getParam('flag',  1)
   const goButHistory = navigation.getParam('goFlag',  undefined)
-//  visible,close,data,curent,base
 
-
-
-
-// useEffect(() => {
-
-
-//   const chengeRadioFast = (radio) => {
-//     if(radio === 1){
-//         setLevel(1)
-//         // goButHistory({...but, level: 1})
-       
-//         Animated.timing(opasityRadio1, {
-//             toValue: 1,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()
-//           Animated.timing(opasityRadio2, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//           Animated.timing(opasityRadio3, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//     }
-//     if(radio === 2){
-//         setLevel(2)
-//         // goButHistory({...but, level: 2})
-//         Animated.timing(opasityRadio2, {
-//             toValue: 1,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()
-//           Animated.timing(opasityRadio3, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//           Animated.timing(opasityRadio1, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//     }
-//     if(radio === 3){
-//         setLevel(3)
-//         // goButHistory({...but, level: 3})
-//         Animated.timing(opasityRadio3, {
-//             toValue: 1,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()
-//           Animated.timing(opasityRadio2, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//           Animated.timing(opasityRadio1, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//     }
-//   }
-
-
-
-//   chengeRadioFast(but.level)
-
-// }, [but])
-
-// useEffect(() => {
-//   const chengeRadioFast = (radio) => {
-//     if(radio === 1){
-//         setLevel(1)
-//         // goButHistory({...but, level: 1})
-       
-//         Animated.timing(opasityRadio1, {
-//             toValue: 1,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()
-//           Animated.timing(opasityRadio2, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//           Animated.timing(opasityRadio3, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//     }
-//     if(radio === 2){
-//         setLevel(2)
-//         // goButHistory({...but, level: 2})
-//         Animated.timing(opasityRadio2, {
-//             toValue: 1,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()
-//           Animated.timing(opasityRadio3, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//           Animated.timing(opasityRadio1, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//     }
-//     if(radio === 3){
-//         setLevel(3)
-//         // goButHistory({...but, level: 3})
-//         Animated.timing(opasityRadio3, {
-//             toValue: 1,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()
-//           Animated.timing(opasityRadio2, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//           Animated.timing(opasityRadio1, {
-//             toValue: 0,
-//             duration: 0,
-//             useNativeDriver: false
-//           }).start()  
-//     }
-//   }
-
-//   chengeRadioFast(but.level)
-
-// }, [level])
 
   if(curent){
 
+
+// Состояние стилей радиокнопок     
 const opasityRadio1 = useRef(new Animated.Value(1)).current;
 
 const opasityRadio2 = useRef(new Animated.Value(0)).current;
@@ -166,6 +34,7 @@ const opasityRadio3 = useRef(new Animated.Value(0)).current;
 
 const opasityRadio4 = useRef(new Animated.Value(0)).current;
 
+// Функция смены кнопки при первой загрузки
 const chengeRadioFast = (radio) => {
 
   if(radio === 1){
@@ -232,7 +101,7 @@ const chengeRadioFast = (radio) => {
   
 }
 
-
+// Функция смены кнопки Автоплэя при первой загрузки
 const chengeRadioTopFast = (flagAutoplay) => {
   if(flagAutoplay){
     Animated.timing(opasityRadio4, {
@@ -249,7 +118,7 @@ const chengeRadioTopFast = (flagAutoplay) => {
   }
 }
 
-
+// Функция смены кнопки Автоплэя при первой загрузки
    const chengeRadioTop = (flagAutoplay) => {
     if(autoplay){
       setAutoplay(false)
@@ -267,7 +136,7 @@ const chengeRadioTopFast = (flagAutoplay) => {
       }).start()  
     }
    }
-
+// Функция смены кнопки 
     const chengeRadio = (radio) => {
   
 
@@ -330,83 +199,78 @@ const chengeRadioTopFast = (flagAutoplay) => {
             }).start()  
       }
     }
-    // console.log('проверка' , but)
+
 
     
 
 
-  
+  // загружаем массив сообщений
   const dataArr = data[curent.index]['data']['phrase'][curent.theme]['data']
-
+  //состояние настройки сложности
   const [level,setLevel] = useState(but.level)
-
+  //состояние настройки автоплэя
   const [autoplay,setAutoplay] = useState(but.autoplay)
-
+  //Состояние финальной кнопки
   const [finalButton,setFinalButton] = useState(false)
-  
+  // состояние паузы(при автоплэе)
   const[pauseState,setPauseState] = useState(false)
-
+ // состояние закрытия звука при закрытии модального окна 
   const[closeSound,setCloseSound] = useState(false)
 
 
+// Включаем паузу
 
   const goPause = () => {
-    console.log('плай')
+
     setPauseState(true)
 
-    // setAutoplay(false)
+
 
   }
 
-  const goPlay = () => {
-    console.log('пауза')
-    setPauseState(false)
 
-    // setAutoplay(true)
+// Включаем плэй, показываем следующие сообщение
+
+  const goPlay = () => {
+
+    setPauseState(false)
 
     nextPhrase()
 
   }
 
-//   useEffect(() => {
-
-//     chengeRadioFast(but.level)
-
-// }, [curent])
 
   
 
-  console.log('finalButton', finalButton)
-  console.log('autoplay ', autoplay )
-  console.log('startDisplay ', startDisplay)
-  console.log('pauseState', pauseState)
-
+// состояние блокировки кнопок
   const [disableButtons,setDisableButtons] = useState(false)
-  
+// сосотояние навигации между экранами настройки/навигация
   const [startDisplay,setStaertDisplay] = useState(true)
-  
+// состояние  первоели сообщение
   const [firstSound,setFirstSound] = useState(false)
+
+
+
 
   const dispatch = useDispatch()
 
 
-
+// массив отрожающий количество уже показаных сообщений
 const [arrProgress, setArrProgress] = useState({
   index: -1,
   arr: []
 })
 
+// ссылка на список сообщений
 const flatlist = useRef(null);
-
 
 const flexScrolBar = useRef(new Animated.Value(0.2)).current;
 
 
-
+// записываем размер текущего устройства
 const windowWidth = Dimensions.get('window').width;
 
-const windowHeight = Dimensions.get('window').height;
-
+//состояние стиля для анимации экранов
 const fistDisplayRight = useRef(new Animated.Value(0)).current;
 
 const secondDisplayRight = useRef(new Animated.Value(-windowWidth)).current;
@@ -414,7 +278,7 @@ const secondDisplayRight = useRef(new Animated.Value(-windowWidth)).current;
 const finalDisplayRight = useRef(new Animated.Value(-windowWidth)).current;
 
 
-
+// Массив фоновых картинок 
 const getBgImg = {
   'Аэропорт': require('../../../assets/bg/01b.jpg'),
   'Стойка регистрации': require('../../../assets/bg/02b.jpg'),
@@ -456,7 +320,7 @@ const getBgImg = {
 
 
 
-
+//приводим все настройки в исходное состояние
   useEffect(() => {
 
     setCloseSound(false)
@@ -499,10 +363,13 @@ setFinalButton(false)
 
 }, [curent])
 
+
+
+//функция блокировки/разблокировки кнопок
 const goBlockButton = (bulean) => {
   setDisableButtons(bulean)
 }
-
+// Функция смены экрана на контентный
 const goSecondDisplay = () => {
     Animated.timing(fistDisplayRight, {
         toValue: -windowWidth,
@@ -518,13 +385,10 @@ const goSecondDisplay = () => {
       setFirstSound(true)
       setDisableButtons(true)
       setTimeout( nextPhrase, 300)
-     
-  
-  
 }
 
-// console.log('curent.repeat', curent.repeat)
 
+// Кэлбэк запуска слудующего сообщения при автоплэе 
 useEffect(() => {
 if(disableButtons === false && firstSound === true && autoplay === true){
  if(finalButton){
@@ -538,17 +402,13 @@ if(disableButtons === false && firstSound === true && autoplay === true){
  }
 
 }
-  
 
- 
-  
 }
-// console.log('эфект', disableButtons)
-// console.log('эфект2', firstSound)
+
 },[disableButtons])
 
 
-
+// функция добовления нового сообщения
 const nextPhrase = () => {
 
   if(disableButtons === false){
@@ -564,8 +424,6 @@ const nextPhrase = () => {
 
 ).start()
 
-  // console.log('data',dataArr.length)
-  // console.log('dataCurent', arrProgress.index)
 
   if(dataArr.length === arrProgress.index + 2){
     
@@ -607,17 +465,7 @@ const nextPhrase = () => {
 }
 }
 
-// const goPlayPhrase = ()=>{
 
-// const idInterval =  setInterval(()=>{nextPhrase(),5000})
-
-// } 
-
-
-
-
-
-// console.log('блок кнопки', disableButtons)
 
 
 
@@ -670,7 +518,7 @@ onHandlerStateChange={({ nativeEvent }) => {
  if (nativeEvent.state === State.ACTIVE ) {
 
     nextPhrase()
-    console.log('свайп')
+
 
  }
 
@@ -689,23 +537,6 @@ onHandlerStateChange={({ nativeEvent }) => {
 
         <ChatItem state={level} en={item.en} ru={item.ru} index={index} sound={item.sound} first={item.first} firstSound={index === 0 ? true : false} soundPlay={firstSound} dButton={goBlockButton} closeSound={closeSound} buttonState={disableButtons}></ChatItem>
 
-
-    // <Animated.View style={{...styles.chatWraperItem, flexDirection: item.first ? 'row': 'row-reverse'}}>
-    //   <View style={styles.chatSoundBlok}>
-      
-    //   <Image style={{width: index === 0 ?35:45,height: index === 0 ?30:40,tintColor: '#fff',}} source={require('../../../assets/img/sound.png')}></Image>
-
-    //  { index === 0 ? <View>
-    //   <Text style={styles.soundText}> нажмите 
-    //    </Text>
-    //    <Text style={styles.soundText}> для аудио</Text>
-    //   </View> : null}
-    //   </View>
-    //   <View style={item.first ?styles.chatTextBlock:styles.chatTextBlockSecond}>
-    //     <Text style={{...styles.ruText,textAlign: item.first ? 'right' : 'left'}}>{item.ru}</Text>
-    //     <Text style={{...styles.enText,textAlign: item.first ? 'right' : 'left'}}>{item.en}</Text>
-    //   </View>
-    // </Animated.View>
  )
  }}
 
@@ -836,8 +667,7 @@ onHandlerStateChange={({ nativeEvent }) => {
 <TouchableOpacity  activeOpacity={0.8} disabled={ !autoplay ? disableButtons : !pauseState ?  false : disableButtons} style={{width: '100%', alignSelf: "flex-end",position: 'absolute',bottom: 0 }} onPress={()=>{
   startDisplay ? goSecondDisplay() : finalButton ? nextPhrase() : !autoplay ? nextPhrase() : pauseState ? goPlay() : goPause()
 
-  // finalButton ? nextPhrase : pauseState ? goPlay() : goPause() : nextPhrase()  
-  // goPlayPhrase()
+
 
      }}>
 
@@ -856,15 +686,15 @@ onHandlerStateChange={({ nativeEvent }) => {
  {/* FINAL DISPLAY  */}
         
    <Animated.View style={{...styles.directContainer, top: 0 , right: finalDisplayRight
-    // fistDisplayRight 
+
     ,height: '100%' , zIndex: 12
-    // displayOpasity.first
+
     ,
     elevation: 5 ,
    
     width: '100%',
     backgroundColor: '#f3f'
-    // displayOpasity.first 
+
     }}>
     
 
@@ -905,6 +735,9 @@ navigation.goBack()
 
 }else{
 
+
+
+// Копирование хуков чтобы реакт не ругался 
 
 
 
