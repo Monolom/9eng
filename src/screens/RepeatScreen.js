@@ -1,1115 +1,1151 @@
 import React, {useState , useEffect, useRef} from 'react'
 import {HeaderButtons, Item} from 'react-navigation-header-buttons'
-import {NativeModules,View,Text,StyleSheet, TouchableOpacity, FlatList,ScrollView,Button,Animated,LayoutAnimation, CheckBox, Alert} from 'react-native'
+import {View,Text,StyleSheet, TouchableOpacity, FlatList,Animated,Dimensions,ActivityIndicator,Image,ScrollView,ImageBackground} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
-import {Ionicons} from '@expo/vector-icons'
 import {THEME}  from '../theme'
-import { ModalChoise } from '../components/ui/ModalChoise'
 import {loadTicher} from '../store/actions/ticher'
-import {loadUser,refreshRepeat} from '../store/actions/user'
+import {loadUser,baseRefreshRepeat} from '../store/actions/user'
 import ImageModal from 'react-native-image-modal'
 import { AppSound } from '../components/ui/AppSound'
 import { ModalFinal } from '../components/ui/ModalFinal'
-
-
-
-
+import { BaseModalNext } from '../components/ui/BaseModalNext'
+import { ModalFinalPhrase } from '../components/ui/ModalFinalPhrase'
+import {MyImage} from '../components/ui/MyImage'
+import {MyImageNew} from '../components/ui/myImageNew'
+import {Ionicons} from '@expo/vector-icons'
+import { AppSoundPhrase } from '../components/ui/AppSoundPhrase'
+import {MyModalImage} from '../components/ui/MyModalImage'
+import { Asset } from 'expo-asset';
+import { BlurView } from 'expo-blur';
+import { WordModal } from '../components/ui/WordModal'
+import { DialogModal } from '../components/ui/DialogModal'
+import {StarModal} from '../components/ui/StarModal'
+ 
 
 export const RepeatScreen = ({navigation}) => {
 
-    const [repeatCicle,setRepeatCicle] = useState({}) 
 
-    const [replaceWord,setReplaceWord] = useState({})
 
-    const [curentRepeat,setCurentRepeat] = useState({})
-
-    const [repeatPoint,setRepeatPoint] = useState(0)
-
-    const [loadBar,setLoadBar] = useState({base:0,update:0})
-
-    const [modal,setModal] = useState(false)
-
-    const [choiseModalInfo,setChoiseModalInfo] = useState({})
-
-    const[finalModal,setFinalModal] = useState(false)
+// core load data 
+const dispatch = useDispatch()
     
-    const [modalButton,setModalButton] = useState({phrase: true,word: true})
-  
-    const [chengeScreen,setchengeScreen] = useState({screen: 'main',dataRepeat: {}})
+useEffect(() => {
+    dispatch(loadUser())
+  }, [dispatch])
 
-    const [loadData,setLoadData] = useState(false)
+useEffect(() => {
+    dispatch(loadTicher())
+  }, [dispatch])
 
-    const RepeatIndicatorPosition = (indicators) => {
-     
-       return ( indicators.findIndex(item => item.phrase === false || item.phrase === false ) -1)
+const pressDispatch = () => {
+  dispatch(loadUser())
+}
+  const allUser = useSelector(state => state.user.allUser)
 
-    }
+  const allTicher = useSelector(state => state.ticher.allTicher)
 
-    const dispatch = useDispatch()
-    
-    useEffect(() => {
-         dispatch(loadUser())
-        //  setLoadData(true)
-      }, [dispatch])
-
-    useEffect(() => {
-
-        dispatch(loadTicher())
-      
-      }, [dispatch])
-
-
-      const fadeAnim = useRef(new Animated.Value(0)).current;
-  
-      const fadeIn = () => {
-        // Will change fadeAnim value to 1 in 5 seconds
-        Animated.timing(fadeAnim, {
-          toValue: 1,
-          duration: 300,
-          useNativeDriver: true,
-        }).start();
-      };
-    
-      const fadeOut = () => {
-        // Will change fadeAnim value to 0 in 5 seconds
-        Animated.timing(fadeAnim, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true,
-        }).start();
-      };    
-  
-
-    
-   
-     
-    
-
-
-
-
-
-
-
-
-
-      const indexZ = () => {
-        indexX.setNativeProps({
-          zIndex: 3
-         })
-        }
-
-      const indexY = () => {
-          indexX.setNativeProps({
-            zIndex: 1
-           })
-          }
-    
-        
-      const refreshOpasity  = () => {
-              rOpasity.setNativeProps({
-                opacity: 0
-               })
-              }
-
-
-              
-    const allUser = useSelector(state => state.user.allUser)
-
-    const allTicher = useSelector(state => state.ticher.allTicher)
-
-    // console.log('новый стэйт', allUser)
-    const noneRepeatAlert = (time) => {
-      Alert.alert(
-        'Повторение пока не доступно',
-      `Будет открыто через: ${millisecToTimeStruct(time).d} дней ${millisecToTimeStruct(time).h} часов ${millisecToTimeStruct(time).m} минут ${millisecToTimeStruct(time).s} секунд`,
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ],
-      { cancelable: false }
-      )
-    }
-    millisecToTimeStruct = function (ms) {
-      var d, h, m, s;
-      if (isNaN(ms)) {
-          return {};
-      }
-      d = ms / (1000 * 60 * 60 * 24);
-      h = (d - ~~d) * 24;
-      m = (h - ~~h) * 60;
-      s = (m - ~~m) * 60;
-      return {d: ~~d, h: ~~h, m: ~~m, s: ~~s};
+const isEmpityObj = (obj) => {
+  for (let key in obj) {
+    // если тело цикла начнет выполняться - значит в объекте есть свойства
+    return false;
   }
-    const chekRepeatTime = (data,index) => {
-      let checkDate = new Date()
-      let checkDateSum = checkDate.getTime()
-      let repetName = data[index].title
-      // console.log("проверка11111111111111111111111111111", checkDateSum - data[index-1].time)
+  return true;
+}
+
+const windowWidth = Dimensions.get('window').width;
+
+const windowHeight = Dimensions.get('window').height;
+const [contentSize, setContentSize] = useState(1);
+
+const [visibleScrollContainer, setVisibleScrollContainer] = useState(windowWidth);
+
+const scrollIndicator = useRef(new Animated.Value(0)).current;
+
+const [visibleScrollBar, setVisibleScrollBar] = useState(true);  
+
+const [contentSize2, setContentSize2] = useState(1);
+
+const [visibleScrollContainer2, setVisibleScrollContainer2] = useState(windowWidth);
+
+const scrollIndicator2 = useRef(new Animated.Value(0)).current;
+
+const [visibleScrollBar2, setVisibleScrollBar2] = useState(true);  
+
+const [wordModal,setWordModal] = useState(false)
+
+const [dialogModal, setDialogModal] = useState(false)
+
+const [starModal,setStarModal] = useState(false)
+
+
+const [ curentWord, setCurentWord ] = useState(false)
+
+const [ curentDialog, setCurentDialog ] = useState(false)
+
+
+
+
+  if( !isEmpityObj(allUser)) {
+
+   
+// logik app const 
+// после какого повторения открываеться слудующий урок
+const repeatIterationOpen = 2
+
+
+const [buttonHistory,setButtonHistory] = useState({
+  autoplay: false,
+  level: 1
+})
+
+const changeButtonHistory = (flag) => {
+  setButtonHistory(flag)
+}
+// scrol bar state / const 1//
+
+const scrollIndicatorSize = contentSize > visibleScrollContainer ? (visibleScrollContainer * visibleScrollContainer) / contentSize : visibleScrollContainer
+
+const difference = visibleScrollContainer > scrollIndicatorSize ?  visibleScrollContainer - scrollIndicatorSize : 1
+
+const scrollIndicatorPosition = Animated.multiply(
+  scrollIndicator,
+  visibleScrollContainer / contentSize
+).interpolate({
+  inputRange: [0, difference],
+  outputRange: [0, difference],
+  extrapolate: 'clamp'
+});
+// scrol bar state 1//
+
+// scrol bar state 2//
+
+
+
+
+const scrollIndicatorSize2 = contentSize2 > visibleScrollContainer2 ? (visibleScrollContainer2 * visibleScrollContainer2) / contentSize2 : visibleScrollContainer2
+
+const difference2 = visibleScrollContainer2 > scrollIndicatorSize2 ?  visibleScrollContainer2 - scrollIndicatorSize2 : 1
+
+
+const scrollIndicatorPosition2 = Animated.multiply(
+  scrollIndicator2,
+  visibleScrollContainer2 / contentSize2
+).interpolate({
+  inputRange: [0, difference2],
+  outputRange: [0, difference2],
+  extrapolate: 'clamp'
+});
+
+// scrol bar state 2//
+
+//Style const //
+
+
+
+
+const deviceHeightConst =  windowHeight - (windowWidth/100*30) - (windowWidth/100*30/100*70) - 280
+
+const deviceHeightBottomImg = windowWidth/100*30/100*70
+const deviceHeightBottomImgHeart = windowWidth/100*30/100*85
+//Style const //
+
+//Modal State //
+
+
+const goWordModal = (boolean) => {
+
+  setWordModal(boolean)
+
+}
+
+const goDialogModal = (boolean) => {
+
+  setDialogModal(boolean)
+
+}
+
+const goStarModal = (boolean) => {
+
+  setStarModal(boolean)
+}
+
+
+// const wordArr = []
+
+
+//     for(let key in allTicher){
+//       const idTich  = allTicher[key]['id']
+//       // console.log('название урока', allTicher[key]["data"]['word'])
+//      for(let go in allTicher[key]["data"]['word']) {
      
-      if(index === 0){
-        return true
-    
+//         wordArr.push({
+//           id: idTich,
+//           title: go,
+//           idFlat: `${idTich}_${go}`,
+//         })
+//      }
+  
+//     }
+
+
+    const  filterData = (data, type) => {
+      const getRepeatStatus = (obj) => {
+
+        const myObj = obj
+
+        let result = true
+
+        for(var key in myObj){
+
+            for(var key2 in myObj[key]){
+              
+              if(myObj[key]['repeat'] < 3){
+                return false
+              }
+            
+            }
+        }
+
+        return result
+
       }
+
+      const getStarImg = (idTich,type,title) => {
       
-      else {
-        if(repetName === '6ч'){
-          if(checkDateSum - data[index-1].time   >=  600){
-            return true
-          }else{
-            noneRepeatAlert(60000 - (checkDateSum - data[index-1].time))
-            console.log('Доступ откроеться через', 600 - (checkDateSum - data[index-1].time) )
-            return false
-          }
-        }
-        if(repetName === '24ч'){
-          if(checkDateSum - data[index-1].time   >=  600){
-            return true
-          }else{
-            noneRepeatAlert(60000 - (checkDateSum - data[index-1].time))
-            console.log('Доступ откроеться через', 60 - (checkDateSum - data[index-1].time) )
-            return false
-          }
-        }
-        if(repetName === '3д'){
-          if(checkDateSum - data[index-1].time   >=  8000000000){
-            return true
-          }else{
-            noneRepeatAlert(60000 - (checkDateSum - data[index-1].time))
-            console.log('Доступ откроеться через', 60 - (checkDateSum - data[index-1].time) )
-            return false
-          }
-        }
-        if(repetName === '7д'){
-          if(checkDateSum - data[index-1].time   >=  60000){
-            return true
-          }else{
-            noneRepeatAlert(60000 - (checkDateSum - data[index-1].time))
-            console.log('Доступ откроеться через', 60000 - (checkDateSum - data[index-1].time) )
-            return false
-          }
-        }
-        if(repetName === '14д'){
-          if(checkDateSum - data[index-1].time   >=  60000){
-            return true
-          }else{
-            noneRepeatAlert(60000 - (checkDateSum - data[index-1].time))
-            console.log('Доступ откроеться через', 60000 - (checkDateSum - data[index-1].time) )
-            return false
-          }
-        }
-        if(repetName === '30д'){
-          if(checkDateSum - data[index-1].time   >=  60000){
-            return true
-          }else{
-            noneRepeatAlert(60000 - (checkDateSum - data[index-1].time))
-            console.log('Доступ откроеться через', 60000 - (checkDateSum - data[index-1].time) )
-            return false
-          }
-        }
-        if(repetName === '90д'){
-          if(checkDateSum - data[index-1].time   >=  60000){
-            return true
-          }else{
-            noneRepeatAlert(60000 - (checkDateSum - data[index-1].time))
-            console.log('Доступ откроеться через', 60000 - (checkDateSum - data[index-1].time) )
-            return false
-          }
-        }
-        if(repetName === '180д'){
-          if(checkDateSum - data[index-1].time   >=  60000){
-            return true
-          }else{
-            noneRepeatAlert(60000 - (checkDateSum - data[index-1].time))
-            console.log('Доступ откроеться через', 60000 - (checkDateSum - data[index-1].time) )
-            return false
-          }
-        }
-        if(repetName === '360д'){
-          if(checkDateSum - data[index-1].time   >=  60000){
-            return true
-          }else{
-            noneRepeatAlert(60000 - (checkDateSum - data[index-1].time))
-            console.log('Доступ откроеться через', 60000 - (checkDateSum - data[index-1].time) )
-            return false
-          }
-        }
-      }
-
-
-    }
- 
-
-    const ConsoleClick = (data,tichTitle) => {
-
-    let indexRepeat = data.findIndex(item => item.phrase === false || item.word === false )
-
-      if(chekRepeatTime(data,indexRepeat) ){
-
-        setChoiseModalInfo({tich: tichTitle ,index:data[indexRepeat].title})
-
-        let indexRepeatPhrase = data[indexRepeat].phrase
-    
-        let indexRepeatWord = data[indexRepeat].word 
-    
-        // console.log('eeeee', choiseModalInfo)
-        
-        const repaetArr = JSON.parse(JSON.stringify(allTicher.find(item => item.title === tichTitle)))
       
-        setCurentRepeat({title: tichTitle, index: indexRepeat})
-    
-        setRepeatCicle(repaetArr)
-    
-        // console.log('Вход',repaetArr)
-    
-        setModalButton({phrase: indexRepeatPhrase, word:indexRepeatWord })
-    
-        setModal(true)
+        const repeatRef  = allUser.repeat[idTich][type][title]['repeat']
+   
+        if(repeatRef ===  0 ){
+          return require('../../assets/img/star_1.png')
+        }else if(repeatRef ===  1){
+          return require('../../assets/img/star_2.png')
+        }else if(repeatRef ===  2){
+          return require('../../assets/img/star_3.png')
+        }else if(repeatRef ===  3){
+          return require('../../assets/img/star_4.png')
+        }else if(repeatRef ===  4){
+          return require('../../assets/img/star_5.png')
+        }else if(repeatRef ===  5){
+          return require('../../assets/img/star_5.png')
+        }else {
+          return require('../../assets/img/star_5.png')
+        }
       }
+
+       const getTimeItem = (id,type,title) =>{
     
-
-    }  
-    
-
-    const CloseModal = () => {
-
-        setModal(false)
-
+          return allUser.repeat[id][type][title]['time']
        }
 
-    const  openWord = () => {
-
+      const getFinalState = (id,type) => {
+          
+          let valueArr = []
+          let maxValue = 0
+          const checkDataRef = allUser.repeat[id][type]
+          for(key in checkDataRef){
+            for(var key2 in checkDataRef[key]){
+              valueArr.push(checkDataRef[key]['time'])
+            }
+          }
+          const filterValueArr =  valueArr.filter(value => value > maxValue)
+          
+          if (valueArr.length - filterValueArr.length === 1 ){
+            return true
+          }else{
+            return false
+          }
+      }
       
-        setCurentRepeat({...curentRepeat, repeat: 'word'})
-
-        // setRepeatCicle(repeatCicle.data)
-
-        setReplaceWord(repeatCicle.data.word[0])
-
-        setLoadBar({
-          base: repeatCicle.data.word.length,
-          update: repeatCicle.data.word.length
-
-        })
-
-        CloseModal()
-
-        setchengeScreen({...chengeScreen,screen: 'word'})
-
-        fadeIn()
+      const blockData = (id) => {
        
-    }
-
-    const  openPhrase = () => {
-
-      setCurentRepeat({...curentRepeat, repeat: 'phrase'})
-
-      // setRepeatCicle(repeatCicle.data)
-
-      setReplaceWord(repeatCicle.data.phrase[0])
-
-      setLoadBar({
-        base: repeatCicle.data.phrase.length,
-        update: repeatCicle.data.phrase.length
-      })
-
-      CloseModal()
-
-      setchengeScreen({...chengeScreen,screen: 'phrase'})
-
-      fadeIn()
-
-    }
-    const DescriptionIconСhoice = (flag) => {
-
-        if(flag.word === true & flag.phrase === true){
-            return 'ios-radio-button-on'
-        }
+            const checkDataRef = allUser.repeat[id-1]
        
-        if(flag.word === false & flag.phrase === false){
-            return 'ios-radio-button-off'
-        }
-        if(flag.phrase === true || flag.word === true){
-            return 'ios-contrast'
-        }
-       
-    }
+          if(id === '1'){
 
-const nextWord = (status) => {
-  if(repeatCicle.data.word.length == 1){
+            return false
 
-    if(status === true){
+          }
+        else if (getRepeatStatus(checkDataRef['word']) && getRepeatStatus(checkDataRef['phrase'])){
+
+          return false
+
+        }
+        else {
+          return true
+        }
+        return true
+      } 
+      const getCardImgObj = {
+        'Аэропорт': require('../../assets/cardimg/01c.jpg'),
+        'Стойка регистрации': require('../../assets/cardimg/02c.jpg'),
+        'Таможня': require('../../assets/cardimg/03c.jpg'),
+        'Таможенный контроль': require('../../assets/cardimg/04c.jpg'),
+        'Объявления в Аэропорту': require('../../assets/cardimg/05c.jpg'),
+        'Рейс задерживается': require('../../assets/cardimg/06c.jpg'),
+        'В самолёте': require('../../assets/cardimg/07c.jpg'),
+        'Потеря багажа': require('../../assets/cardimg/08c.jpg'),
+        'Ситуации в аэропорту': require('../../assets/cardimg/09c.jpg'),
+        'Покупка билета в аэропорту': require('../../assets/cardimg/10c.jpg'),
+        'Где транспорт?': require('../../assets/cardimg/11c.jpg'),
+        'Как добраться до ЖД станции?': require('../../assets/cardimg/12c.jpg'),
+        'Вызов такси': require('../../assets/cardimg/13c.jpg'),
+        'Транспорт': require('../../assets/cardimg/14c.jpg'),
+        'Бронирование отеля': require('../../assets/cardimg/15c.jpg'),
+        'Регистрация в отеле': require('../../assets/cardimg/16c.jpg'),
+        'Что есть в отеле': require('../../assets/cardimg/17c.jpg'),
+        'Звонок на ресепшен': require('../../assets/cardimg/18c.jpg'),
+        'Выселение': require('../../assets/cardimg/19c.jpg'),
+        'Улица': require('../../assets/cardimg/20c.jpg'),
+        'Знакомства': require('../../assets/cardimg/21c.jpg'),
+        'Шоппинг': require('../../assets/cardimg/22c.jpg'),
+        'Магазин': require('../../assets/cardimg/23c.jpg'),
+        'Достопримечательности': require('../../assets/cardimg/24c.jpg'),
+        'Бронирование столика': require('../../assets/cardimg/25c.jpg'),
+        'Порекомендуйте ресторан': require('../../assets/cardimg/26c.jpg'),
+        'На входе в ресторан': require('../../assets/cardimg/27c.jpg'),
+        'Заказ официанту': require('../../assets/cardimg/28c.jpg'),
+        'В Банке': require('../../assets/cardimg/29c.jpg'),
+        'Запись к Дантисту': require('../../assets/cardimg/30c.jpg'),
+        'Регистратура': require('../../assets/cardimg/31c.jpg'),
+        'У Врача': require('../../assets/cardimg/32c.jpg'),
+        'Команды Врача': require('../../assets/cardimg/33c.jpg'),
+        'Жалобы': require('../../assets/cardimg/34c.jpg'),
+        'В аптеке': require('../../assets/cardimg/35c.jpg'),
+      }
+
+
+      const getIconObj = {
+
+        'Аэропорт': require('../../assets/icon/01a.png'),
+        'Стойка регистрации': require('../../assets/icon/02a.png'),
+        // 'Таможня': require('../../assets/icon/03a.png'),
+        'Таможенный контроль': require('../../assets/icon/04a.png'),
+        'Объявления в Аэропорту': require('../../assets/icon/05a.png'),
+        // 'Рейс задерживается': require('../../assets/icon/06a.png'),
+        'В самолёте': require('../../assets/icon/07a.png'),
+        // 'Потеря багажа': require('../../assets/icon/08a.png'),
+        'Ситуации в аэропорту': require('../../assets/icon/09a.png'),
+        // 'Покупка билета в аэропорту': require('../../assets/icon/10a.png'),
+        // 'Где транспорт?': require('../../assets/icon/11a.png'),
+        // 'Как добраться до ЖД станции?': require('../../assets/icon/12a.png'),
+        // 'Вызов такси': require('../../assets/icon/13a.png'),
+        // 'Транспорт': require('../../assets/icon/14a.png'),
+        // 'Бронирование отеля': require('../../assets/icon/15a.png'),
+        'Регистрация в отеле': require('../../assets/icon/16a.png'),
+        // 'Что есть в отеле': require('../../assets/icon/17a.png'),
+        // 'Звонок на ресепшен': require('../../assets/icon/18a.png'),
+        // 'Выселение': require('../../assets/icon/19a.png'),
+        'Улица': require('../../assets/icon/20a.png'),
+        'Знакомства': require('../../assets/icon/21a.png'),
+        // 'Шоппинг': require('../../assets/icon/22a.png'),
+        'Магазин': require('../../assets/icon/23a.png'),
+        // 'Достопримечательности': require('../../assets/icon/24a.png'),
+        // 'Бронирование столика': require('../../assets/icon/25a.png'),
+        // 'Порекомендуйте ресторан': require('../../assets/icon/26a.png'),
+        // 'На входе в ресторан': require('../../assets/icon/27a.png'),
+        // 'Заказ официанту': require('../../assets/icon/28a.png'),
+        // 'В Банке': require('../../assets/icon/29a.png'),
+        // 'Запись к Дантисту': require('../../assets/icon/30a.png'),
+        // 'Регистратура': require('../../assets/icon/31a.png'),
+        // 'У Врача': require('../../assets/icon/32a.png'),
+        // 'Команды Врача': require('../../assets/icon/33a.png'),
+        // 'Жалобы': require('../../assets/icon/34a.png'),
+        // 'В аптеке': require('../../assets/icon/35a.png'),
+        'Местоимения': require('../../assets/icon/01n.png'),
+        'Аэропорт выражения': require('../../assets/icon/02n.png'),
+        'Вопросы': require('../../assets/icon/03n.png'),
+        'Регистрация выражения': require('../../assets/icon/04n.png'),
+        'Числительные': require('../../assets/icon/05n.png'),
+        'Таможня выражения': require('../../assets/icon/06n.png'),
+        'Объявления в Аэропорту фразы': require('../../assets/icon/07n.png'),
+        'В самолёте выражения': require('../../assets/icon/08n.png'),
+        'Ситуации в аэропорту выражения': require('../../assets/icon/10n.png'),
+        'Транспорт часть 1': require('../../assets/icon/11n.png'),
+        'Транспорт часть 1 выражения': require('../../assets/icon/12n.png'),
+        'Транспорт часть 2': require('../../assets/icon/13n.png'),
+        'Транспорт часть 2 выражения': require('../../assets/icon/14n.png'),
+        'Отель': require('../../assets/icon/15n.png'),
+        'Дни Недели': require('../../assets/icon/16n.png'),
+        'Отель выражения': require('../../assets/icon/17n.png'),
+        'Ресепшн': require('../../assets/icon/18n.png'),
+        'Ресепшн выражения': require('../../assets/icon/19n.png'),
       
-      setRepeatPoint(repeatPoint+3)
+        'Улица выражения': require('../../assets/icon/21n.png'),
+        'Знакомства выражения': require('../../assets/icon/22n.png'),
+        'Магазин выражения': require('../../assets/icon/23n.png'),
+        'Ресторан': require('../../assets/icon/24n.png'),
+        'Ресторан выражения': require('../../assets/icon/25n.png'),
+        'У врача часть 1': require('../../assets/icon/26n.png'),
+        'У врача часть 1 выражения': require('../../assets/icon/27n.png'),
+        'У врача часть 2': require('../../assets/icon/28n.png'),
+        'У врача часть 2 выражения': require('../../assets/icon/28n.png'),
+      }
+      const styleData = (id) => {
+        
+        if(id === '1'){
+          return {
+            color: '#392854',
+            img: type === 'word' ? 
+            require('../../assets/img/word_img_1.png') :
+            require('../../assets/img/phrase_img_1.jpg'),
+            bg: require('../../assets/img/test_dialog_bg_img.png')
+          }
+        }
+         else if (id === '2'){
 
-      indexZ()
+          return {
+            color: '#133954',
+            img: type === 'word' ? 
+            require('../../assets/img/word_img_2.png') :
+            require('../../assets/img/phrase_img_2.jpg'),
+            bg: require('../../assets/img/test_dialog_bg_img.png')
+          }
+        }
+        else if (id === '3'){
+          return {
+            color: '#0a6619',
+            img: type === 'word' ? 
+            require('../../assets/img/word_img_3.png') :
+            
+            require('../../assets/img/phrase_img_3.jpg'),
+            bg: require('../../assets/img/test_dialog_bg_img.png')
+          }
+        }
+        else if (id === '4'){
+          return {
+            color: '#fff',
+            img: type === 'word' ?    
+            require('../../assets/img/word_img_1.png') :
+            
+            require('../../assets/img/word_img_1.png'),
+            bg: require('../../assets/img/test_dialog_bg_img.png')
+          }
+        }
+        else if (id === '5'){
+          return {
+            color: '#fff',
+            img: type === 'word' ? 
+            require('../../assets/img/word_img_1.png') :
+            require('../../assets/img/word_img_1.png'),
+            bg: require('../../assets/img/test_dialog_bg_img.png')
+          }
+        }
+        else if (id === '6'){
+          return {
+            color: '#fff',
+            img: type === 'word' ? 
+            require('../../assets/img/word_img_1.png') :
+            
+            require('../../assets/img/word_img_1.png'),
+            bg: require('../../assets/img/test_dialog_bg_img.png')
+          }
+        }
+        else if (id === '7'){
+          return {
+            color: '#fff',
+            img: type === 'word' ? 
+            require('../../assets/img/word_img_1.png') :
+            
+            require('../../assets/img/word_img_1.png'),
+            bg: require('../../assets/img/test_dialog_bg_img.png')
+          }
+        }
+        else if (id === "8"){
+          return {
+            color: '#fff',
+            img: type === 'word' ? 
+            require('../../assets/img/word_img_1.png') :
+            
+            require('../../assets/img/word_img_1.png'),
+            bg: require('../../assets/img/test_dialog_bg_img.png')
+          }
+        }
+        else if (id === '9'){
+          return {
+            color: '#fff',
+            img: type === 'word' ? 
+            require('../../assets/img/word_img_1.png') :
+            
+            require('../../assets/img/word_img_1.png'),
+            bg: require('../../assets/img/test_dialog_bg_img.png')
+          }
+        }
 
-      refreshOpasity()
+      }
 
-      
-     
-     
-      // setchengeScreen({...chengeScreen,screen: 'main'})
+      const Arr = []
 
-      // console.log('закончилось')
-
-      setchengeScreen({...chengeScreen,screen: 'main'})
-      setFinalModal(true)
-
-      // myLoadLine()
-
-    }else{
-      setRepeatPoint(repeatPoint-1)
-      let hopas = repeatCicle
-      // console.log('xz', hopas)
-      hopas.data.word.push(hopas.data.word.shift()) 
-      indexZ()
-      setReplaceWord(hopas.data.word[0])
-      refreshOpasity()
-      // myLoadLine()
-
-    }
-  }else{
+      for(let key in data){
+        const idTich  = data[key]['id']
+        // console.log('название урока', allTicher[key]["data"]['word'])
+       for(let go in data[key]["data"][type === 'word'? 'word': "phrase"]) {
+       
+          Arr.push({  
+            id: idTich,
+            title: go,
+            idFlat: `${idTich}_${go}`,
+            color: styleData(idTich).color,
+            icon: getIconObj[go] ? getIconObj[go] : require('../../assets/icon/01a.png'),
+            img : getCardImgObj[go],
+            block: blockData(idTich),
+            final: getFinalState(idTich,type),
+            time: getTimeItem(idTich,type,go),
+            type: type,
+            repeat: allUser.repeat[idTich][type][go]['repeat'],
+            star: getStarImg(idTich,type,go)
+            
+          })
+       }
     
-if(status === true){
+      }
 
-  setLoadBar({
-   ...loadBar,
-    update: repeatCicle.data.word.length
+      const filterTichProgress = (id,type,repeat) => {
+        let result = false
+      
+       const obj = allUser.repeat[id][type]
+       const obj2 = allUser.repeat[id][type==='word'? 'phrase': 'word']
+        for(key in obj){
+          if(obj[key]['repeat'] < repeat){
+            result = true
+          }
+        }
+        for(key in obj2){
+          if(obj2[key]['repeat'] < repeat){
+            result = true
+          }
+        }
 
-  })
-  setRepeatPoint(repeatPoint+3)
-  let hopas = repeatCicle
+        if(repeat === 1){
+          result = false
+        }
+        return result
+      }
 
-  // console.log('xz', hopas)
+      const filterTimeProgress = (repeat,time) => {
+        let checkDate = new Date()
+        let curentDate = checkDate.getTime()
+        if(repeat === 1){
+          return false
+        }else if(repeat === 2){
+          if (curentDate  -  time >= 0 ){
+          return false
+          }else{
+            console.log("осталось",curentDate  -  time)
+            return true
+          }
+        }
+        else if(repeat === 3){
+          if (curentDate  -  time >= 0 ){
+          return false
+          }else{
+            console.log("осталось",curentDate  -  time)
+            return true
+          }
+        }
+        else if(repeat === 4){
+          if (curentDate  -  time >= 0 ){
+          return false
+          }else{
+            console.log("осталось",curentDate  -  time)
+            return true
+          }
+        }
+        else if(repeat === 5){
+          if (curentDate  -  time >= 0 ){
+          return false
+          }else{
+            console.log("осталось",curentDate  -  time - 1440000)
+            return true
+          }
+        }
+        else if(repeat === 6){
+          if (curentDate  -  time >= 180000 ){
+          return false
+          }else{
+            console.log("осталось",curentDate  -  time)
+            return true
+          }
+        }else if(repeat === 7){
+          if (curentDate  -  time >= 180000 ){
+          return false
+          }else{
+            console.log("осталось",curentDate  -  time)
+            return true
+          }
+        }else if(repeat === 8){
+          if (curentDate  -  time >= 180000 ){
+          return false
+          }else{
+            console.log("осталось",curentDate  -  time)
+            return true
+          }
+        }else if(repeat === 9){
+          if (curentDate  -  time >= 180000 ){
+          return false
+          }else{
+            console.log("осталось",curentDate  -  time)
+            return true
+          }
+        }
+      }
+      const filterFunction=(value)=>{
+        if(value.block === true){
+          return false
+        }else if (value.repeat < 1){
+          return false
+        }else if (value.repeat > 8){
+          return false
+        }
+        // else if (filterTichProgress(value.id,value.type,value.repeat)){
+        //   return false
+        // }
+        else if (filterTimeProgress(value.repeat,value.time)){
+          return false
+        }
+        // else  if(filterTimeProgress)
+        else{  return true}
+      }
+      const baseArr = Arr.filter(filterFunction)
+      // console.log('чё за массив',baseArr)
+      return baseArr    
+   }
 
-  hopas.data.word.shift()
 
-  indexZ()
 
-  setReplaceWord(hopas.data.word[0])
-
-  setLoadBar({
-    ...loadBar,
-       update: loadBar.update-1
-   
-     })
-
-  refreshOpasity()
-  // myLoadLine()
-}else{
+   const giveFontSize = (string) => {
  
-  let hopas = repeatCicle
-      // console.log('xz', hopas)
-      hopas.data.word.push(hopas.data.word.shift()) 
-      indexZ()
-      setReplaceWord(hopas.data.word[0])
-      refreshOpasity()
-      // myLoadLine()
-      setRepeatPoint(repeatPoint-1)
-}
-}
-
-}
-
-
-
-const nextPhrase = (status) => {
-  if(repeatCicle.data.phrase.length == 1){
-
-    if(status === true){
-      
-      setRepeatPoint(repeatPoint+3)
-      
-      indexZ()
-
-      refreshOpasity()
-
-      
-     
-     
-      // setchengeScreen({...chengeScreen,screen: 'main'})
-
-      // console.log('закончилось')
-
-      setchengeScreen({...chengeScreen,screen: 'main'})
-      setFinalModal(true)
-
-      // myLoadLine()
-
-    }else{
-      setRepeatPoint(repeatPoint-1)
-      let hopas = repeatCicle
-      // console.log('xz', hopas)
-      hopas.data.word.push(hopas.data.phrase.shift()) 
-      indexZ()
-      setReplaceWord(hopas.data.phrase[0])
-      refreshOpasity()
-      // myLoadLine()
-
+    const maxWidthWord = 8
+    const toBig = (string) => {
+      return string.length > maxWidthWord
     }
-  }else{
-    
-if(status === true){
-
-  setLoadBar({
-   ...loadBar,
-    update: repeatCicle.data.phrase.length
-
-  })
-  setRepeatPoint(repeatPoint+3)
-  let hopas = repeatCicle
-
-  // console.log('xz', hopas)
-
-  hopas.data.phrase.shift()
-
-  indexZ()
-
-  setReplaceWord(hopas.data.phrase[0])
-
-  setLoadBar({
-    ...loadBar,
-       update: loadBar.update-1
-   
-     })
-
-  refreshOpasity()
-  // myLoadLine()
-}else{
- 
-  let hopas = repeatCicle
-      // console.log('xz', hopas)
-      hopas.data.word.push(hopas.data.phrase.shift()) 
-      indexZ()
-      setReplaceWord(hopas.data.phrase[0])
-      refreshOpasity()
-      // myLoadLine()
-      setRepeatPoint(repeatPoint-1)
-}
-}
-
-}
-
-
-
-
-
-
-const closeFinalModal = () => {
-
-  let date = new Date()
-
-  // console.log("Дата", date.getTime())
-
-  let newDateRepeat = 0
-
-  if(curentRepeat.repeat === 'word' & modalButton.phrase === true){
-
-    newDateRepeat = date.getTime()
-  }
-
-  if(curentRepeat.repeat === 'phrase' & modalButton.word === true){
-
-    newDateRepeat = date.getTime()
-  }
-
-  // setModalButton({phrase: indexRepeatPhrase, word:indexRepeatWord })
-
-  setRepeatCicle({}) 
-  setReplaceWord({})
-  setLoadBar({base:0,update:0})
-  setFinalModal(false)
-  dispatch(refreshRepeat(curentRepeat.title,curentRepeat.index,curentRepeat.repeat,repeatPoint,newDateRepeat))
-  setRepeatPoint(0)
-}
-
-const  renserTichListCheck = (titles,indexs) => {
-  // console.log("заголовок", titles )
-  // console.log('слово', allUser.repeat[titles][2].word )
-  // console.log('слово', allUser.repeat[titles][2].phrase )
-  let  indexTitle = 'Урок ' + indexs
+    const arr = string.split(' ')
   
-  if(titles === 'Урок 1'){
-
-    return true
-
-  }else{
-   
-    if(allUser.repeat[indexTitle][2].word === true & allUser.repeat[indexTitle][2].phrase === true ){
-      return true
-    }else{
-      return false
-    }
- 
+    return arr.some(toBig)
+  
   }
+// const  filterData = async (data) => {
+
+//    let promise = new Promise((resolve, reject) => {
+//     const wordArr = []
+//     for(let key in data){
+//       const idTich  = data[key]['id']
+  
+//      for(let go in data[key]['word']) {
+//         wordArr.push({
+//           id: idTich,
+//           title: go,
+//           idFlat: `${idTich}_${go}`,
+//         })
+//      }
+  
+//     }
+//     resolve(wordArr)
+
+//   })
+
+// const result = await promise
+// return result.then((e)=>( e)).cath()
+
+// }
 
 
-}
-
-// console.log('Новый стэйт', allUser)
-
-if(allUser.repeat){
 
 
-if(chengeScreen.screen === 'main'){
-
+// testFlat
 
 
 return (
-<ScrollView>
-<ModalFinal visible={finalModal} myClose={closeFinalModal} points={repeatPoint}  /> 
-<ModalChoise modalInfo={choiseModalInfo} visible={modal} onCancel={()=>setModal(false)} Press={CloseModal}  data={modalButton} navigation={navigation} CloseModal={CloseModal} openWord={openWord} openPhrase={openPhrase} /> 
 
-  <FlatList style={styles.directWraper}  data={allTicher} keyExtractor={post => post.id.toString()}
-  renderItem={({item,index}) => ( 
-
-    renserTichListCheck(item.title,index) ? 
-    <View style={styles.itemLearn}>
-    <View style={styles.itemTopWraper}>
-    <Text style={styles.bigText}>
-      {item.title}
-    </Text>
-    <View style={styles.discriptionWraper}>
-<View><Text>{'#' + item.discription1}</Text><Text>{'#' + item.discription2}</Text></View>
-        <View><Text>{'#' + item.discription3}</Text><Text>{'#' + item.discription4}</Text></View>
-    </View>
-    </View>
+ <ScrollView showsVerticalScrollIndicator={false} style={styles.directWraper}>
+   {/* <WordModal visible={wordModal}  animationType="none" close={goWordModal} data={allTicher} curent={curentWord}>
   
-    <View style={styles.itemBotWraper}>
-  
-        <View style={styles.indicatorWraper}>
-      
-      
-        <FlatList horizontal showsHorizontalScrollIndicator={false} style={styles.indicatorWraper}   data={allUser.repeat[item.title]} keyExtractor={post => post.id.toString() } initialScrollIndex={RepeatIndicatorPosition(allUser.repeat[item.title])}
-renderItem={({item}) => ( 
+  </WordModal> */}
 
-
-<View style={styles.indicatorItemWraper}>
-<View style={styles.indicatorDot}><Ionicons
-        name={DescriptionIconСhoice(item)}
-        color="green"/></View>
-
-<Text style={styles.indicatorText} >{item.title}</Text>
-
-            </View>
-)}/>
-            
-          
-        </View>
-        <TouchableOpacity style={styles.itemButtonWraper} activeOpacity={0.7} onPress={()=> {ConsoleClick(allUser.repeat[item.title], item.title)}}>
-        <Text style={styles.itemButton}> Повторить </Text>
-        </TouchableOpacity>
-    </View>
-</View> : null
-
-
- 
+  {/* <DialogModal data={allTicher} visible={dialogModal} close={goDialogModal} curent={curentDialog}>
     
+  </DialogModal> */}
 
+  <StarModal visible={starModal} close={goStarModal}>
 
+  </StarModal>
 
+<View style={{minHeight: windowHeight - 160, paddingTop: 15,paddingBottom: 15}}>
+    <View style={{...styles.sectionsWraper,height: '100%',}}>
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>
+          Слова
+        </Text>
+        <Text style={styles.sectionSubTitle}>
+          и словосочетания
+        </Text>
 
+      { visibleScrollBar ? <View style={{...styles.scrolBar}} >
+</View> : <View style={{...styles.scrolBar}} >
 
-)}/>
+          <Animated.View style={
+            {...styles.scrolTab,
+              width: scrollIndicatorSize,
+              marginLeft: scrollIndicatorPosition
+             }
+          } >
 
-</ScrollView>
-)
-}
-
-
-
-    
-        const animatedValue = new Animated.Value(0);
-     
-        let myValues = 0
-        animatedValue.addListener(({ value }) => {
-            myValues = value
-        })
-        const frontInterpolate = animatedValue.interpolate({
-          inputRange: [0, 180],
-          outputRange: ['0deg', '180deg'],
-        })
-        const backInterpolate = animatedValue.interpolate({
-          inputRange: [0, 180],
-          outputRange: ['180deg', '360deg']
-        })
-        const frontOpacity = animatedValue.interpolate({
-          inputRange: [89, 90],
-          outputRange: [1, 0]
-        })
-        const frontHeight = animatedValue.interpolate({
-          inputRange: [0, 400 ],
-          outputRange: [400, 0]
-        })
-        const backOpacity = animatedValue.interpolate({
-          inputRange: [89, 90],
-          outputRange: [0, 1]
-        })
-    
-        let ZetIndex = 0;
-
-
-        // const { UIManager } = NativeModules;
-        // UIManager.setLayoutAnimationEnabledExperimental &&
-        // UIManager.setLayoutAnimationEnabledExperimental(true);
-
-        // const indexX = useRef(null)
-
-        // const indexY = () => {
-        //   // `current` указывает на смонтированный элемент `input`
-        //   indexX.current.setNativeProps({ zIndex: 1 })
-
-        // }
-
-
-       const   flipCard = (alert) => {
-    
-       
-        if (myValues >= 90) {
-          // console.log('1.1')
-          Animated.spring(animatedValue,{
-            toValue: 0,
-            friction: 8,
-            tension: 10,
-            useNativeDriver: true,
-          }).start();
-
-         
-          
-        } else {
-          // console.log('1.2')
-          Animated.spring(animatedValue,{
-            toValue: 180,
-            friction: 8,
-            tension: 10,
-            useNativeDriver: true,
-          }).start();
-        }
-
-      
-        
-     
-      
-      }
-
- 
-          // const myLoadLine  = () => {
-          //   mLoadLine.setNativeProps({
-          //     flex: (105 -  (repeatCicle.data.word.length * ( 1/(repeatCicle.data.word.length / 100))) )/ 100
-          //   }
-          //   )}
-      const frontAnimatedStyle = {
-        transform: [
-          { rotateY: frontInterpolate }
-        ]
-      }
-      const backAnimatedStyle = {
-        transform: [
-          { rotateY: backInterpolate }
-        ]
-      }
-
-
-     
-      if(chengeScreen.screen === 'word'){
-     
-        // let loadLineWidth =  (105 -  (repeatCicle.data.word.length * ( 1/(repeatCicle.data.word.length / 100))) )/ 100
-        
-        
-
-        // const setLoadWidths = (param) => {
-        //     return 1 - param.data.word.length *  (1/(param.data.word.length/100))/100
-        // }
-        // console.log('ширина', loadBar)
-    
-return ( <Animated.ScrollView style={[
-            styles.actionDirectWraper,
-            {
-              opacity: fadeAnim // Bind opacity to animated value
-            }
-          ]}>
-
-
-               
-
-
-<View style={styles.containerLoad}>
-
-  <View  style={{...styles.lineLoad,flex: 1 - (loadBar.update* 1/(loadBar.base/100) )/100 }}>
-
-  </View>
-</View>
-<View >
-
-          
-
-          <Animated.View ref={component => {  rOpasity = component}}  style={[styles.flipCard, styles.flipCardBack, backAnimatedStyle, {opacity:  backOpacity , zIndex : 2}]} >
-          <View style={styles.actionContentWraper}>
-                <Text style={styles.actionBigWord}>{replaceWord.word}</Text>
-                <Text style={styles.actionTranscription}>{replaceWord.trans}</Text>
-                <TouchableOpacity >
-                  <ImageModal
-                 
-                  resizeMode="contain"
-                   style={styles.activeImage} 
-                   source={{
-                    uri: replaceWord.image,
-                  }} 
-                  imageBackgroundColor={THEME.BACK_GROUND}
-                  />
-                </TouchableOpacity>
-
-                <AppSound sound={replaceWord.sound} stateEfect={repeatPoint}/>
-              
-            </View>
-
-        
-
-
-              <View style={styles.activeButonContainer}>
-                <TouchableOpacity  onPress={() => {
-                   nextWord(false) 
-              }}>
-                  <Text style={styles.activeButonItem}>
-                    Не помню
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity   onPress={() => { nextWord(true) }}>
-                  <Text style={styles.activeButonItem}>
-                    Помню
-                  </Text>
-                </TouchableOpacity>
-              </View>
-    
-
-        
-        
           </Animated.View>
 
-          <Animated.View ref={component => { indexX = component}}   style={[styles.flipCard, frontAnimatedStyle, {opacity: frontOpacity},{zIndex:  3 }]}>
-<View style={styles.actionContentWraper} >
+        </View>}
+        <View style={styles.wordButtonsWraper}>
+          
+        {filterData(allTicher, 'word').length > 0 ?  <FlatList
+        showsHorizontalScrollIndicator={false}
+    scrollEventThrottle={16}
+    onScroll={Animated.event(
+      [{ nativeEvent: { contentOffset: { x: scrollIndicator } } }],
+      { useNativeDriver: false },
+    )}
+    onLayout={(e)=>{
+      setVisibleScrollContainer(e.nativeEvent.layout.width /100 * 80)
+      setVisibleScrollBar(false)
+    }}
+    onContentSizeChange={(width, height) => {
+      setContentSize(width /100 * 80);
+    }}
+        horizontal={true}
+        data={filterData(allTicher, 'word')}
+        keyExtractor={item => item.idFlat}
+        renderItem={({item,index})=>{
 
-      <Text style={styles.actionBigWord}>{replaceWord.phrase}</Text>
+        
 
-  </View>
-<TouchableOpacity   onPress={() => {flipCard(true)
- indexY()
-}} >
-    <Text style={styles.actionFirstButton}>
-        Показать ответ
-    </Text>
-</TouchableOpacity>
-</Animated.View>
+          return (
+            
+          <TouchableOpacity activeOpacity={0.8} disabled={false} style={{position: 'relative'}}  onPress={()=>{
+              item.block ? goStarModal(true):
+              navigation.navigate('MyModal', {
+                data: allTicher,
+                curent: {
+                     index: Number(item.id - 1),
+                    theme: item.title,
+                    time: item.time,
+                    type: item.type,
+                    repeat: item.repeat
+                },
+                base: false
+              })
 
+            }}>
 
+          <View style={{...styles.wordButtonWraper, width: windowWidth/100*30, height: windowWidth/100*30, marginRight: windowWidth/100*5 ,alignItems: 'flex-start', marginLeft: index == 0 ? windowWidth/100*10 : 0 }}>
 
+              <Text style={{...styles.wordButtonTitle, opacity:  item.block ? 0.5:1,fontSize: giveFontSize(item.title)?12 : 15}}>{item.title}</Text>
 
+              <View style={styles.wordButtonBotWraper} > 
 
+                  <Image  style={{...styles.wordButtonImage}} source={require('../../assets/img/repat2.png')}></Image>
+            <View style={styles.goSpanWraper}>
+            <Text style={styles.goSpans}>
+                  начать 
+                </Text>
+                <Text style={styles.goSpans}>
+                  повторение
+                </Text>
+            </View>
+            
+               
+                  
+              </View>
+              
+              <View style={{position: 'absolute', width:windowWidth/100*30,height: windowWidth/100*30, backgroundColor: 'rgba(0, 0, 0,0.2)',borderRadius: 12, opacity: item.block ? 1: 0 }}></View>
+              <Image style={{...styles.blockImg, opacity: item.block ? 0.7 : 0 }} source={require('../../assets/img/block.png')} ></Image>
+          </View>
+        
+        </TouchableOpacity>
+  
+        )
+        }}
+         /> :  <TouchableOpacity disabled={false} style={{position: 'relative'}}  onPress={()=>{
+          pressDispatch()
+        }}>
 
-       
-          </View> 
-      
+      <View style={{...styles.wordButtonWraperHeart, width: windowWidth/100*30, height: windowWidth/100*30, marginRight: windowWidth/100*5 , marginLeft: windowWidth/100*10  }}>
 
+          <Image style={{width: windowWidth/100*12, height: windowWidth/100*12}} source={require('../../assets/img/heart1.png')}>
 
-                </Animated.ScrollView> );
+          </Image>
+
+          <View style={styles.wordButtonBotWraper} > 
+
+              
+        <View style={styles.goSpanWraper}>
+        <Text style={styles.goSpansHeart}>
+             нет материала
+            </Text>
+            <Text style={styles.goSpansHeart}>
+              для повторения
+            </Text>
+        </View>
+        
+           
+              
+          </View>
+          
+  
+     
+      </View>
     
-   }
-   
- 
-
-if(chengeScreen.screen === 'phrase'){
+    </TouchableOpacity>}
 
 
-  return ( <Animated.ScrollView style={[
-    styles.actionDirectWraper,
+
+        </View>
+      </View>
+      <View style={{...styles.section, marginTop: 15, height: '100%',}}>
+      <Text style={styles.sectionTitle}>
+          Диалоги
+        </Text>
+        <Text style={styles.sectionSubTitle}>
+         на примере коротких историй
+        </Text>
+        
+      { visibleScrollBar2 ? <View style={{...styles.scrolBar}} >
+</View> : <View style={{...styles.scrolBar}} >
+
+          <Animated.View style={
+            {...styles.scrolTab,
+              width: scrollIndicatorSize2,
+              marginLeft:  scrollIndicatorPosition2
+             }
+          } >
+
+          </Animated.View>
+
+        </View>}
+        <View style={{...styles.wordButtonsWraper, alignSelf: 'stretch', alignContent: 'stretch',flexDirection: 'row',backgroundColor: '#fff',alignItems: 'stretch',height: deviceHeightConst}}>
+
+{filterData(allTicher, 'phrase').length > 0 ? <FlatList
+
+
+showsHorizontalScrollIndicator={false}
+scrollEventThrottle={16}
+onScroll={Animated.event(
+[{ nativeEvent: { contentOffset: { x: scrollIndicator2 } } }],
+{ useNativeDriver: false },
+)}
+onLayout={(e)=>{
+setVisibleScrollContainer2(e.nativeEvent.layout.width /100 * 80)
+setVisibleScrollBar2(false)
+}}
+onContentSizeChange={(width, height) => {
+setContentSize2(width /100 * 80);
+}}
+horizontal={true}
+data={filterData(allTicher, 'phrase')}
+keyExtractor={item => item.idFlat} 
+renderItem={({item,index})=>{
+
+  return (
+  <TouchableOpacity activeOpacity={0.8}  disabled={false}  onPress={()=>{
+    item.block ? goStarModal(true):
+    navigation.navigate('DialogModal',
     {
-      opacity: fadeAnim // Bind opacity to animated value
+      data: allTicher,
+      curent: {
+           index: Number(item.id - 1),
+          theme: item.title,
+          time: item.time,
+          type: item.type,
+          repeat: item.repeat
+      },
+      base: false,
+      goFlag:  changeButtonHistory,
+      flag: buttonHistory
     }
-  ]}>
+    )
+    // setDialogModal(true)
+    // setCurentDialog({
+    //   index: Number(item.id - 1),
+    //   theme: item.title,
+    //   time: item.time,
+    //   type: item.type,
+    //   repeat: item.repeat
+    // })
+    
+    }}>
+    
+  <View style={{...styles.wordButtonWraper,  width: windowWidth/100*30,  marginRight: windowWidth/100*5 , marginLeft: index == 0 ? windowWidth/100*10 : 0 , height: '100%', }}>
+
+      {/* <Text style={{...styles.wordButtonTitle,opacity:  item.block ? 0.5:1}}>Аэропорт</Text> */}
 
 
-       
+      <View  style={{width: deviceHeightBottomImg ,height: deviceHeightBottomImg,position: 'relative',backgroundColor: '#fff',borderRadius: deviceHeightBottomImg /2,justifyContent: 'center',alignItems: 'center' }}  >
+          <Image style={styles.goImg} source={require('../../assets/img/repat1.png')}>
 
-
-<View style={styles.containerLoad}>
-
-<View  style={{...styles.lineLoad,flex: 1 - (loadBar.update* 1/(loadBar.base/100) )/100 }}>
-
-</View>
-</View>
-<View >
+          </Image>
+            <Text style={styles.goSpansBottom} >
+                повторить 
+            </Text>
+            <Text style={styles.goSpansBottom} >
+               истории
+            </Text>
+      </View>
 
   
 
-  <Animated.View ref={component => {  rOpasity = component}}  style={[styles.flipCard, styles.flipCardBack, backAnimatedStyle, {opacity:  backOpacity , zIndex : 2}]} >
-  <View style={styles.actionContentWraper}>
-        <Text style={styles.actionBigWord}>{replaceWord.word}</Text>
-        <Text style={styles.actionTranscription}>{replaceWord.trans}</Text>
-        <TouchableOpacity >
-     
-        </TouchableOpacity>
-
-        <AppSound sound={replaceWord.sound} stateEfect={repeatPoint}/>
+      <View style={styles.wordButtonBotWraper} > 
+      <Text style={{...styles.wordButtonTitle,opacity:  item.block ? 0.5:1,fontSize: giveFontSize(item.title)?12 : 15}}>{item.title}</Text>
       
-    </View>
+      </View>
+
+      <View style={{position: 'absolute', width:windowWidth/100*30,height: deviceHeightConst, backgroundColor: 'rgba(0, 0, 0,0.2)',borderRadius: 12, opacity: item.block ? 1: 0 }}></View>
+
+
+      <Image style={{...styles.blockImg, opacity: item.block ? 0.7 : 0 }} source={require('../../assets/img/block.png')} ></Image>
+
+
+  </View>
+
+</TouchableOpacity>
+
+)
+}}
+/> :  <TouchableOpacity  disabled={false}  onPress={()=>{
+
+pressDispatch()
+    
+    }}>
+    
+  <View style={{...styles.wordButtonWraperHeart,  width: windowWidth/100*30,  marginRight: windowWidth/100*5 , marginLeft: windowWidth/100*10 , height: '100%', }}>
+
+  
+
+
+      <Image style={{width: deviceHeightBottomImgHeart ,height: deviceHeightBottomImgHeart,position: 'relative',backgroundColor: '#fff',borderRadius: deviceHeightBottomImgHeart /2,}} source={require('../../assets/img/heart2.png')}  >
+       
+      </Image>
+
+  
+
+      <View style={{...styles.wordButtonBotWraper,flexDirection: 'column'}} > 
+      <Text style={styles.goSpansHeart}>
+             нет историй 
+            </Text>
+            <Text style={styles.goSpansHeart}>
+              для повторения
+            </Text>
+      
+      </View>
+
+   
 
 
 
 
-      <View style={styles.activeButonContainer}>
-        <TouchableOpacity  onPress={() => {
-           nextPhrase(false) 
-      }}>
-          <Text style={styles.activeButonItem}>
-            Не помню
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity   onPress={() => { nextPhrase(true) }}>
-          <Text style={styles.activeButonItem}>
-            Помню
-          </Text>
-        </TouchableOpacity>
+
+  </View>
+
+</TouchableOpacity>}
+
+
+
+</View>
       </View>
 
 
+    </View>
+
+    </View>
+
+    </ScrollView>
+    )}
+
+    else {
+
+      const [buttonHistory,setButtonHistory] = useState({
+        autoplay: false,
+        level: 1
+      })
 
 
-  </Animated.View>
-
-  <Animated.View ref={component => { indexX = component}}   style={[styles.flipCard, frontAnimatedStyle, {opacity: frontOpacity},{zIndex:  3 }]}>
-<View style={styles.actionContentWraper} >
-
-<Text style={styles.actionBigWord}>{replaceWord.phrase}</Text>
-
-</View>
-<TouchableOpacity   onPress={() => {flipCard(true)
-indexY()
-}} >
-<Text style={styles.actionFirstButton}>
-Показать ответ
-</Text>
-</TouchableOpacity>
-</Animated.View>
-
-
-
-
-
-
-
-  </View> 
-
-
-
-        </Animated.ScrollView> );
-
-
-}
-}else{
-  return null
-}
-
-
-}
+      
+      return (
+        <View style={styles.directWraperLoad}>
+    
+    <ActivityIndicator size="large" color="#e10918"  />  
+    
+    </View>
+      )
+    }
 
 
 
+}  
 
 RepeatScreen.navigationOptions = ( {navigation}) => ({
-    headerTitle:  'Повторения' ,
-     headerLeft: () => ( <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+    headerTitle:  'База знаний' ,   
+
+     headerRight: () => ( <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+
      <Item title="Toggle Drawer" iconName='ios-menu' onPress={() => navigation.toggleDrawer()}/>
-     </HeaderButtons>)
+    
+    </HeaderButtons>)
+
 })
 
 
 const styles = StyleSheet.create({
-    directWraper: {
-       flex: 1
-    },
-    itemLearn: {
-       padding: 15,
-       backgroundColor: THEME.BACK_GROUND,
-       marginTop: 15
-    },
-    bigText: {
-        fontFamily: 'open-regular',
-        fontSize: 25,
-        color: '#000000',
-        marginBottom: 15
-        
-    },
-    itemBotWraper: {
-     flexDirection: "row",
-     justifyContent: 'space-between',
-     width:  "100%",
-     
-     alignContent: 'flex-end',
-     alignItems: 'flex-end'
 
-    },
-    itemTopWraper: {
-    flexDirection: 'row'
-    },
-    indicatorWraper: {
-   
-     width: "60%",
-     marginRight: 20
-    },
-    indicatorDot: {
+directWraper: {
+  backgroundColor: '#fff',
+},
+
+directWraperLoad: {
+  flex: 1,
+  backgroundColor: '#fff',
+  paddingVertical: 20,
+  justifyContent: 'center'
+},
+
+sectionsWraper: {},
+section: {},
+sectionTitle: {
+  fontSize: 32,
+  fontFamily: 'sfUi-heavy',
+  marginLeft: '10%',
+  lineHeight: 32
+},
+sectionSubTitle: {
+  fontSize: 14,
+  fontFamily: 'sf-regular',
+  color: '#a0a0a0',
+  marginLeft: '10%',
+  marginBottom: 10
+},
+wordButtonsWraper: {
+  flexDirection: 'row',
+  width: '100%'
+},
+wordButtonWraper: { 
+ 
+  backgroundColor: '#58c40a',
+  marginRight: 20,
+  borderRadius: 12,
+  padding: 15,
+  justifyContent: 'space-between',
+  alignItems: 'center',
+
+
+},
+wordButtonWraperHeart: { 
+  borderWidth: 4,
+  borderColor: '#BFEECA',
+  backgroundColor: '#fff',
+  marginRight: 20,
+  borderRadius: 12,
+  padding: 10,
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  alignContent: 'center',
+  opacity: 1
+
+
+},
+wordButtonTitle: {
+  color: '#fff',
+  fontFamily: 'sfUi-heavy',
+},
+wordButtonImage: {
+  width: 28,
+  height: 40,
+},
+wordButtonSubTitle: {
+  color: '#fff',
+  fontFamily: 'gilory-black',
+  fontSize: 35,
+  marginRight: 0,
   
-        width: 12,
-        height: 12,
-      
-        marginBottom: 9
-    },
-    indicatorDotActive: {
-       
-        width: 12,
-        height: 12,
-       
-        marginBottom: 9
-    },
-    indicatorText: {
-        fontSize: 12,
-        color: '#000000',
-    },
-    itemButtonWraper: {
-        width: '35%',
-    },
-    itemButton: {
-        paddingLeft: 15,
-        paddingRight: 15,
-        paddingBottom: 10,
-        paddingTop: 10,
-        backgroundColor: THEME.MAIN_COLOR,
-        borderRadius: 4,
-        color: '#fff',
-        textAlign: 'center',
-        fontSize: 16
-    },
-    indicatorItemWraper: {
-        alignContent: 'center',
-        alignItems: 'center',
-        marginRight: 10
-    },
-    discriptionWraper: {
-        flexDirection: "row",
-        justifyContent: 'space-around',
-        width: "50%",
-        marginLeft: 15
-    },
-    actionDirectWraper: {
-        flex: 1,
-        width: "90%",
-        marginLeft: '5%',
-        marginRight: "5%",
-        
+},
 
-    },
-    actionContentWraper: {
-        alignItems: 'center',
-        width: "100%",
-        height: 350,
-        marginTop: 15,
-        backgroundColor: THEME.BACK_GROUND,
-       
-    },
-    actionBigWord: {
-        fontSize: 32,
-        fontFamily: 'open-regular',
-        marginTop: 20
-    },
-    actionFirstButton: {
-        
-        fontSize: 25,
-        color: '#ffffff',
-        marginTop: 20,
-        backgroundColor: THEME.MAIN_COLOR,
-        paddingTop: 20,
-        paddingBottom: 20,
-        paddingLeft: 40,
-        paddingRight: 40,
-        alignItems: "center",
-        alignContent: "center",
-        justifyContent: 'center'
+wordButtonBotWraper: {
+  flexDirection: 'row',
+  width: '100%',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  position: 'relative',
+  alignContent: 'center'
+},
+
+scrolBar: {
+  width: '80%',
+  height: 2,
+  backgroundColor: '#a0a0a0',
+  marginLeft: '10%',
+  marginBottom: 15
+},
+scrolTab: {
+ flex: 1,
+ height: 2,
+  backgroundColor: '#0b1c8c',
+ 
+},
+blockImg: {
+  position: 'absolute',
+  width: 40,
+  height: 40,
+  bottom: 15,
+  right: 17,
+  tintColor: '#22b312',
+},
+starContainer : {
+  width: 32,
+  height: 32,
+  borderRadius: 16,
+  backgroundColor: '#fff',
+  justifyContent: 'center',
+  alignItems: 'center'
+},
+starImage: {
+
+    width: 27,
+    height: 27,
+
+}
+,
+goSpans: {
+color: '#fff',
+fontSize: 11,
+fontFamily: 'sf-semiB',
+lineHeight: 10,
+letterSpacing: 0.5
+},
+goSpansHeart: {
+  color: '#a0a0a0',
+  fontSize: 11,
+  fontFamily: 'sf-semiB',
+  lineHeight: 10,
+  letterSpacing: 0.5,
+  textAlign: 'center',
+  opacity: 0.5
+  },
+goSpanWraper : {
+  justifyContent: 'center',
+ alignContent: 'center',
+ marginLeft: 4
+
+},
+goImg: {
+  width: 30,
+  height: 40
+},
+goSpansBottom: {
+  fontSize: 11,
+  fontFamily: 'sf-semiB',
+  color: '#58c40a',
+  lineHeight: 10
+},
+heartImgTop: {
+  width: '30%',
+  height: '30%'
+}
 
 
-    },
-    flipCard: {
-        width: "100%",
-    
-        alignItems: 'center',
-        justifyContent: 'center',
-   
-        backfaceVisibility: 'hidden',
-      },
-      flipCardBack: {
-      
-        position: "absolute",
-        top: 0,
-     
-      },
-      flipText: {
-        width: 90,
-        fontSize: 20,
-        color: 'white',
-        fontWeight: 'bold',
-      },
-      actionTranscription: {
-        fontSize: 28,
-        fontFamily: 'open-regular',
-        marginTop: 0,
-        color: THEME.AKCENT_COLOR
-      },
-      activeImage: {
-        width: 200,
-        height: 180,
-        borderRadius: 10,
-        marginTop: 10
-      },
-      activeButonContainer: {
-        flexDirection: "row",
-        width: "100%",
-        marginTop: 20,
-        justifyContent: "space-between"
-      },
-      activeButonItem: {
-        width: 140,
-        fontSize: 18,
-        color: '#ffffff',
-        backgroundColor: THEME.MAIN_COLOR,
-        paddingTop: 20,
-        paddingBottom: 20,
-        paddingLeft: 20,
-        paddingRight: 20,
-        alignItems: "center",
-        alignContent: "center",
-        justifyContent: 'center',
-        textAlign : 'center'
-      },
-      containerLoad: {
-        width: "100%",
-        height: 10,
-       flex: 1,
-        marginTop: 15,
-        flexDirection: "row"
-       
-
-      },
-      lineLoad: {
-        
-        backgroundColor: THEME.AKCENT_COLOR,
-        height: 10,
-        borderRadius: 20
-      }
-      
-     
 
 })

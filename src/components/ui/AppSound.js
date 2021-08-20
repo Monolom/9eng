@@ -1,5 +1,5 @@
 import React , {useState,useEffect} from 'react'
-import {View,Text,TouchableOpacity,StyleSheet} from 'react-native'
+import {View,Text,TouchableOpacity,StyleSheet,Dimensions} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 import {Audio} from 'expo-av'
 import * as FileSystem from 'expo-file-system'
@@ -8,20 +8,37 @@ import {THEME} from "../../theme"
 
 
 
-
-
-
 export const AppSound  = ({sound}) => {
 
     const [playStatus,setPlayStatus] = useState({playingStatus: "nosound",url: "222222"})
-
+    let soundBox = ''
     useEffect(  () => {
-    
+      if(typeof soundbox !== 'undefined'){
+
+        soundbox.unloadAsync()
+
+      }
       setPlayStatus({
         playingStatus: 'nosound'
       });
     
    }, [sound])
+
+   const windowWidth = Dimensions.get('window').width;
+   const windowHeight = Dimensions.get('window').height;
+
+   const sDisp = () => {
+     if(windowHeight < 620){
+       return true
+     }else{
+       return false
+     }
+     
+   }
+
+
+
+
 
    _updateScreenForSoundStatus = (status) => {
         
@@ -41,40 +58,71 @@ export const AppSound  = ({sound}) => {
         var arr = url.toString().split("/")     
         console.log(`uri for sound: ${url}`)    
         var filename = arr[arr.length-1]
+  
+
+        FileSystem.getInfoAsync(FileSystem.documentDirectory+filename)
+  .then(success =>{
+    if(success.exists){
+      console.log('фаил есть',success.exists)
+      playTrack ()
     
+  }else{
+      console.log('фаил нет',success.exists)
+      goDounload()
+  }
+  })
+  .catch(error =>{goDounload()})
+
+
+
+      async function goDounload(){
+
         await FileSystem.downloadAsync(url, FileSystem.documentDirectory+ filename)
                   .then(({uri})=>{
                     console.log("finished downloading to", uri)
+                    playTrack ()
                   })
                   .catch(error=>{
                     console.error(error);
                   });
+      }
+
+
 
                 
 
+      async function playTrack () {
+
         const { sound } = await  Audio.Sound.createAsync(
-            {uri:FileSystem.documentDirectory+filename},
-          {
-            shouldPlay: true,
-            isLooping: false,
-          },
-          onPlaybackStatusUpdate =_updateScreenForSoundStatus,
-        );
-        this.sound =  sound;
-       
-        setPlayStatus({
-          playingStatus: 'playing'
-        });
+          {uri:FileSystem.documentDirectory+filename},
+        {
+          shouldPlay: true,
+          isLooping: false,
+        },
+        onPlaybackStatusUpdate =_updateScreenForSoundStatus,
+      );
+      soundbox =  sound;
+     
+      setPlayStatus({
+        playingStatus: 'playing'
+      });
+
+
+      }
+
+
+
+
       }
 
      
 
       async function _pauseAndPlayRecording() {
-        if (this.sound != null) {
+        if (soundbox != null) {
           
             if (playStatus.playingStatus == "stop") {
                 console.log('playing...');
-                await this.sound.replayAsync();
+                await soundbox.replayAsync();
                 console.log('playing!');
                 setPlayStatus({
                   playingStatus: 'playing',
@@ -82,31 +130,31 @@ export const AppSound  = ({sound}) => {
             }
           else if (playStatus.playingStatus == 'playing') {
             console.log('pausing...');
-            await this.sound.pauseAsync();
+            await soundbox.pauseAsync();
             console.log('paused!');
             setPlayStatus({
               playingStatus: 'donepause',
             });
           } else {
             console.log('playing...');
-            await this.sound.playAsync();
+            await soundbox.playAsync();
             console.log('playing!');
             setPlayStatus({
               playingStatus: 'playing',
             });
           }
-        }else if(this.sound == null){
+        }else if(soundbox == null){
             console.log('saund null')
         }
       }
 
    const  _syncPauseAndPlayRecording =   () => {
 
-        if (this.sound != null) {
+        if (soundbox != null) {
           if (playStatus.playingStatus == 'playing') {
-            this.sound.pauseAsync();
+            soundbox.pauseAsync();
           } else {
-            this.sound.playAsync();
+            soundbox.playAsync();
           }
         }
       }
@@ -128,42 +176,20 @@ export const AppSound  = ({sound}) => {
         }
       }
 
-return     <TouchableOpacity  onPress={() => {
+return     <TouchableOpacity style={{...styles.butTouch,height: sDisp() ? 36 : 55}}  onPress={() => {
         
     _playAndPause(sound)
     
     } }>
 
-<View style={styles.activeContainerVol}>
+<View style={{...styles.activeContainerVol,height: sDisp() ? 36 : 55}}>
 
-<Ionicons  size={24} color="#fff" name="md-volume-high" />  
-
-<Text style={styles.activeVolText}>Слушать</Text>
+<Text style={{...styles.activeVolText, fontSize: sDisp() ? 16 : 20 }}>Слушать</Text>
+<Ionicons  size={sDisp() ? 20 : 24} color="#fff" name="md-volume-high" />  
 
 </View>
 
             </TouchableOpacity>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
@@ -171,19 +197,28 @@ const styles = StyleSheet.create({
 
     activeContainerVol: {
         flexDirection: "row",
-        backgroundColor: THEME.MAIN_COLOR,
+        backgroundColor: 'transparent',
         alignItems: 'center',
-        paddingTop: 5,
-        paddingBottom: 5,
-        paddingLeft: 10,
-        paddingRight: 10,
         borderRadius: 5,
-        marginTop: 10
+      height: 55,
+      width: 150,
+      justifyContent: 'center'
+     
+    
       },
       activeVolText: {
         fontSize: 20,
         color: '#fff',
-        marginLeft: 10
+        marginRight: 15,
+
+      },
+      butTouch: {
+        width: 150,
+        height: 55,
+        borderRadius: 30,
+        overflow: 'hidden',
+        backgroundColor: '#3A9FE7',
+      
       }
 
 

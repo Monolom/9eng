@@ -1,822 +1,3017 @@
 export const TICHER = [
-    {
-      id: '1',
-      title: 'Урок 1',
-      discription1: 'Работа',
-      discription2: 'Движуха',
-      discription3: 'Транспорт',
-      discription4: 'Спорт',
-      data: {
-        word:  [
+  {
+    id: "1",
+    title: "Урок 1",
+    discription1: "Вопросы",
+    discription2: "Местоимения",
+    discription3: "Таможня",
+    data: {
+      word: {
+        "Вопросы" : [
           {
-            word: 'Английское слово1',
-            phrase: 'Перевод1',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
+            word: "Где",
+            phrase: "Where",
+            image: "https://f-arenda.ru/appImg/image_Where.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Where.mp3.mp3",
+            trans: "Транскрипция",
           },
           {
-            word: 'Английское слово2',
-            phrase: 'Перевод2',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/2.mp3',
-            trans: 'Транскрипция'
+            word: "Кто",
+            phrase: "Who",
+            image: "https://f-arenda.ru/appImg/image_Who.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Who.mp3.mp3",
+            trans: "Транскрипция",
           },
           {
-            word: 'Английское слово3',
-            phrase: 'Перевод3',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/3.mp3',
-            trans: 'Транскрипция'
+            word: "Как",
+            phrase: "How",
+            image: "https://f-arenda.ru/appImg/image_How.jpg",
+            sound: "https://f-arenda.ru/sound/sound_How.mp3.mp3",
+            trans: "Транскрипция",
           },
           {
-            word: 'Английское слово4',
-            phrase: 'Перевод4',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/4.mp3',
-            trans: 'Транскрипция'
+            word: "Почему",
+            phrase: "Why",
+            image: "https://f-arenda.ru/appImg/image_How.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Why.mp3.mp3",
+            trans: "Транскрипция",
           },
           {
-            word: 'Английское слово5',
-            phrase: 'Перевод5',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/5.mp3',
-            trans: 'Транскрипция'
+            word: "Когда",
+            phrase: "When",
+            image: "https://f-arenda.ru/appImg/image_10.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_When.mp3.mp3",
+            trans: "Транскрипция",
           },
           {
-            word: 'Английское слово6',
-            phrase: 'Перевод6',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/6.mp3',
-            trans: 'Транскрипция'
+            word: "Что",
+            phrase: "What",
+            image: "https://f-arenda.ru/appImg/image_12.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_What.mp3.mp3",
+            trans: "Транскрипция",
           },
-          {
-            word: 'Английское слово7',
-            phrase: 'Перевод7',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/7.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово8',
-            phrase: 'Перевод8',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/8.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово9',
-            phrase: 'Перевод9',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/9.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово10',
-            phrase: 'Перевод1',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/10.mp3',
-            trans: 'Транскрипция'
-          },
-      ],
-     phrase:  [
-        {
-          word: 'Английское слово1',
-          phrase: 'ФразаПеревод1',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово2',
-          phrase: 'ФразаПеревод2',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/2.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово3',
-          phrase: 'ФразаПеревод3',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/3.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово4',
-          phrase: 'ФразаПеревод4',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/4.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово5',
-          phrase: 'ФразаПеревод5',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/5.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово6',
-          phrase: 'Перевод6',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/6.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово7',
-          phrase: 'ФразаПеревод7',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/7.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово8',
-          phrase: 'ФразаПеревод8',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/8.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово9',
-          phrase: 'ФразаПеревод9',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/9.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово10',
-          phrase: 'ФразаПеревод1',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/10.mp3',
-          trans: 'Транскрипция'
-        },
-    ]
-      }
-    },
-    {
-      id: '2',
-      title: 'Урок 2',
-      discription1: 'Работа2',
-      discription2: 'Движуха2',
-      discription3: 'Транспорт2',
-      discription4: 'Спорт2',
-      data: {
-        word:  [
-          {
-            word: 'Английское слово1',
-            phrase: 'Перевод21',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово2',
-            phrase: 'Перевод2',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/2.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово3',
-            phrase: 'Перевод3',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/3.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово4',
-            phrase: 'Перевод4',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/4.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово5',
-            phrase: 'Перевод5',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/5.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово6',
-            phrase: 'Перевод6',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/6.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово7',
-            phrase: 'Перевод7',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/7.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово8',
-            phrase: 'Перевод8',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/8.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово9',
-            phrase: 'Перевод9',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/9.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово10',
-            phrase: 'Перевод1',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/10.mp3',
-            trans: 'Транскрипция'
-          },
-      ],
-      phrase:  [
-        {
-          word: 'Английское слово1',
-          phrase: 'Перевод1',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово2',
-          phrase: 'Перевод2',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/2.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово3',
-          phrase: 'Перевод3',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/3.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово4',
-          phrase: 'Перевод4',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/4.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово5',
-          phrase: 'Перевод5',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/5.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово6',
-          phrase: 'Перевод6',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/6.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово7',
-          phrase: 'Перевод7',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/7.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово8',
-          phrase: 'Перевод8',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/8.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово9',
-          phrase: 'Перевод9',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/9.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово10',
-          phrase: 'Перевод1',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/10.mp3',
-          trans: 'Транскрипция'
-        },
-    ]
-      }
-    },
-    {
-      id: '3',
-      title: 'Урок 3',
-      discription1: 'Работа3',
-      discription2: 'Движуха3',
-      discription3: 'Транспорт3',
-      discription4: 'Спорт3',
-      data: {
-        word:  [
-          {
-            word: 'Английское слово1',
-            phrase: 'Перевод31',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово2',
-            phrase: 'Перевод2',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/2.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово3',
-            phrase: 'Перевод3',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/3.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово4',
-            phrase: 'Перевод4',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/4.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово5',
-            phrase: 'Перевод5',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/5.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово6',
-            phrase: 'Перевод6',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/6.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово7',
-            phrase: 'Перевод7',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/7.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово8',
-            phrase: 'Перевод8',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/8.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово9',
-            phrase: 'Перевод9',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/9.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово10',
-            phrase: 'Перевод1',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/10.mp3',
-            trans: 'Транскрипция'
-          },
-      ],
-      phrase:  [
-        {
-          word: 'Английское слово1',
-          phrase: 'Перевод1',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово2',
-          phrase: 'Перевод2',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/2.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово3',
-          phrase: 'Перевод3',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/3.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово4',
-          phrase: 'Перевод4',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/4.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово5',
-          phrase: 'Перевод5',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/5.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово6',
-          phrase: 'Перевод6',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/6.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово7',
-          phrase: 'Перевод7',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/7.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово8',
-          phrase: 'Перевод8',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/8.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово9',
-          phrase: 'Перевод9',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/9.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово10',
-          phrase: 'Перевод1',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/10.mp3',
-          trans: 'Транскрипция'
-        },
-    ]
-      }
-    },
-    {
-      id: '4',
-      title: 'Урок 4',
-      discription1: 'Работа4',
-      discription2: 'Движуха4',
-      discription3: 'Транспорт4',
-      discription4: 'Спорт4',
-      data: {
-        word:  [
-          {
-            word: 'Английское слово1',
-            phrase: 'Перевод41',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово2',
-            phrase: 'Перевод2',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/2.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово3',
-            phrase: 'Перевод3',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/3.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово4',
-            phrase: 'Перевод4',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/4.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово5',
-            phrase: 'Перевод5',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/5.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово6',
-            phrase: 'Перевод6',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/6.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово7',
-            phrase: 'Перевод7',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово8',
-            phrase: 'Перевод8',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово9',
-            phrase: 'Перевод9',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово10',
-            phrase: 'Перевод1',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-      ],
-      phrase:  [
-        {
-          word: 'Английское слово1',
-          phrase: 'Перевод1',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово2',
-          phrase: 'Перевод2',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/2.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово3',
-          phrase: 'Перевод3',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/3.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово4',
-          phrase: 'Перевод4',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/4.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово5',
-          phrase: 'Перевод5',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/5.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово6',
-          phrase: 'Перевод6',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/6.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово7',
-          phrase: 'Перевод7',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/7.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово8',
-          phrase: 'Перевод8',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/8.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово9',
-          phrase: 'Перевод9',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/9.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово10',
-          phrase: 'Перевод1',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/10.mp3',
-          trans: 'Транскрипция'
-        },
-    ]
-      }
-    },
-    {
-      id: '5',
-      title: 'Урок 5',
-      discription1: 'Работа5',
-      discription2: 'Движуха5',
-      discription3: 'Транспорт5',
-      discription4: 'Спорт5',
-      data: {
-        word:  [
-          {
-            word: 'Английское слово1',
-            phrase: 'Перевод41',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово2',
-            phrase: 'Перевод2',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово3',
-            phrase: 'Перевод3',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово4',
-            phrase: 'Перевод4',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово5',
-            phrase: 'Перевод5',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово6',
-            phrase: 'Перевод6',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово7',
-            phrase: 'Перевод7',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово8',
-            phrase: 'Перевод8',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово9',
-            phrase: 'Перевод9',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-          {
-            word: 'Английское слово10',
-            phrase: 'Перевод1',
-            image: 'https://f-arenda.ru/appImg/1w1.jpg',
-            sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-            trans: 'Транскрипция'
-          },
-      ],
-      phrase:  [
-        {
-          word: 'Английское слово1',
-          phrase: 'Перевод1',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/1.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово2',
-          phrase: 'Перевод2',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/2.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово3',
-          phrase: 'Перевод3',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/3.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово4',
-          phrase: 'Перевод4',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/4.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово5',
-          phrase: 'Перевод5',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/5.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово6',
-          phrase: 'Перевод6',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/6.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово7',
-          phrase: 'Перевод7',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/7.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово8',
-          phrase: 'Перевод8',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/8.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово9',
-          phrase: 'Перевод9',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/9.mp3',
-          trans: 'Транскрипция'
-        },
-        {
-          word: 'Английское слово10',
-          phrase: 'Перевод1',
-          image: 'https://f-arenda.ru/appImg/1w1.jpg',
-          sound: 'https://f-arenda.ru/sound/1/word/10.mp3',
-          trans: 'Транскрипция'
-        },
-    ]
-      }
-
-    }
-  ]
-
-
-  export const USER = {
-     repeat: {
-        "Урок 1" : [
-            { id:1,phrase:true,word:true,title: '30c',time:0},
-            { id:2,phrase:true,word:true,title: '6ч',time:0},
-            { id:3,phrase:true,word:true,title: '24ч',time:0},
-            { id:4,phrase:false,word:false,title: '3д'},
-            { id:5,phrase:false,word:false,title: '7д'},
-            { id:6,phrase:false,word:false,title: '14д'},
-            { id:7,phrase:false,word:false,title: '30д'},
-            { id:8,phrase:false,word:false,title: '90д'},
-            { id:9,phrase:false,word:false,title: '180д'},
-            { id:10,phrase:false,word:false,title: '360д'}
         ],
-        "Урок 2" : [  
-        { id:1,phrase:true,word:true,title: '30c',},
-        { id:2,phrase:true,word:true,title: '6ч', time: 0},
-        { id:3,phrase:true,word:false,title: '24ч',time: 0},
-        { id:4,phrase:false,word:false,title: '3д'},
-        { id:5,phrase:false,word:false,title: '7д'},
-        { id:6,phrase:false,word:false,title: '14д'},
-        { id:7,phrase:false,word:false,title: '30д'},
-        { id:8,phrase:false,word:false,title: '90д'},
-        { id:9,phrase:false,word:false,title: '180д'},
-        { id:10,phrase:false,word:false,title: '360д'}
-
+        "Местоимения": [
+          {
+            word: "Я",
+            phrase: "I",
+            image: "https://f-arenda.ru/appImg/image_20.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_I.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Она",
+            phrase: "She",
+            image: "https://f-arenda.ru/appImg/image_4.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_She.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Он",
+            phrase: "He",
+            image: "https://f-arenda.ru/appImg/image_6.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_He.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Оно",
+            phrase: "It",
+            image: "https://f-arenda.ru/appImg/image_8.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_He.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Ты/вы",
+            phrase: "You",
+            image: "https://f-arenda.ru/appImg/image_10.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_You.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Мы",
+            phrase: "We",
+            image: "https://f-arenda.ru/appImg/image_12.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_We.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Они",
+            phrase: "They",
+            image: "https://f-arenda.ru/appImg/image_14.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_They.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Мой",
+            phrase: "My",
+            image: "https://f-arenda.ru/appImg/image_16.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_My.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Его",
+            phrase: "His",
+            image: "https://f-arenda.ru/appImg/image_18.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_His.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Её",
+            phrase: "Her",
+            image: "https://f-arenda.ru/appImg/image_20.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Her.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Ваш",
+            phrase: "Your",
+            image: "https://f-arenda.ru/appImg/image_22.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Your.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Наш",
+            phrase: "Its",
+            image: "https://f-arenda.ru/appImg/image_28.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Its.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Его",
+            phrase: "Its",
+            image: "https://f-arenda.ru/appImg/image_28.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Its.mp3.mp3",
+            trans: "Транскрипция",
+          },
         ],
-        "Урок 3" : [ 
-        { id:1,phrase:false,word:false,title: '30c',},
-        { id:2,phrase:false,word:false,title: '6ч'},
-        { id:3,phrase:false,word:false,title: '24ч'},
-        { id:4,phrase:false,word:false,title: '3д'},
-        { id:5,phrase:false,word:false,title: '7д'},
-        { id:6,phrase:false,word:false,title: '14д'},
-        { id:7,phrase:false,word:false,title: '30д'},
-        { id:8,phrase:false,word:false,title: '90д'},
-        { id:9,phrase:false,word:false,title: '180д'},
-        { id:10,phrase:false,word:false,title: '360д'}
 
+        "Таможня" : [
+          {
+            word: "Цель",
+            phrase: "Purpose",
+            image: "https://f-arenda.ru/appImg/image_2.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Purpose.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Оставаться",
+            phrase: "Stay",
+            image: "https://f-arenda.ru/appImg/image_4.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Stay.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Спасибо",
+            phrase: "Thank",
+            image: "https://f-arenda.ru/appImg/image_6.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Thank.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Год",
+            phrase: "Year",
+            image: "https://f-arenda.ru/appImg/image_8.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Here.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Длинный",
+            phrase: "Long",
+            image: "https://f-arenda.ru/appImg/image_10.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Long.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Много",
+            phrase: "Much",
+            image: "https://f-arenda.ru/appImg/image_14.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Much.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Неделя",
+            phrase: "Week",
+            image: "https://f-arenda.ru/appImg/image_12.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Week.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Деньги",
+            phrase: "Money",
+            image: "https://f-arenda.ru/appImg/image_16.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Money.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Багаж",
+            phrase: "Luggage",
+            image: "https://f-arenda.ru/appImg/image_18.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Luggage.mp3.mp3",
+            trans: "Транскрипция",
+          },
         ],
-        "Урок 4" : [ 
-          { id:1,phrase:false,word:false,title: '30c',},
-          { id:2,phrase:false,word:false,title: '6ч'},
-          { id:3,phrase:false,word:false,title: '24ч'},
+        "Числительные" : [
+          {
+            word: "Ноль",
+            phrase: "Zero",
+            image: "https://f-arenda.ru/appImg/image_2.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Zero.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Один",
+            phrase: "One",
+            image: "https://f-arenda.ru/appImg/image_4.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_One.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Два",
+            phrase: "Two",
+            image: "https://f-arenda.ru/appImg/image_6.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Two.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Три",
+            phrase: "Three",
+            image: "https://f-arenda.ru/appImg/image_8.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Three.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Четыре",
+            phrase: "Four",
+            image: "https://f-arenda.ru/appImg/image_10.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Four.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Пять",
+            phrase: "Five",
+            image: "https://f-arenda.ru/appImg/image_12.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Five.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Шесть",
+            phrase: "Six",
+            image: "https://f-arenda.ru/appImg/image_14.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Six.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Семь",
+            phrase: "Seven",
+            image: "https://f-arenda.ru/appImg/image_16.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Seven.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Восемь",
+            phrase: "Eight",
+            image: "https://f-arenda.ru/appImg/image_18.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Eight.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Девять",
+            phrase: "Nine",
+            image: "https://f-arenda.ru/appImg/image_20.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Nine.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Одинацать",
+            phrase: "Eleven",
+            image: "https://f-arenda.ru/appImg/image_24.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Eleven.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Двенацать",
+            phrase: "Twelve",
+            image: "https://f-arenda.ru/appImg/image_26.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Twelve.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Тринацать",
+            phrase: "Thirteen",
+            image: "https://f-arenda.ru/appImg/image_27.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Thirteen.mp3.mp3",
+            trans: "Транскрипция",
+          }
+        ],
+        "Вопросы2" : [
+          {
+            word: "Где",
+            phrase: "Where",
+            image: "https://f-arenda.ru/appImg/image_Where.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Where.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Кто",
+            phrase: "Who",
+            image: "https://f-arenda.ru/appImg/image_Who.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Who.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Как",
+            phrase: "How",
+            image: "https://f-arenda.ru/appImg/image_How.jpg",
+            sound: "https://f-arenda.ru/sound/sound_How.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Почему",
+            phrase: "Why",
+            image: "https://f-arenda.ru/appImg/image_How.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Why.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Когда",
+            phrase: "When",
+            image: "https://f-arenda.ru/appImg/image_10.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_When.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Что",
+            phrase: "What",
+            image: "https://f-arenda.ru/appImg/image_12.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_What.mp3.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        "Вопросы3" : [
+          {
+            word: "Где",
+            phrase: "Where",
+            image: "https://f-arenda.ru/appImg/image_Where.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Where.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Кто",
+            phrase: "Who",
+            image: "https://f-arenda.ru/appImg/image_Who.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Who.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Как",
+            phrase: "How",
+            image: "https://f-arenda.ru/appImg/image_How.jpg",
+            sound: "https://f-arenda.ru/sound/sound_How.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Почему",
+            phrase: "Why",
+            image: "https://f-arenda.ru/appImg/image_How.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Why.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Когда",
+            phrase: "When",
+            image: "https://f-arenda.ru/appImg/image_10.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_When.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Что",
+            phrase: "What",
+            image: "https://f-arenda.ru/appImg/image_12.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_What.mp3.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        "Вопросы4" : [
+          {
+            word: "Где",
+            phrase: "Where",
+            image: "https://f-arenda.ru/appImg/image_Where.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Where.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Кто",
+            phrase: "Who",
+            image: "https://f-arenda.ru/appImg/image_Who.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Who.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Как",
+            phrase: "How",
+            image: "https://f-arenda.ru/appImg/image_How.jpg",
+            sound: "https://f-arenda.ru/sound/sound_How.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Почему",
+            phrase: "Why",
+            image: "https://f-arenda.ru/appImg/image_How.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Why.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Когда",
+            phrase: "When",
+            image: "https://f-arenda.ru/appImg/image_10.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_When.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Что",
+            phrase: "What",
+            image: "https://f-arenda.ru/appImg/image_12.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_What.mp3.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+      phrase: {
+        "Таможня": [
+          {
+            word: "Здравствуйте, откуда вы прилетели?",
+            phrase: "Hello. Where are you from?",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_1.png",
+            sound: "https://f-arenda.ru/sound/01_Where_are_you_from.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Здравствуйте, я из России.",
+            phrase: "Hello. I am from Russia",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_2.png",
+            sound: "https://f-arenda.ru/sound/02_I'm_from_Russia.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Какова цель вашего визита?",
+            phrase: "What is the purpose of your visit?",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_1.png",
+            sound: "https://f-arenda.ru/sound/03_Purpose_of_your_visit.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Туризм.",
+            phrase: "Tourism.",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_2.png",
+            sound: "https://f-arenda.ru/sound/04_Tourism.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Где вы собираетесь остановиться?",
+            phrase: "Where will you stay?",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_1.png",
+            sound: "https://f-arenda.ru/sound/05_Where_will_you_stay.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "В отеле “Leman Locke”.",
+            phrase: "In the hotel “Leman Locke”.",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_2.png",
+            sound: "https://f-arenda.ru/sound/06_In_The_Hotel_LL.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "На какой срок вы приехали?",
+            phrase: "How long will you be staying?",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_1.png",
+            sound: "https://f-arenda.ru/sound/07_How_long_will_you_be_stain.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Одну неделю.",
+            phrase: "For a week.",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_2.png",
+            sound: "https://f-arenda.ru/sound/08_For_a_week.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Сколько у вас с собой денег?",
+            phrase: "How much money do you have with you?",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_1.png",
+            sound: "https://f-arenda.ru/sound/09_How_much_money_do_you_have_with_you.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Тысяча фунтов.",
+            phrase: "Thousand pounds.",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_2.png",
+            sound: "https://f-arenda.ru/sound/10_1000_pounds.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Где ваш багаж?",
+            phrase: "Where is your luggage?",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_1.png",
+            sound: "https://f-arenda.ru/sound/11_Where_is_your_Laggage.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Вот мой багаж.",
+            phrase: "Here is my luggage.",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_2.png",
+            sound: "https://f-arenda.ru/sound/12_Here_is_my_laggage.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Хорошо. Спасибо. До свидания.",
+            phrase: "Ok. Thank you. Goodbye.",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_1.png",
+            sound: "https://f-arenda.ru/sound/13_OK_TY_Goodbye.mp3",
+            trans: "Транскрипция",
+          }, {
+            word: "До свидания.",
+            phrase: "Goodbye.",
+            image: "https://f-arenda.ru/appImg/image_frase_1_1_2.png",
+            sound: "https://f-arenda.ru/sound/14_Goodbye.mp3",
+            trans: "Транскрипция",
+          }
+        ],
+        "Транспорт": [
+          {
+            word: "Здравствуйте, присаживайтесь, пожалуйста.",
+            phrase: "Hello, take a seat, please.",
+            image: "https://f-arenda.ru/appImg/image_phraze_1_2_2.png",
+            sound: "https://f-arenda.ru/sound/01_Hello_take_a_seat_please.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Здравствуйте.",
+            phrase: "Hello.",
+            image: "https://f-arenda.ru/appImg/image_phraze_1_2_1.png",
+            sound: "https://f-arenda.ru/sound/02_Hello.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Сколько стоит проезд?",
+            phrase: "How much is the fare?",
+            image: "https://f-arenda.ru/appImg/image_phraze_1_2_2.png",
+            sound: "https://f-arenda.ru/sound/03_How_much_is_the_fare.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Один фунт.",
+            phrase: "One pound.",
+            image: "https://f-arenda.ru/appImg/image_phraze_1_2_1.png",
+            sound: "https://f-arenda.ru/sound/04_One_pound.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Я доеду до “H&M”?",
+            phrase: "Will I get to “H&M” ?" ,
+            image: "https://f-arenda.ru/appImg/image_phraze_1_2_2.png",
+            sound: "https://f-arenda.ru/sound/05_Will_I_get_to_HnM.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Да. Вы должны выйти на следующей остановке.",
+            phrase: "Yes. You must get off at the next stop." ,
+            image: "https://f-arenda.ru/appImg/image_phraze_1_2_1.png",
+            sound: "https://f-arenda.ru/sound/06_Yes_you_must_get_off_at_the_next_stop.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "До свидания. Спасибо.",
+            phrase: "Goodbye. Thank you." ,
+            image: "https://f-arenda.ru/appImg/image_phraze_1_2_2.png",
+            sound: "https://f-arenda.ru/sound/07_Goodbye_Thank_You.mp3",
+            trans: "Транскрипция",
+          }
+        ],
+
+        "Отэль": [
+          {
+            word: "Здравствуйте. Как я могу помочь вам?",
+            phrase: "Hello. How can I help you?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_1.png",
+            sound: "https://f-arenda.ru/sound/01_Hello_how_can_I_help_you.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Здравствуйте. У меня бронь.",
+            phrase: "Hello. I have a reservation.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_2.png",
+            sound: "https://f-arenda.ru/sound/02_Hello_I_have_an_reservation.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Ваш паспорт, пожалуйста.",
+            phrase: "Your passport, please.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_1.png",
+            sound: "https://f-arenda.ru/sound/03_Your_passport_please.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Хорошо, можете заполнить этот бланк, пожалуйста?",
+            phrase: "Ok. Can you fill this form, please?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_1.png",
+            sound: "https://f-arenda.ru/sound/05_Ok_can_you_fill_this_form_please.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Да, конечно.",
+            phrase: "Yes, of course.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_2.png",
+            sound: "https://f-arenda.ru/sound/06_Yes_of_course.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Ваш номер номер 654.",
+            phrase: "Your room number is 654.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_1.png",
+            sound: "https://f-arenda.ru/sound/07_Your_room_number_is.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Какой это этаж?",
+            phrase: "What floor is it on?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_2.png",
+            sound: "https://f-arenda.ru/sound/08_What_Floor_is_it_on.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "На 6 этаже. Вы можете воспользоваться лифтом.",
+            phrase: "On the sixth floor. You can use the elevator.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_1.png",
+            sound: "https://f-arenda.ru/sound/09_On_the_6th_floor_you_can_use_the_elevator.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Включены ли полотенца и пледы?",
+            phrase: "Are towels and blankets included?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_2.png",
+            sound: "https://f-arenda.ru/sound/10_Are_towels_and_blankets_included.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Да, конечно. Что ещё я могу для вас сделать?",
+            phrase: "Yes, of course.What else can I do for you?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_1.png",
+            sound: "https://f-arenda.ru/sound/11_Yes_of_course_what_can_I_do_for_you.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Какой пароль от вайфая?",
+            phrase: "What is the wi-fi password?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_2.png",
+            sound: "https://f-arenda.ru/sound/12_What_is_the_wifi_password.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Пароль Wi-Fi в комнате на столе.",
+            phrase: "Wifi password is on the table in the room.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_1.png",
+            sound: "https://f-arenda.ru/sound/13_Wifi_password_is_on_the_table_in_the_room.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Где лифт?",
+            phrase: "Where is the elevator?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_2.png",
+            sound: "https://f-arenda.ru/sound/14_Where_is_the_elevator.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Лифт за углом.",
+            phrase: "Elevator is around the corner.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_1.png",
+            sound: "https://f-arenda.ru/sound/15_Elevator_is_around_the_corner.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "До свидания.",
+            phrase: "Goodbye.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_2.png",
+            sound: "https://f-arenda.ru/sound/16_Goodbye.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        
+        "Лифт": [
+          {
+            word: "Здравствуйте. Могу я вам помочь?",
+            phrase: "Hello. Can I help you?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_3_1.png",
+            sound: "https://f-arenda.ru/sound/01_Hello_can_I_help_you.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Здравствуйте, где я могу перекусить?",
+            phrase: "Hello. Where can I get something to eat?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_1.png",
+            sound: "https://f-arenda.ru/sound/02_Hello_where_I_can_get_something_to_eat.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Вы можете поесть в баре или ресторане.",
+            phrase: "You can eat at the bar or restaurant.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_2.png",
+            sound: "https://f-arenda.ru/sound/03_You_can_eat_at_the_bar_or_restaurant.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Где ближайший ресторан?",
+            phrase: "Where is the nearest restaurant?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_1.png",
+            sound: "https://f-arenda.ru/sound/04_Where_is_the_nearest_restaurant.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Ресторан находится на втором этаже.",
+            phrase: "Restaurant is on the second floor.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_2.png",
+            sound: "https://f-arenda.ru/sound/05_Restaurant_is_on_the_second_flor.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Где бар?",
+            phrase: "Where is the bar?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_1.png",
+            sound: "https://f-arenda.ru/sound/06_Where_is_the_bar.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Лобби-бар находится на первом этаже.",
+            phrase: "The lobby bar is on the first floor.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_2.png",
+            sound: "https://f-arenda.ru/sound/07_The_lobby_bar_is_on_the_forst_floor.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Когда начинается обед?",
+            phrase: "What time does lunch start ?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_1.png",
+            sound: "https://f-arenda.ru/sound/08_What_time_does_lunch_starts.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Обед начинается в полдень.",
+            phrase: "Lunch starts at noon.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_2.png",
+            sound: "https://f-arenda.ru/sound/09_Lunch_starts_at_noon.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Когда заканчивается ужин?",
+            phrase: "What time does the dinner end?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_1.png",
+            sound: "https://f-arenda.ru/sound/10_What_time_does_the_dinner_end.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "В девять вечера.",
+            phrase: "At nine in the evening.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_2.png",
+            sound: "https://f-arenda.ru/sound/11_At_the_nine_at_the_evening.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Есть ли в отеле химчистка?",
+            phrase: "Is there a dry cleaner at the hotel?",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_1.png",
+            sound: "https://f-arenda.ru/sound/12_Is_there_dry_cleaner_at_the_hotel.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Да, она на первом этаже.",
+            phrase: "Yes, it's on the first floor.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_2.png",
+            sound: "https://f-arenda.ru/sound/13_Yes_its_on_the_first_floor.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "До свидания.",
+            phrase: "Goodbye.",
+            image: "https://f-arenda.ru/appImg/image_phrase_1_4_1.png",
+            sound: "https://f-arenda.ru/sound/14_Thank_you_goodbye.mp3",
+            trans: "Транскрипция",
+          }
+        ],
+      },
+    },
+  },
+  {
+    id: "2",
+    title: "Урок 2",
+    discription1: "Глаголы",
+    discription2: "Общие",
+    discription3: "Транспорт",
+    data: {
+      word: {
+        "Глаголы": [
+          {
+            word: "Беспокоить",
+            phrase: "Bother",
+            image: "https://f-arenda.ru/appImg/image_1.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Bother.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Получить",
+            phrase: "Get",
+            image: "https://f-arenda.ru/appImg/image_2.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Get.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Торопиться",
+            phrase: "Hurry",
+            image: "https://f-arenda.ru/appImg/image_3.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Hurry.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Слушать",
+            phrase: "Listen",
+            image: "https://f-arenda.ru/appImg/image_4.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Listen.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Показывать",
+            phrase: "Show",
+            image: "https://f-arenda.ru/appImg/image_6.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Show.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Повторение",
+            phrase: "Repeat",
+            image: "https://f-arenda.ru/appImg/image_7.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Repeat.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Позволять",
+            phrase: "Let",
+            image: "https://f-arenda.ru/appImg/image_8.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Let.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Знать",
+            phrase: "Know",
+            image: "https://f-arenda.ru/appImg/image_9.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Know.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Менять",
+            phrase: "Change",
+            image: "https://f-arenda.ru/appImg/image_10.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Change.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Брать",
+            phrase: "Take",
+            image: "https://f-arenda.ru/appImg/image_11.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Take.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Идти",
+            phrase: "Go",
+            image: "https://f-arenda.ru/appImg/image_12.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Go.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Держать",
+            phrase: "Keep",
+            image: "https://f-arenda.ru/appImg/image_13.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Keep.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Понимать",
+            phrase: "Understand ",
+            image: "https://f-arenda.ru/appImg/image_14.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Understand.mp3.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        "Общие" : [
+          {
+            word: "Отлично",
+            phrase: "Excelent",
+            image: "https://f-arenda.ru/appImg/image_1.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Excelent.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Вечер",
+            phrase: "Evening",
+            image: "https://f-arenda.ru/appImg/image_2.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Evening.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Закрыть",
+            phrase: "Close",
+            image: "https://f-arenda.ru/appImg/image_3.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Close.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Просто",
+            phrase: "Just",
+            image: "https://f-arenda.ru/appImg/image_4.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Just.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Право (сторона)",
+            phrase: "Right",
+            image: "https://f-arenda.ru/appImg/image_5.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Right.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Хорошо",
+            phrase: "Good",
+            image: "https://f-arenda.ru/appImg/image_6.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Good.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Следующий",
+            phrase: "Next",
+            image: "https://f-arenda.ru/appImg/image_7.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Next.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Тот",
+            phrase: "That",
+            image: "https://f-arenda.ru/appImg/image_8.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_That.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Скоро",
+            phrase: "Soon",
+            image: "https://f-arenda.ru/appImg/image_9.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Soon.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Замечательно",
+            phrase: "Wonderful",
+            image: "https://f-arenda.ru/appImg/image_10.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Wonderful.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Короткий",
+            phrase: "Short",
+            image: "https://f-arenda.ru/appImg/image_11.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Short.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Внимательно",
+            phrase: "Carefully",
+            image: "https://f-arenda.ru/appImg/image_12.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Carefully.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Все",
+            phrase: "All",
+            image: "https://f-arenda.ru/appImg/image_13.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_All.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Должен",
+            phrase: "Must",
+            image: "https://f-arenda.ru/appImg/image_14.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Must.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Конечно",
+            phrase: "Course",
+            image: "https://f-arenda.ru/appImg/image_15.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Course.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Много",
+            phrase: "Many",
+            image: "https://f-arenda.ru/appImg/image_16.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Many.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Часы",
+            phrase: "Clock",
+            image: "https://f-arenda.ru/appImg/image_17.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Clock.mp3.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        "Транспорт" : [
+          {
+            word: "Плата за проезд",
+            phrase: "Fare",
+            image: "https://f-arenda.ru/appImg/image_1.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Fair.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Поезд",
+            phrase: "Train",
+            image: "https://f-arenda.ru/appImg/image_2.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Train.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Поездка",
+            phrase: "Ride",
+            image: "https://f-arenda.ru/appImg/image_3.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Train.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Карта",
+            phrase: "Map",
+            image: "https://f-arenda.ru/appImg/image_4.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Map.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Жетон",
+            phrase: "Token",
+            image: "https://f-arenda.ru/appImg/image_5.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Token.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Билет",
+            phrase: "Ticket",
+            image: "https://f-arenda.ru/appImg/image_7.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Ticket.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Цена",
+            phrase: "Cost",
+            image: "https://f-arenda.ru/appImg/image_8.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Cost.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Квитанция",
+            phrase: "Receipt",
+            image: "https://f-arenda.ru/appImg/image_10.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Receipt.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Путь",
+            phrase: "Way",
+            image: "https://f-arenda.ru/appImg/image_11.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Way.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Рейс",
+            phrase: "Flight",
+            image: "https://f-arenda.ru/appImg/image_11.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Flight.mp3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Автобус",
+            phrase: "Bus",
+            image: "https://f-arenda.ru/appImg/image_12.jpg.jpg",
+            sound: "https://f-arenda.ru/sound/sound_Bus.mp3.mp3",
+            trans: "Транскрипция",
+          }
+        ],
+      },
+      phrase: {
+        "Поезд": [
+          {
+            word: "Здравствуйте.Что вы хотели?",
+            phrase: "Hello. How can i help you?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_1.png",
+            sound: "https://f-arenda.ru/sound/01_Hello_How_can_I_Help_you.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Здравствуйте.Сколько стоит жетон?",
+            phrase: "Hello.How much is one token?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_2.png",
+            sound: "https://f-arenda.ru/sound/02_Hello_how_much_is_one_token.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "2 фунта.",
+            phrase: "Two pounds.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_1.png",
+            sound: "https://f-arenda.ru/sound/03_Two_pounds.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Сколько стоит билет на десять поездок?",
+            phrase: "How much is a ticket for ten trips?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_2.png",
+            sound: "https://f-arenda.ru/sound/04_How_much_is_the_ticket_for_10_trips.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "18 фунтов.",
+            phrase: "Eighteen pounds.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_1.png",
+            sound: "https://f-arenda.ru/sound/05_18_pounds.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Что ж. Один жетон, пожалуйста.",
+            phrase: "Well. One token, please.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_2.png",
+            sound: "https://f-arenda.ru/sound/06_Well_one_token_please.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Возьмите,вот ваш жетон.Что-нибудь ещё?",
+            phrase: "Here is your token.Anything else?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_1.png",
+            sound: "https://f-arenda.ru/sound/07_Here_is_your_token_anything_else.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Сколько станций до Биг Бена?",
+            phrase: "How many stations is it to Big Ben?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_2.png",
+            sound: "https://f-arenda.ru/sound/08_How_many_stations_is_to_BB.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Выходите после двух станций.",
+            phrase: "Get off after two stations.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_1.png",
+            sound: "https://f-arenda.ru/sound/09_Get_off_after_2_stations.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Покажите на схеме, пожалуйста.",
+            phrase: "Please, show me on the map.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_2.png",
+            sound: "https://f-arenda.ru/sound/10_Please_show_me_on_the_map.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Хорошо,смотрите внимательно.",
+            phrase: "Ok,look carefully.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_1.png",
+            sound: "https://f-arenda.ru/sound/11_Ok_look_carefully.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "1Спасибо. До свидания.",
+            phrase: "Thank you. Goodbye.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_1_2.png",
+            sound: "https://f-arenda.ru/sound/12_Thank_you_Goodbye.mp3",
+            trans: "Транскрипция",
+          },
+         
+        ],
+        "Такси": [
+          {
+            word: "Здравствуйте.",
+            phrase: "Hello.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_1.png",
+            sound: "https://f-arenda.ru/sound/01_Hello.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Здравствуйте,мне пожалуйста в “British museum”.",
+            phrase: "Hello, take me to the British museum.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_2.png",
+            sound: "https://f-arenda.ru/sound/02_Hello_take_me_to_the_British_Museum.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Сколько времени займёт поездка?",
+            phrase: "How long will the trip take?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_2.png",
+            sound: "https://f-arenda.ru/sound/03_How_long_will_the_trip_take.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "20 минут.",
+            phrase: "Twenty minutes.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_1.png",
+            sound: "https://f-arenda.ru/sound/04_20_minutes.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Не могли бы вы повторить еще раз, пожалуйста.",
+            phrase: "Could you repeat, please.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_2.png",
+            sound: "https://f-arenda.ru/sound/05_Could_you_repeat_please.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "20 минут.",
+            phrase: "Twenty minutes.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_1.png",
+            sound: "https://f-arenda.ru/sound/04_20_minutes.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Сколько с меня?",
+            phrase: "How much is the fare?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_2.png",
+            sound: "https://f-arenda.ru/sound/07_How_much_is_the_fare.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "60 фунтов.",
+            phrase: "Sixty pounds.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_1.png",
+            sound: "https://f-arenda.ru/sound/08_Sixty_Pounds.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Сдачи не надо!",
+            phrase: "Keep the change!",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_2.png",
+            sound: "https://f-arenda.ru/sound/09_Keep_the_change.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Спасибо,До свидания.",
+            phrase: "Thank you,Goodbye.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_2.png",
+            sound: "https://f-arenda.ru/sound/10_Thank_you_godbye.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "До свидания!",
+            phrase: "Goodbye!",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_2_1.png",
+            sound: "https://f-arenda.ru/sound/09_Keep_the_change.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        "Номер": [
+          
+          {
+            word: "Добрый вечер.Могу я вам помочь?",
+            phrase: "Good evening.Can I help you?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_3_1.png",
+            sound: "https://f-arenda.ru/sound/01_Good_evening_can_I_help_you.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Мне нужно новое полотенце.",
+            phrase: "I need a new towel.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_3_22.png",
+            sound: "https://f-arenda.ru/sound/02_I_Need_a_new_towel.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Какой номер вашей комнаты?",
+            phrase: "What is your room number?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_3_1.png",
+            sound: "https://f-arenda.ru/sound/03_what_is_your_room_number.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "654",
+            phrase: "Six hundred fifty four.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_3_22.png",
+            sound: "https://f-arenda.ru/sound/04_Six_hundered_Fifty-four.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Горничная принесет полотенце.Что-нибудь еще ?",
+            phrase: "Maid will bring a towel. Anything else?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_3_1.png",
+            sound: "https://f-arenda.ru/sound/05_Maid_will_bring_you_a_towel.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Кто-то про меня спрашивал ?",
+            phrase: "Did someone ask about me?",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_3_22.png",
+            sound: "https://f-arenda.ru/sound/06_Did_someone_asked_about_me.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Никто не спросил. Мы вам сообщим.",
+            phrase: "Nobody asked. We will let you know.",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_3_1.png",
+            sound: "https://f-arenda.ru/sound/07_Nobody_Asked_we_will_let_you_know.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "Хорошо.Спасибо.До свидания!",
+            phrase: "Okay.Thank you.Goodbye!",
+            image: "https://f-arenda.ru/appImg/image_phrase_2_3_22.png",
+            sound: "https://f-arenda.ru/sound/08_OK_TY_Goodbye.mp3",
+            trans: "Транскрипция",
+          }
+        ],
+      },
+    },
+  },
+  {
+    id: "3",
+    title: "Урок 3",
+    discription1: "Работа3",
+    discription2: "Движуха3",
+    discription3: "Транспорт3",
+    discription4: "Спорт3",
+    data: {
+      word: {
+        Глаголы: [
+          {
+            word: "урок3/глаголы/Слово",
+            phrase: "урок3/глаголыСлово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/глаголы/Слово2",
+            phrase: "урок3/глаголыСлово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/глаголы/Слово3",
+            phrase: "урок3/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/глаголы/Слово4",
+            phrase: "урок3/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/глаголы/Слово5",
+            phrase: "урок3/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        Существительные: [
+          {
+            word: "урок3/Существительные/Слово1",
+            phrase: "урок3/Существительные/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Существительные/Слово2",
+            phrase: "урок3/Существительные/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/глаголы/Слово3",
+            phrase: "урок3/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/глаголы/Слово4",
+            phrase: "урок3/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/глаголы/Слово5",
+            phrase: "урок3/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        Вопросы: [
+          {
+            word: "урок3/Вопросы/Слово1",
+            phrase: "урок3/Вопросы/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Вопросы/Слово2",
+            phrase: "урок3/Вопросы/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Вопросы/Слово3",
+            phrase: "урок3/Вопросы/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Вопросы/Слово4",
+            phrase: "урок3/Вопросы/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Вопросы/Слово5",
+            phrase: "урок3/Вопросы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+      phrase: {
+        "Тема фраз1": [
+          {
+            word: "урок3/Тема фраз1/Слово1",
+            phrase: "урок3/Тема фраз1/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз1/Слово2",
+            phrase: "урок3/Тема фраз1/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз1/Слово3",
+            phrase: "урок3/Тема фраз1/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз1/Слово4",
+            phrase: "урок3/Тема фраз1/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз1/Слово5",
+            phrase: "урок3/Тема фраз1/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        "Тема фраз2": [
+          {
+            word: "урок3/Тема фраз2/Слово1",
+            phrase: "урок3/Тема фраз2/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз2/Слово2",
+            phrase: "урок3/Тема фраз2/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз2/Слово3",
+            phrase: "урок3/Тема фраз2/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз2/Слово4",
+            phrase: "урок3/Тема фраз2/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз2/Слово5",
+            phrase: "урок3/Тема фраз2/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        "Тема фраз3": [
+          {
+            word: "урок3/Тема фраз3/Слово1",
+            phrase: "урок3/Тема фраз3/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз3/Слово2",
+            phrase: "урок3/Тема фраз3/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз3/Слово3",
+            phrase: "урок3/Тема фраз3/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз3/Слово4",
+            phrase: "урок3/Тема фраз3/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок3/Тема фраз3/Слово5",
+            phrase: "урок3/Тема фраз3/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+    },
+  },
+  {
+    id: "4",
+    title: "Урок 4",
+    discription1: "Работа4",
+    discription2: "Движуха4",
+    discription3: "Транспорт4",
+    discription4: "Спорт4",
+    data: {
+      word: {
+        Глаголы: [
+          {
+            word: "урок4/глаголы/Слово",
+            phrase: "урок4/глаголыСлово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/глаголы/Слово2",
+            phrase: "урок4/глаголыСлово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/глаголы/Слово3",
+            phrase: "урок4/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/глаголы/Слово4",
+            phrase: "урок4/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/глаголы/Слово5",
+            phrase: "урок4/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        Существительные: [
+          {
+            word: "урок4/Существительные/Слово1",
+            phrase: "урок4/Существительные/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Существительные/Слово2",
+            phrase: "урок4/Существительные/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/глаголы/Слово3",
+            phrase: "урок4/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/глаголы/Слово4",
+            phrase: "урок4/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/глаголы/Слово5",
+            phrase: "урок4/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        Вопросы: [
+          {
+            word: "урок4/Вопросы/Слово1",
+            phrase: "урок4/Вопросы/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Вопросы/Слово2",
+            phrase: "урок4/Вопросы/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Вопросы/Слово3",
+            phrase: "урок4/Вопросы/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Вопросы/Слово4",
+            phrase: "урок4/Вопросы/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Вопросы/Слово5",
+            phrase: "урок4/Вопросы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+      phrase: {
+        "Тема фраз1": [
+          {
+            word: "урок4/Тема фраз1/Слово1",
+            phrase: "урок4/Тема фраз1/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз1/Слово2",
+            phrase: "урок4/Тема фраз1/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз1/Слово3",
+            phrase: "урок4/Тема фраз1/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз1/Слово4",
+            phrase: "урок4/Тема фраз1/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз1/Слово5",
+            phrase: "урок4/Тема фраз1/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        "Тема фраз2": [
+          {
+            word: "урок4/Тема фраз2/Слово1",
+            phrase: "урок4/Тема фраз2/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз2/Слово2",
+            phrase: "урок4/Тема фраз2/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз2/Слово3",
+            phrase: "урок4/Тема фраз2/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз2/Слово4",
+            phrase: "урок4/Тема фраз2/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз2/Слово5",
+            phrase: "урок4/Тема фраз2/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        "Тема фраз3": [
+          {
+            word: "урок4/Тема фраз3/Слово1",
+            phrase: "урок4/Тема фраз3/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз3/Слово2",
+            phrase: "урок4/Тема фраз3/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз3/Слово3",
+            phrase: "урок4/Тема фраз3/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз3/Слово4",
+            phrase: "урок4/Тема фраз3/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок4/Тема фраз3/Слово5",
+            phrase: "урок4/Тема фраз3/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+    },
+  },
+  {
+    id: "5",
+    title: "Урок 5",
+    discription1: "Работа5",
+    discription2: "Движуха5",
+    discription3: "Транспорт5",
+    discription4: "Спорт5",
+    data: {
+      word: {
+        Глаголы: [
+          {
+            word: "урок5/глаголы/Слово",
+            phrase: "урок4/глаголыСлово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово2",
+            phrase: "урок4/глаголыСлово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово3",
+            phrase: "урок5/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово4",
+            phrase: "урок5/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово5",
+            phrase: "урок5/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        Существительные: [
+          {
+            word: "урок5/Существительные/Слово1",
+            phrase: "урок5/Существительные/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Существительные/Слово2",
+            phrase: "урок5/Существительные/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово3",
+            phrase: "урок5/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово4",
+            phrase: "урок5/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово5",
+            phrase: "урок5/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        Вопросы: [
+          {
+            word: "урок5/Вопросы/Слово1",
+            phrase: "урок5/Вопросы/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово2",
+            phrase: "урок5/Вопросы/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово3",
+            phrase: "урок5/Вопросы/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово4",
+            phrase: "урок5/Вопросы/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово5",
+            phrase: "урок5/Вопросы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+      phrase: {
+        "Тема фраз1": [
+          {
+            word: "урок5/Тема фраз1/Слово1",
+            phrase: "урок5/Тема фраз1/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово2",
+            phrase: "урок5/Тема фраз1/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово3",
+            phrase: "урок5/Тема фраз1/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово4",
+            phrase: "урок5/Тема фраз1/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово5",
+            phrase: "урок5/Тема фраз1/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        "Тема фраз2": [
+          {
+            word: "урок5/Тема фраз2/Слово1",
+            phrase: "урок5/Тема фраз2/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово2",
+            phrase: "урок4/Тема фраз2/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово3",
+            phrase: "урок5/Тема фраз2/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово4",
+            phrase: "урок5/Тема фраз2/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово5",
+            phrase: "урок5/Тема фраз2/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        "Тема фраз3": [
+          {
+            word: "урок5/Тема фраз3/Слово1",
+            phrase: "урок5/Тема фраз3/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово2",
+            phrase: "урок5/Тема фраз3/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово3",
+            phrase: "урок5/Тема фраз3/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово4",
+            phrase: "урок5/Тема фраз3/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово5",
+            phrase: "урок5/Тема фраз3/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+    },
+  },
+
+  {
+    id: "6",
+    title: "Урок 6",
+    discription1: "Работа5",
+    discription2: "Движуха5",
+    discription3: "Транспорт5",
+    discription4: "Спорт5",
+    data: {
+      word: {
+        Глаголы: [
+          {
+            word: "урок5/глаголы/Слово",
+            phrase: "урок4/глаголыСлово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово2",
+            phrase: "урок4/глаголыСлово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово3",
+            phrase: "урок5/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово4",
+            phrase: "урок5/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово5",
+            phrase: "урок5/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        Существительные: [
+          {
+            word: "урок5/Существительные/Слово1",
+            phrase: "урок5/Существительные/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Существительные/Слово2",
+            phrase: "урок5/Существительные/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово3",
+            phrase: "урок5/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово4",
+            phrase: "урок5/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово5",
+            phrase: "урок5/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        Вопросы: [
+          {
+            word: "урок5/Вопросы/Слово1",
+            phrase: "урок5/Вопросы/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово2",
+            phrase: "урок5/Вопросы/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово3",
+            phrase: "урок5/Вопросы/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово4",
+            phrase: "урок5/Вопросы/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово5",
+            phrase: "урок5/Вопросы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+      phrase: {
+        "Тема фраз1": [
+          {
+            word: "урок5/Тема фраз1/Слово1",
+            phrase: "урок5/Тема фраз1/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово2",
+            phrase: "урок5/Тема фраз1/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово3",
+            phrase: "урок5/Тема фраз1/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово4",
+            phrase: "урок5/Тема фраз1/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово5",
+            phrase: "урок5/Тема фраз1/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        "Тема фраз2": [
+          {
+            word: "урок5/Тема фраз2/Слово1",
+            phrase: "урок5/Тема фраз2/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово2",
+            phrase: "урок4/Тема фраз2/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово3",
+            phrase: "урок5/Тема фраз2/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово4",
+            phrase: "урок5/Тема фраз2/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово5",
+            phrase: "урок5/Тема фраз2/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        "Тема фраз3": [
+          {
+            word: "урок5/Тема фраз3/Слово1",
+            phrase: "урок5/Тема фраз3/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово2",
+            phrase: "урок5/Тема фраз3/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово3",
+            phrase: "урок5/Тема фраз3/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово4",
+            phrase: "урок5/Тема фраз3/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово5",
+            phrase: "урок5/Тема фраз3/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+    },
+  },
+
+
+  {
+    id: "7",
+    title: "Урок 7",
+    discription1: "Работа5",
+    discription2: "Движуха5",
+    discription3: "Транспорт5",
+    discription4: "Спорт5",
+    data: {
+      word: {
+        Глаголы: [
+          {
+            word: "урок5/глаголы/Слово",
+            phrase: "урок4/глаголыСлово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово2",
+            phrase: "урок4/глаголыСлово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово3",
+            phrase: "урок5/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово4",
+            phrase: "урок5/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово5",
+            phrase: "урок5/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        Существительные: [
+          {
+            word: "урок5/Существительные/Слово1",
+            phrase: "урок5/Существительные/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Существительные/Слово2",
+            phrase: "урок5/Существительные/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово3",
+            phrase: "урок5/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово4",
+            phrase: "урок5/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово5",
+            phrase: "урок5/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        Вопросы: [
+          {
+            word: "урок5/Вопросы/Слово1",
+            phrase: "урок5/Вопросы/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово2",
+            phrase: "урок5/Вопросы/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово3",
+            phrase: "урок5/Вопросы/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово4",
+            phrase: "урок5/Вопросы/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово5",
+            phrase: "урок5/Вопросы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+      phrase: {
+        "Тема фраз1": [
+          {
+            word: "урок5/Тема фраз1/Слово1",
+            phrase: "урок5/Тема фраз1/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово2",
+            phrase: "урок5/Тема фраз1/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово3",
+            phrase: "урок5/Тема фраз1/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово4",
+            phrase: "урок5/Тема фраз1/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово5",
+            phrase: "урок5/Тема фраз1/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        "Тема фраз2": [
+          {
+            word: "урок5/Тема фраз2/Слово1",
+            phrase: "урок5/Тема фраз2/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово2",
+            phrase: "урок4/Тема фраз2/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово3",
+            phrase: "урок5/Тема фраз2/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово4",
+            phrase: "урок5/Тема фраз2/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово5",
+            phrase: "урок5/Тема фраз2/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        "Тема фраз3": [
+          {
+            word: "урок5/Тема фраз3/Слово1",
+            phrase: "урок5/Тема фраз3/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово2",
+            phrase: "урок5/Тема фраз3/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово3",
+            phrase: "урок5/Тема фраз3/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово4",
+            phrase: "урок5/Тема фраз3/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово5",
+            phrase: "урок5/Тема фраз3/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+    },
+  },
+
+  {
+    id: "8",
+    title: "Урок 8",
+    discription1: "Работа5",
+    discription2: "Движуха5",
+    discription3: "Транспорт5",
+    discription4: "Спорт5",
+    data: {
+      word: {
+        Глаголы: [
+          {
+            word: "урок5/глаголы/Слово",
+            phrase: "урок4/глаголыСлово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово2",
+            phrase: "урок4/глаголыСлово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово3",
+            phrase: "урок5/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово4",
+            phrase: "урок5/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово5",
+            phrase: "урок5/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        Существительные: [
+          {
+            word: "урок5/Существительные/Слово1",
+            phrase: "урок5/Существительные/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Существительные/Слово2",
+            phrase: "урок5/Существительные/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово3",
+            phrase: "урок5/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово4",
+            phrase: "урок5/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово5",
+            phrase: "урок5/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        Вопросы: [
+          {
+            word: "урок5/Вопросы/Слово1",
+            phrase: "урок5/Вопросы/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово2",
+            phrase: "урок5/Вопросы/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово3",
+            phrase: "урок5/Вопросы/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово4",
+            phrase: "урок5/Вопросы/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово5",
+            phrase: "урок5/Вопросы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+      phrase: {
+        "Тема фраз1": [
+          {
+            word: "урок5/Тема фраз1/Слово1",
+            phrase: "урок5/Тема фраз1/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово2",
+            phrase: "урок5/Тема фраз1/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово3",
+            phrase: "урок5/Тема фраз1/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово4",
+            phrase: "урок5/Тема фраз1/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово5",
+            phrase: "урок5/Тема фраз1/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        "Тема фраз2": [
+          {
+            word: "урок5/Тема фраз2/Слово1",
+            phrase: "урок5/Тема фраз2/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово2",
+            phrase: "урок4/Тема фраз2/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово3",
+            phrase: "урок5/Тема фраз2/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово4",
+            phrase: "урок5/Тема фраз2/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово5",
+            phrase: "урок5/Тема фраз2/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        "Тема фраз3": [
+          {
+            word: "урок5/Тема фраз3/Слово1",
+            phrase: "урок5/Тема фраз3/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово2",
+            phrase: "урок5/Тема фраз3/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово3",
+            phrase: "урок5/Тема фраз3/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово4",
+            phrase: "урок5/Тема фраз3/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово5",
+            phrase: "урок5/Тема фраз3/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+    },
+  },
+  {
+    id: "9",
+    title: "Урок 9",
+    discription1: "Работа5",
+    discription2: "Движуха5",
+    discription3: "Транспорт5",
+    discription4: "Спорт5",
+    data: {
+      word: {
+        Глаголы: [
+          {
+            word: "урок5/глаголы/Слово",
+            phrase: "урок4/глаголыСлово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово2",
+            phrase: "урок4/глаголыСлово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово3",
+            phrase: "урок5/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово4",
+            phrase: "урок5/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово5",
+            phrase: "урок5/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        Существительные: [
+          {
+            word: "урок5/Существительные/Слово1",
+            phrase: "урок5/Существительные/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Существительные/Слово2",
+            phrase: "урок5/Существительные/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово3",
+            phrase: "урок5/глаголыСлово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово4",
+            phrase: "урок5/глаголыСлово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/глаголы/Слово5",
+            phrase: "урок5/глаголы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        Вопросы: [
+          {
+            word: "урок5/Вопросы/Слово1",
+            phrase: "урок5/Вопросы/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово2",
+            phrase: "урок5/Вопросы/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово3",
+            phrase: "урок5/Вопросы/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово4",
+            phrase: "урок5/Вопросы/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Вопросы/Слово5",
+            phrase: "урок5/Вопросы/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+      phrase: {
+        "Тема фраз1": [
+          {
+            word: "урок5/Тема фраз1/Слово1",
+            phrase: "урок5/Тема фраз1/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово2",
+            phrase: "урок5/Тема фраз1/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово3",
+            phrase: "урок5/Тема фраз1/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово4",
+            phrase: "урок5/Тема фраз1/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз1/Слово5",
+            phrase: "урок5/Тема фраз1/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+        "Тема фраз2": [
+          {
+            word: "урок5/Тема фраз2/Слово1",
+            phrase: "урок5/Тема фраз2/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово2",
+            phrase: "урок4/Тема фраз2/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово3",
+            phrase: "урок5/Тема фраз2/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово4",
+            phrase: "урок5/Тема фраз2/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз2/Слово5",
+            phrase: "урок5/Тема фраз2/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+
+        "Тема фраз3": [
+          {
+            word: "урок5/Тема фраз3/Слово1",
+            phrase: "урок5/Тема фраз3/Слово1",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/1.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово2",
+            phrase: "урок5/Тема фраз3/Слово2",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/2.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово3",
+            phrase: "урок5/Тема фраз3/Слово3",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/3.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово4",
+            phrase: "урок5/Тема фраз3/Слово4",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/4.mp3",
+            trans: "Транскрипция",
+          },
+          {
+            word: "урок5/Тема фраз3/Слово5",
+            phrase: "урок5/Тема фраз3/Слово5",
+            image: "https://f-arenda.ru/appImg/1w1.jpg",
+            sound: "https://f-arenda.ru/sound/1/word/5.mp3",
+            trans: "Транскрипция",
+          },
+        ],
+      },
+    },
+  },
+
+];
+
+
+export const USER = {
+   repeat: {
+      "Урок 1" : [
+          { id:1,phrase:true,word:true,title: '30c',time:0},
+          { id:2,phrase:true,word:true,title: '6ч',time:0},
+          { id:3,phrase:true,word:true,title: '24ч',time:0},
           { id:4,phrase:false,word:false,title: '3д'},
           { id:5,phrase:false,word:false,title: '7д'},
           { id:6,phrase:false,word:false,title: '14д'},
@@ -825,7 +3020,33 @@ export const TICHER = [
           { id:9,phrase:false,word:false,title: '180д'},
           { id:10,phrase:false,word:false,title: '360д'}
       ],
-        "Урок 5" : [      
+      "Урок 2" : [  
+      { id:1,phrase:true,word:true,title: '30c',},
+      { id:2,phrase:true,word:true,title: '6ч', time: 0},
+      { id:3,phrase:true,word:false,title: '24ч',time: 0},
+      { id:4,phrase:false,word:false,title: '3д'},
+      { id:5,phrase:false,word:false,title: '7д'},
+      { id:6,phrase:false,word:false,title: '14д'},
+      { id:7,phrase:false,word:false,title: '30д'},
+      { id:8,phrase:false,word:false,title: '90д'},
+      { id:9,phrase:false,word:false,title: '180д'},
+      { id:10,phrase:false,word:false,title: '360д'}
+
+      ],
+      "Урок 3" : [ 
+      { id:1,phrase:false,word:false,title: '30c',},
+      { id:2,phrase:false,word:false,title: '6ч'},
+      { id:3,phrase:false,word:false,title: '24ч'},
+      { id:4,phrase:false,word:false,title: '3д'},
+      { id:5,phrase:false,word:false,title: '7д'},
+      { id:6,phrase:false,word:false,title: '14д'},
+      { id:7,phrase:false,word:false,title: '30д'},
+      { id:8,phrase:false,word:false,title: '90д'},
+      { id:9,phrase:false,word:false,title: '180д'},
+      { id:10,phrase:false,word:false,title: '360д'}
+
+      ],
+      "Урок 4" : [ 
         { id:1,phrase:false,word:false,title: '30c',},
         { id:2,phrase:false,word:false,title: '6ч'},
         { id:3,phrase:false,word:false,title: '24ч'},
@@ -836,13 +3057,24 @@ export const TICHER = [
         { id:8,phrase:false,word:false,title: '90д'},
         { id:9,phrase:false,word:false,title: '180д'},
         { id:10,phrase:false,word:false,title: '360д'}
+    ],
+      "Урок 5" : [      
+      { id:1,phrase:false,word:false,title: '30c',},
+      { id:2,phrase:false,word:false,title: '6ч'},
+      { id:3,phrase:false,word:false,title: '24ч'},
+      { id:4,phrase:false,word:false,title: '3д'},
+      { id:5,phrase:false,word:false,title: '7д'},
+      { id:6,phrase:false,word:false,title: '14д'},
+      { id:7,phrase:false,word:false,title: '30д'},
+      { id:8,phrase:false,word:false,title: '90д'},
+      { id:9,phrase:false,word:false,title: '180д'},
+      { id:10,phrase:false,word:false,title: '360д'}
 
-        ],
-  
-        },
-        
-     point: 100,
-    name: 'Diman00.'
-     
-  }
-  
+      ],
+
+      },
+      
+   point: 100,
+  name: 'Diman00.'
+   
+}

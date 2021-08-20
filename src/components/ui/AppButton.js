@@ -10,28 +10,43 @@ import {
 } from 'react-native' 
 
 import { THEME } from '../../theme'
+import {LinearGradient} from 'expo-linear-gradient'
 
 export const AppButton = ({children, onPress,color=THEME.MAIN_COLOR}) => {
 
 
-const Wraper 
-= Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
+
 
     return(
-        <Wraper  onPress={onPress} activeOpacity={0.2} >
-            <View style={{...styles.button, backgroundColor: color,}}>
-                
-<Text style={styles.text}>
+        <TouchableOpacity style={styles.buttonGeneral}  onPress={onPress} activeOpacity={0.2} >
+           
+               <LinearGradient style={styles.itemButtonWraperGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={['#659EE5', '#9C9DED', '#C39DF4']} >
 
-    {children}
+            <View style={styles.button}>
 
-</Text>
+<Text style={styles.text}>{children}</Text>
+
             </View>
-        </Wraper>
+            </LinearGradient>
+         
+        </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
+    buttonGeneral: {
+        width: '65%',
+ justifyContent: 'center'
+    
+    },
+    itemButtonWraperGradient: {
+        marginBottom: 25,
+        borderRadius: 40,
+        overflow: 'hidden',
+        justifyContent: 'center',
+        width: '100%'
+      
+    },
 button: {
     paddingHorizontal: 10,
     paddingVertical: 10,
@@ -41,14 +56,16 @@ button: {
     alignItems: "center",
     justifyContent: 'center',
     height: 50,
-    marginBottom: 30,
+    
     width: '100%',
-    maxWidth: 200
+
 },
 text: {
     color: "white",
     textAlign: "center",
     alignItems: "center",
-    alignContent: "center"
+    alignContent: "center",
+    textAlign: 'center',
+    fontSize: 18
 }
 })

@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "9-eng",
-    "slug": "9-eng",
+    "name": "superenglishtest",
+    "slug": "superenglishtest",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash1.png",
+      "image": "./assets/splasFinal.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,7 +17,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "buildNumber": "1.0.0",
+      "bundleIdentifier": "com.engelement.app-test-1",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.engelement.app_test_1",
+      "versionCode": 1
+   
     },
     "web": {
       "favicon": "./assets/favicon.png"

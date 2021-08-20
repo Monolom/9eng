@@ -23,10 +23,13 @@ return (
 WordRepeatScreen.navigationOptions = ( {navigation}) => ({
     headerTitle:  'Рэйтинг' ,
    
-     headerLeft: () => ( <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-     <Item title="Toggle Drawer" iconName='ios-menu' onPress={() => navigation.toggleDrawer()}/>
+    headerRight: () => ( 
     
- </HeaderButtons>)
+        <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+    
+        <Item title="Toggle Drawer" iconName='ios-menu' onPress={() => navigation.toggleDrawer()}/>
+    
+     </HeaderButtons>)
 })
 
 

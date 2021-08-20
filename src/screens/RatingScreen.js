@@ -1,13 +1,13 @@
 import React,{useState , useEffect, useRef} from 'react'
 import {HeaderButtons, Item} from 'react-navigation-header-buttons'
-import {View,Text,StyleSheet,FlatList,TouchableOpacity} from 'react-native'
+import {View,Text,StyleSheet,FlatList,TouchableOpacity,Dimensions,Platform,ActivityIndicator} from 'react-native'
 // import {DATA} from '../data'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
 // import { Postlist } from '../components/PostList'
 import { useDispatch, useSelector } from 'react-redux'
 import { statUser } from '../store/actions/stat'
 import {firebase} from '../firebase/config'
-import { ceil } from 'react-native-reanimated'
+import { ceil, color } from 'react-native-reanimated'
 import { THEME } from '../theme'
 
 
@@ -21,8 +21,30 @@ export const RatingScreen = ({navigation}) => {
   
 
 
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
+
+    const sDisp = () => {
+
+      if(windowHeight < 620){
+        return true
+      }else{
+        return false
+      }
+      
+    }
 
 
+    const largeName = (name) => {
+
+      if(name.length > 14){
+        return name.substr(0,13) + '...'
+      }else{
+        return name
+      }
+
+    } 
+    
     let  userUid = firebase.auth().currentUser.uid
      
     const [tabState,setTabState] =  useState(false)
@@ -35,6 +57,21 @@ export const RatingScreen = ({navigation}) => {
 
       }, [dispatch])
 
+
+    //   useEffect(() => {
+
+    //     dispatch(loadUser())
+
+    //  }, [dispatch])
+
+     const allUser = useSelector( state => state.user.allUser ) 
+     
+      useEffect(() => {
+
+        dispatch(statUser())
+
+     }, [allUser])
+
     //   useEffect(() => {
 
     //     dispatch(statUser())
@@ -46,15 +83,16 @@ export const RatingScreen = ({navigation}) => {
 
 const allStat = useSelector(state => state.stat.statUser)
 const allStatArr = Object.values(allStat)
+
 const statTop = allStatArr.sort((a,b) => {
   var c = a.point,
   d = b.point;
-
 if( c < d ){
   return 1 ;
 }else if( c > d ){
   return -1;
 }
+
 return 0;
 
 })
@@ -65,63 +103,78 @@ const indexUsre = statTop.findIndex(function(item,index,array){
   }
 })
 
+
  
 
 
-// console.log(
-// 'Готово', allStat
-// )
-console.log('проверка',indexUsre)
+console.log(
+'Кака',indexUsre
+)
+
+console.log(
+  'Кака2',statTop
+  )
+
+
+
+if (!statTop[0] ){
+  return (
+
+    <View style={styles.loadingContainer}>
+
+<ActivityIndicator size="large" color="#3A9FE7"  />  
+
+</View>
+
+  )
+}else{
 if(!tabState){
   return (
+
     <View style={styles.truDirectWraper}>
-        <Text style={styles.title}>Рэйтинг</Text>
     <View style={styles.directWraper}>
     
-      <View style={styles.flatWraper}>
+      <View style={{...styles.flatWraper, height: sDisp() ? 280 :  windowHeight < 750 ? 380 : 500 }}>
       <FlatList  showsVerticalScrollIndicator={false}  keyExtractor={post => post.id.toString() }  data={statTop.slice(0,10) } 
   renderItem={({item,index}) => ( 
   
-  
-  
-  
-  
-  
       <View style={styles.listItemWraper}>
   
-      <Text style={styles.number}>
+      <Text style={{...styles.number,backgroundColor: '#3A9FE7',fontSize: sDisp() ? 14 : 20,minHeight: sDisp()?30:40,minWidth: sDisp()?30:40}}>
        {index + 1}
       </Text>
-    
-    <Text style={styles.name}>
-     {item.fullName}
+    <View style={styles.lineWraper}>
+
+    <Text style={{...styles.name, fontSize: sDisp() ? 18 : 20}}>
+     {largeName(item.fullName)}
     </Text>
     
-    <Text style={styles.point}>
+    <Text style={{...styles.point,fontSize: sDisp() ? 18 : 20}}>
     {item.point}
     </Text>
+
+    </View>
+   
     
     </View>
   
   
-    )
-  
-  }/>
+    )}/>
   
 
     </View>
     <View style={styles.buttonWraper}>
             
-            <TouchableOpacity  onPress={()=>{setTabState(false)}}>
+            <TouchableOpacity style={{width: '40%'}}  onPress={()=>{setTabState(false)}}>
   
-              <Text style={styles.button}>
+              <Text style={{...styles.button,fontSize: sDisp() ? 16 : 18}}>
               Топ
               </Text>
             
             </TouchableOpacity>
                 
-            <TouchableOpacity  onPress={()=>{setTabState(true)}}>
-           <Text style={styles.button}>
+            <TouchableOpacity style={{width: '40%'}}  onPress={()=>{setTabState(true)}}>
+           <Text style={{...styles.button,fontSize: sDisp() ? 16 : 18}}>
            Где я?
            </Text>
         
@@ -138,70 +191,68 @@ if(!tabState){
   )
 }else{
   return (
+
     <View style={styles.truDirectWraper}>
-        <Text style={styles.title}>Рэйтинг</Text>
+      
     <View style={styles.directWraper}>
     
-      <View style={styles.flatWraper}>
-      <FlatList  showsVerticalScrollIndicator={false}  keyExtractor={post => post.id.toString() }  data={indexUsre < 3 ?statTop.slice(indexUsre,indexUsre+10) : statTop.slice(indexUsre-3,indexUsre+6)} 
+      <View style={{...styles.flatWraper,height: sDisp() ? 280 :  windowHeight < 750 ? 380 : 500 }}>
+      <FlatList  showsVerticalScrollIndicator={false}  keyExtractor={post => post.id.toString() }  data={ statTop.slice(indexUsre,indexUsre+10)} 
   renderItem={({item,index}) => ( 
-  
-  
-  
-  
-  
   
       <View style={styles.listItemWraper}>
   
-      <Text style={styles.number}>
-       {index + 1}
+      <Text style={{...styles.number,backgroundColor: index == 0 ? "#9E8AE3" : '#3A9FE7',fontSize: sDisp() ? 14 : 20,minHeight: sDisp()?30:40,minWidth: sDisp()?30:40}}>
+       {indexUsre + index + 1}
       </Text>
-    
-    <Text style={styles.name}>
-     {item.fullName}
+    <View style={styles.lineWraper}>
+
+    <Text style={{...styles.name, fontSize: sDisp() ? 18 : 20}}>
+     {largeName(item.fullName)}
     </Text>
-    
-    <Text style={styles.point}>
+   
+    <Text style={{...styles.point,color: index == 0 ? "#9E8AE3" : '#3A9FE7',fontSize: sDisp() ? 18 : 20}}>
     {item.point}
     </Text>
+
+    </View>
+   
     
     </View>
   
- 
-    )
   
-  }/>
- 
-      </View>
+    )}/>
+  
 
-      <View style={styles.buttonWraper}>
+    </View>
+    <View style={styles.buttonWraper}>
             
-            <TouchableOpacity  onPress={()=>{setTabState(false)}}>
+            <TouchableOpacity style={{width: '40%'}}  onPress={()=>{setTabState(false)}}>
   
-              <Text style={styles.button}>
+              <Text style={{...styles.button,fontSize: sDisp() ? 16 : 18}}>
               Топ
               </Text>
             
             </TouchableOpacity>
                 
-            <TouchableOpacity  onPress={()=>{setTabState(true)}}>
-           <Text style={styles.button}>
+            <TouchableOpacity style={{width: '40%'}}  onPress={()=>{setTabState(true)}}>
+           <Text style={{...styles.button,fontSize: sDisp() ? 16 : 18}}>
            Где я?
            </Text>
         
             </TouchableOpacity>
   
         </View>
-      
+
+
+
     
 
-      
-      
     </View>
     </View>
   )
 }
-
+}
 }
 
 
@@ -209,10 +260,13 @@ if(!tabState){
 RatingScreen.navigationOptions = ( {navigation}) => ({
     headerTitle:  'Рэйтинг' ,
    
-     headerLeft: () => ( <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-     <Item title="Toggle Drawer" iconName='ios-menu' onPress={() => navigation.toggleDrawer()}/>
+    headerRight: () => ( 
     
- </HeaderButtons>)
+      <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+  
+      <Item title="Toggle Drawer" iconName='ios-menu' onPress={() => navigation.toggleDrawer()}/>
+  
+   </HeaderButtons>)
 })
 
 
@@ -222,7 +276,8 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     textAlign: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#fff'
   },
   title: {
     fontSize: 32,
@@ -236,19 +291,31 @@ const styles = StyleSheet.create({
     width: '85%',
     justifyContent: 'space-between',
     textAlign: "center",
+    paddingTop: 20,
+
   },
   flatWraper: {
-  
-   width: '100%',
-   maxHeight: 342
+    width: '100%',
+    height: 380,
+    shadowColor: "#DCCAFF",
+        shadowOffset: {
+        width: 1,
+        height: 6,
+        },
+        shadowOpacity: 0.37,
+        shadowRadius: 3.5,
+        elevation: 6,
+        borderRadius: 20,
+   backgroundColor: '#fff',
+   padding: 20
   },
   listItemWraper: {
     textAlign: "center",
     width: '100%',
     flexDirection: "row",
-    padding: 5,
-    backgroundColor: '#CACED9',
-    justifyContent: "center",
+    // padding: 5,
+    // backgroundColor: '#fff',
+    justifyContent: "flex-end",
     position: "relative",
     marginTop: 10,
     marginBottom: 10,
@@ -258,41 +325,61 @@ const styles = StyleSheet.create({
   },
   number: {
     fontSize: 20,
-    backgroundColor: '#fff',
-    borderRadius: 50,
+    backgroundColor: '#3A9FE7',
+    borderRadius: 20,
     position: "absolute",
     left: 0,
-    padding: 10,
-    borderColor: "#F5F23D",
-    borderWidth: 2,
+    padding: 6,
     textAlign: 'center',
-    minWidth: 50
+    minWidth: 40,
+    minHeight: 40,
+    color: '#fff',
+    overflow: "hidden"
   },
   name: {
-    flex: 1,
+
     textAlign: "center",
-    fontSize: 20
+    fontSize: 20,
+    color: '#000'
+
   },
   point: {
-    position: 'absolute',
-    right: 10,
+   
+   marginRight: 10,
     fontSize: 20,
-    color: '#60C187'
+    color: '#3A9FE7'
   },
   button: {
-    fontSize: 27,
+    width: '100%',
+    textAlign: "center",
+    fontSize: 18,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
     color: '#fff',
-    backgroundColor: THEME.MAIN_COLOR,
-    minWidth: 130,
-    textAlign: 'center',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 20,
-   
+    backgroundColor: "#3A9FE7",
+    borderRadius: 20,
+    overflow: 'hidden'
   },
   buttonWraper: {
     flexDirection: 'row',
     width: '100%',
-    justifyContent: "space-between"
-  }
+    justifyContent: "space-between",
+    marginBottom: 20
+  },
+  lineWraper : {
+    flexDirection: 'row',
+    width: '80%',
+    height: '100%',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F1F2F2',
+    justifyContent: 'space-between'
+  },
+  loadingContainer: {
+    height: '100%',
+    flex: 1,
+    justifyContent: "center",
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    opacity: 1
+}
 })
