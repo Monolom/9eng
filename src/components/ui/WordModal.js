@@ -51,7 +51,7 @@ const [ playStatus,setPlayStatus] = useState(false)
 
 
 let wordArr
-// при новом запуске записываем длину массива слов
+// при новом запуске записываем длину массива слов и исходные индексы
 useEffect(() => {
     
        if(curent){

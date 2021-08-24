@@ -425,7 +425,6 @@ const [interConect , setInterConect] = useState(false)
 
 
 //получаем размеры экрана
-const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const sDisp = () => {
@@ -471,8 +470,8 @@ useEffect(()=>{
 
     setDeletePromo({status: false,key:false})
 
-    if(promoState.toUpperCase() == 'DIMAFOMA'){
-        setDeletePromo({status: true,key: 'DIMAFOMA' })
+    if(promoState.toUpperCase() == 'TESTTEST'){
+        setDeletePromo({status: true,key: 'TESTTEST' })
     }else{
 
 
@@ -708,6 +707,7 @@ async function wrapsRegister(params) {
        
 
             }).catch((error) => {
+                
                 goAlert("Ошибка соединения")
 
             })
@@ -808,9 +808,6 @@ async function wrapsRegister(params) {
        return
     }
     if(promoState < 8){
-
-       
-
         goAlert('Код доступа должен быть 8 символов')
        return
     }
@@ -867,7 +864,7 @@ async function wrapsRegister(params) {
        
     }else{
         if(deletePromo.key ){
-            if(deletePromo.key == 'DIMAFOMA'){
+            if(deletePromo.key == 'TESTTEST'){
                 wrapsRegister() 
             }else{
 
@@ -930,6 +927,19 @@ const checkInternet = () => {
      
       });
 }
+// Перезаписываем новые данные (TICHER)
+//   const mediaRef = firebase.database().ref('mediaData')
+//   mediaRef.set(TICHER) 
+//   .then(() => {
+//       setLoadLoginModal(false)
+//   //    console.log("Готово", uid)
+//   })
+//   .catch((error) => {
+//       setLoadLoginModal(false)
+//       // console.log('ошибка записи в БД', error)
+//       goAlert("Незаписалось")
+//   });
+
 
     
 if(!isReady || isLogin === undefined){

@@ -22,32 +22,30 @@ export const loadUser = () => {
 }
 
 export const refreshRepeat = (
+  // принмаем параметры
   index,types,title,time
   ) => async dispatch => {
-
+    // получаем от firebase уникальный id пользователя
     let userUid = await firebase.auth().currentUser.uid
 
-
+    // получаем ссылки на нужные лементы объекта бд
     const usersRefData = firebase.database().ref('usersData')
     const eventref = usersRefData.child(userUid).child('repeat').child(index).child(types).child(title).child('repeat')
     const eventref2 = usersRefData.child(userUid).child('repeat').child(index).child(types).child(title).child('time')
+    // получаем значение
     const snapshot = await eventref.once('value')
-    const snapshot2 = await eventref2.once('value')
+    // редактируем значение
     const valueRepeat = snapshot.val() + 1
-    const valueTime = snapshot2.val() 
-    
-
-      await usersRefData.child(userUid).child('repeat').child(index).child(types).child(title).child('time').set(time)
- 
-      
-   
-
+    // передаём в бд
+    await usersRefData.child(userUid).child('repeat').child(index).child(types).child(title).child('time').set(time)
     await usersRefData.child(userUid).child('repeat').child(index).child(types).child(title).child('repeat').set(valueRepeat)
   
+// передаём в Reduser
 
  dispatch ({
-
+// тип который связвает action и reduser
   type: REFRESH_REPEAT,
+// параметры
   title: title,
   index: index,
   repeat: valueRepeat,

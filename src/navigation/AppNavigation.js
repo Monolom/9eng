@@ -151,15 +151,19 @@ const BottomNavigator = createBottomTabNavigator (bottomTabsConfig,{
 
 // создаём общие пространство в которое входит основной экран (с нижнем меню) и два модальных окна  
 const RootNavigator = createStackNavigator({
+
   Main: {
     screen: BottomNavigator
   },
+  
   MyModal: {
     screen: WordModal,
   },
+
   DialogModal: {
     screen: DialogModal
   }
+
 },
 {
   mode: 'modal',

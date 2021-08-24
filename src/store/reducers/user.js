@@ -13,11 +13,6 @@ export const loadUser = (state = initialState, action) => {
       }
 
     case REFRESH_REPEAT:
-
- 
-      
-    
-      
       return {
         ...state,allUser: {...state.allUser, repeat:{...state.allUser.repeat,[action.index]: {...state.allUser.repeat[action.index],[action.types]: {...state.allUser.repeat[action.index][action.types],[action.title]: {
           time: action.time ,

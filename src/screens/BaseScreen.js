@@ -47,6 +47,7 @@ useEffect(() => {
 
 // функция скрола до ближайшего неиспользванного элемента
 const scrollToBlock = (data,index) => {
+
   let curentIndex = data.findIndex(item => item.repeat == index && item.block == false)
 
   if(curentIndex >= 0){

@@ -328,7 +328,6 @@ const goStarModal = (boolean) => {
         else if (filterTimeProgress(value.repeat,value.time)){
           return false
         }
-
         else{  return true}
       }
       const baseArr = Arr.filter(filterFunction)
